@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import APMAlertController
 
 class ViewController: UIViewController {
     let tableView = UITableView()
@@ -15,13 +16,13 @@ class ViewController: UIViewController {
     let sectionsArray = ["System", "My Alert", "My ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
-            ["Alert 1", "Alert 2", "Alert 3", "Alert 4"],
+            ["My Alert", "Alert 2", "Alert 3", "Alert 4"],
             ["ActionSheet 1", "ActionSheet 2", "ActionSheet 3"]
     ]
     var actions: [[(indexPath: NSIndexPath) -> Void]] {
         return [
             [systemAlert, systemActionSheet],
-            [systemAlert, systemAlert, systemAlert, systemAlert],
+            [myAlert, systemAlert, systemAlert, systemAlert],
             [systemActionSheet, systemActionSheet, systemActionSheet]
         ]
     }
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
         }
     }
 
+    //System
     func systemAlert(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
 
@@ -62,7 +64,7 @@ class ViewController: UIViewController {
             textField.textColor = UIColor.whiteColor()
             textField.backgroundColor = UIColor.magentaColor()
         }
-        self.presentViewController(alertController, animated: true, completion: nil)
+        presentViewController(alertController, animated: true, completion: nil)
     }
 
     func systemActionSheet(indexPath: NSIndexPath) {
@@ -84,7 +86,15 @@ class ViewController: UIViewController {
             //Code for picking from camera roll goes here
         }
         alertController.addAction(choosePictureAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func myAlert(indexPath: NSIndexPath) {
+        let title = titlesArray[indexPath.section][indexPath.row]
+        let message = "This is message"
+
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
