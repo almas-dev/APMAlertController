@@ -16,13 +16,13 @@ class ViewController: UIViewController {
     let sectionsArray = ["System", "My Alert", "My ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
-            ["My Alert", "Alert 2", "Alert 3", "Alert 4"],
+            ["My Alert Text Title", "My Alert Icon Title", "Alert 3", "Alert 4"],
             ["ActionSheet 1", "ActionSheet 2", "ActionSheet 3"]
     ]
     var actions: [[(indexPath: NSIndexPath) -> Void]] {
         return [
             [systemAlert, systemActionSheet],
-            [myAlert, systemAlert, systemAlert, systemAlert],
+            [myAlertTextTitle, myAlertIconTitle, systemAlert, systemAlert],
             [systemActionSheet, systemActionSheet, systemActionSheet]
         ]
     }
@@ -46,9 +46,10 @@ class ViewController: UIViewController {
 
     //System
     func systemAlert(indexPath: NSIndexPath) {
-        let title = titlesArray[indexPath.section][indexPath.row]
+        var title = titlesArray[indexPath.section][indexPath.row]
+        var message = "This is message. One, Two. Message."
 
-        let alertController: UIAlertController = UIAlertController(title: title, message: "This is message", preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) {
             action in
             //Do some stuff
@@ -89,11 +90,19 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func myAlert(indexPath: NSIndexPath) {
+    func myAlertTextTitle(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
-        let message = "This is message"
+        let message = "This is message. One, Two. Message."
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func myAlertIconTitle(indexPath: NSIndexPath) {
+        let title = titlesArray[indexPath.section][indexPath.row]
+        let message = "This is message. One, Two. Message."
+
+        let alertController = APMAlertController(iconTitleStyle: .Negative, message: message, preferredStyle: .Alert)
         presentViewController(alertController, animated: true, completion: nil)
     }
 }

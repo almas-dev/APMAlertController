@@ -1,6 +1,12 @@
 PODS:
   - APMAlertController (0.1.0):
+    - ChameleonFramework/Swift (~> 2.0.4)
+    - FontAwesome.swift (~> 0.6.2)
     - SnapKit (~> 0.17.0)
+  - ChameleonFramework/Default (2.0.4)
+  - ChameleonFramework/Swift (2.0.4):
+    - ChameleonFramework/Default
+  - FontAwesome.swift (0.6.2)
   - SnapKit (0.17.0)
 
 DEPENDENCIES:
@@ -11,7 +17,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  APMAlertController: c44345cd9bd1e9dbb60bcd17ebec9374b23d3c1f
+  APMAlertController: 469b2b7a74d90f58fd8d69c279f72f2a5b81e11a
+  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  FontAwesome.swift: d40ac0a660f079c77945bab632ca20bf46ddc1ac
   SnapKit: 49fd7b1b3ff58ab4064004036b8afcfddbd3a4bd
 
 COCOAPODS: 0.39.0
