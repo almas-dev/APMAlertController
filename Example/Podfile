@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'APMAlertController_Example', :exclusive => true do
+  pod "APMAlertController", :path => "../"
+end
+
+target 'APMAlertController_Tests', :exclusive => true do
+  pod "APMAlertController", :path => "../"
+
+  
+end
