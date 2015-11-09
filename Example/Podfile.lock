@@ -1,5 +1,7 @@
 PODS:
-  - APMAlertController (0.1.0)
+  - APMAlertController (0.1.0):
+    - SnapKit (~> 0.17.0)
+  - SnapKit (0.17.0)
 
 DEPENDENCIES:
   - APMAlertController (from `../`)
@@ -9,6 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  APMAlertController: de47b09e89264daff8bfa9296e988e5a6ee3d564
+  APMAlertController: c44345cd9bd1e9dbb60bcd17ebec9374b23d3c1f
+  SnapKit: 49fd7b1b3ff58ab4064004036b8afcfddbd3a4bd
 
 COCOAPODS: 0.39.0
