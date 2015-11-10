@@ -18,14 +18,47 @@ public enum APMAlertIconTitleStyle {
     case Negative
 }
 
+public enum APMAlertActionStyle {
+    case Default
+    case Cancel
+    case Destructive
+}
+
 public class APMAlertController: UIViewController {
     private let alertView = UIView()
     private let titleLabel = UILabel()
     private let messageLabel = UILabel()
+    private let buttonsView = UIView()
     private let button = UIButton()
     private var alertTitle: String?
     private var iconTitleStyle: APMAlertIconTitleStyle?
     private var alertMessage: String?
+    private var actions = [APMAlertAction]()
+    private var buttons: [UIButton] = [] {
+        didSet {
+            for (index, value) in buttons.enumerate() {
+                value.snp_remakeConstraints {
+                    make in
+                    make.top.equalTo(buttonsView).offset(1)
+                    make.bottom.equalTo(buttonsView)
+                    if buttons.count == 1 {
+                        make.right.equalTo(buttonsView)
+                    }
+
+                    if index == 0 {
+                        make.left.equalTo(buttonsView)
+                    } else  {
+                        let previousButton = buttons[index - 1]
+                        make.left.equalTo(previousButton.snp_right).offset(1)
+                        make.width.equalTo(previousButton)
+                        if index == buttons.count - 1 {
+                            make.right.equalTo(buttonsView)
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     public required init(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -61,13 +94,13 @@ public class APMAlertController: UIViewController {
 
         alertView.backgroundColor = UIColor(white: 1, alpha: 0.95)
         alertView.layer.cornerRadius = 12
+        alertView.clipsToBounds = true
         view.addSubview(alertView)
         alertView.snp_makeConstraints {
             make in
             make.centerY.equalTo(view.snp_centerY)
             make.left.equalTo(view.snp_left).offset(50)
             make.right.equalTo(view.snp_right).offset(-50)
-            make.height.equalTo(192)
         }
 
         if let iconTitleStyle = self.iconTitleStyle {
@@ -88,42 +121,49 @@ public class APMAlertController: UIViewController {
         }
 
         messageLabel.font = UIFont.systemFontOfSize(16)
+        messageLabel.textAlignment = .Center
         messageLabel.text = alertMessage
-        messageLabel.numberOfLines = 2
+        messageLabel.numberOfLines = 0
         alertView.addSubview(messageLabel)
         messageLabel.snp_makeConstraints {
             make in
-            make.top.equalTo(titleLabel.snp_bottom).offset(16)
+            make.top.equalTo(titleLabel.snp_bottom).offset(12)
             make.left.equalTo(alertView).offset(30)
             make.right.equalTo(alertView).offset(-30)
         }
 
-        let separatorView = UIView()
-        separatorView.backgroundColor = UIColor(white: 0.75, alpha: 0.6)
-        alertView.addSubview(separatorView)
-        separatorView.snp_makeConstraints {
+        buttonsView.backgroundColor = UIColor(white: 0.75, alpha: 0.6)
+        alertView.addSubview(buttonsView)
+        buttonsView.snp_makeConstraints {
             make in
-            make.left.equalTo(alertView)
-            make.right.equalTo(alertView)
-            make.bottom.equalTo(alertView).offset(-44)
-            make.height.equalTo(1)
-        }
-
-        button.addTarget(self, action: "btnBackPressed:", forControlEvents: .TouchUpInside)
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.setTitle("Go back!", forState: .Normal)
-        alertView.addSubview(button)
-        button.snp_makeConstraints {
-            make in
+            make.top.equalTo(messageLabel.snp_bottom).offset(18)
             make.left.equalTo(alertView)
             make.right.equalTo(alertView)
             make.bottom.equalTo(alertView)
-            make.height.equalTo(44)
+            make.height.equalTo(45)
         }
     }
 
-    func btnBackPressed(button: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    public func addAction(action: APMAlertAction) {
+        actions.append(action)
+
+        let button = UIButton()
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.setTitle(action.title, forState: .Normal)
+        button.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+        button.tag = buttons.count + 1
+        button.backgroundColor = UIColor.whiteColor()
+        buttonsView.addSubview(button)
+        buttons.append(button)
+    }
+
+    func btnPressed(button: UIButton) {
+        button.selected = true
+        let action = actions[button.tag - 1]
+        if (action.handler != nil) {
+            action.handler(action)
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
@@ -134,6 +174,22 @@ extension APMAlertController: UIViewControllerTransitioningDelegate {
 
     public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
+    }
+}
+
+public class APMAlertAction : NSObject {
+    let title: String
+    let style: APMAlertActionStyle
+    let handler: ((APMAlertAction!) -> Void)!
+
+    public required init(coder aDecoder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+
+    public init(title: String, style: APMAlertActionStyle, handler: ((APMAlertAction!) -> Void)!) {
+        self.title = title
+        self.style = style
+        self.handler = handler
     }
 }
 

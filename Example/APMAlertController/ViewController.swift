@@ -95,14 +95,29 @@ class ViewController: UIViewController {
         let message = "This is message. One, Two. Message."
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+            action in
+            NSLog("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
 
     func myAlertIconTitle(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
-        let message = "This is message. One, Two. Message."
+        let message = "This is message. One, Two. Message. Long message. Test."
 
         let alertController = APMAlertController(iconTitleStyle: .Negative, message: message, preferredStyle: .Alert)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+            action in
+            NSLog("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
+        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+            action in
+            NSLog("The simple alert test action.")
+        }
+        alertController.addAction(testAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
 }
