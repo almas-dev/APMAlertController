@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "APMAlertController"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "A short description of APMAlertController."
 
 # This description is used to generate tags and improve search results.
@@ -19,11 +19,11 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/APMAlertController"
+  s.homepage         = "https://github.com/almas-dev/APMAlertController"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Alexander Maslennikov" => "almas.dev@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/APMAlertController.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/almas-dev/APMAlertController.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
