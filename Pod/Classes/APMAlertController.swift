@@ -3,18 +3,10 @@
 //
 
 import UIKit
-import FontAwesome_swift
-import ChameleonFramework
 
 public enum APMAlertControllerStyle {
     case Alert
     case ActionSheet
-}
-
-public enum APMAlertIconTitleStyle {
-    case Info
-    case Positive
-    case Negative
 }
 
 public enum APMAlertActionStyle {
@@ -26,11 +18,12 @@ public enum APMAlertActionStyle {
 public class APMAlertController: UIViewController {
     private let alertView = UIView()
     private let titleLabel = UILabel()
+    private let imageView = UIImageView()
     private let messageLabel = UILabel()
     private let buttonsView = UIView()
     private let button = UIButton()
     private var alertTitle: String?
-    private var iconTitleStyle: APMAlertIconTitleStyle?
+    private var alertTitleImage: UIImage?
     private var alertMessage: String?
     private var actions = [APMAlertAction]()
     private var buttons: [UIButton] = [] {
@@ -74,15 +67,15 @@ public class APMAlertController: UIViewController {
     public convenience init(title: String?, message: String?, preferredStyle: APMAlertControllerStyle) {
         self.init(nibName: nil, bundle: nil)
         self.alertTitle = title
-        self.iconTitleStyle = nil
+        self.alertTitleImage = nil
         self.alertMessage = message
         commonInit()
     }
 
-    public convenience init(iconTitleStyle: APMAlertIconTitleStyle, message: String?, preferredStyle: APMAlertControllerStyle) {
+    public convenience init(titleImage: UIImage?, message: String?, preferredStyle: APMAlertControllerStyle) {
         self.init(nibName: nil, bundle: nil)
         self.alertTitle = nil
-        self.iconTitleStyle = iconTitleStyle
+        self.alertTitleImage = titleImage
         self.alertMessage = message
         commonInit()
     }
@@ -106,22 +99,32 @@ public class APMAlertController: UIViewController {
                 NSLayoutConstraint(item: alertView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: -50)
         ])
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        if let iconTitleStyle = self.iconTitleStyle {
-            titleLabel.font = UIFont.fontAwesomeOfSize(48)
-            titleLabel.textColor = UIColor.flatRedColorDark()
-            titleLabel.text = String.fontAwesomeIconWithName(.TimesCircleO)
+        let anyTitleObject: AnyObject
+        if let alertTitleImage = self.alertTitleImage {
+            anyTitleObject = imageView
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = .ScaleAspectFit
+            imageView.image = alertTitleImage
+            imageView.alpha = 0.8
+            alertView.addSubview(imageView)
+            alertView.addConstraints([
+                    NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 20),
+                    NSLayoutConstraint(item: imageView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 30),
+                    NSLayoutConstraint(item: imageView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: -30)
+            ])
         } else {
+            anyTitleObject = titleLabel
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.font = UIFont.boldSystemFontOfSize(16)
+            titleLabel.textAlignment = .Center
             titleLabel.text = alertTitle
+            alertView.addSubview(titleLabel)
+            alertView.addConstraints([
+                    NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 20),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 30),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: -30)
+            ])
         }
-        titleLabel.textAlignment = .Center
-        alertView.addSubview(titleLabel)
-        alertView.addConstraints([
-                NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 20),
-                NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 30),
-                NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: -30)
-        ])
 
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.font = UIFont.systemFontOfSize(16)
@@ -130,7 +133,7 @@ public class APMAlertController: UIViewController {
         messageLabel.numberOfLines = 0
         alertView.addSubview(messageLabel)
         alertView.addConstraints([
-                NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: titleLabel, attribute: .Bottom, multiplier: 1.0, constant: 12),
+                NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: anyTitleObject, attribute: .Bottom, multiplier: 1.0, constant: 12),
                 NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 30),
                 NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: -30)
         ])
@@ -154,6 +157,8 @@ public class APMAlertController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.setTitle(action.title, forState: .Normal)
+        button.setTitleColor(UIColor.lightGrayColor(), forState: .Selected)
+        button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
         button.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
         button.tag = buttons.count + 1
         button.backgroundColor = UIColor.whiteColor()
