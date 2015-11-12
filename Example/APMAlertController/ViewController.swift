@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import APMAlertController
 
 class ViewController: UIViewController {
@@ -22,7 +21,7 @@ class ViewController: UIViewController {
     var actions: [[(indexPath: NSIndexPath) -> Void]] {
         return [
             [systemAlert, systemActionSheet],
-            [myAlertTextTitle, myAlertIconTitle, systemAlert, systemAlert],
+            [myAlertTextTitle, myAlertImageTitle, systemAlert, systemAlert],
             [systemActionSheet, systemActionSheet, systemActionSheet]
         ]
     }
@@ -33,15 +32,18 @@ class ViewController: UIViewController {
         title = "AlertController Example"
         view.backgroundColor = UIColor.lightGrayColor()
 
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 44.0
         view.addSubview(tableView)
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.dynamicType.cellIdentifier)
-        tableView.snp_makeConstraints {
-            (make) in
-            make.edges.equalTo(view)
-        }
+        view.addConstraints([
+                NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: tableView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: tableView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+        ])
     }
 
     //System
@@ -103,11 +105,11 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func myAlertIconTitle(indexPath: NSIndexPath) {
+    func myAlertImageTitle(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
         let message = "This is message. One, Two. Message. Long message. Test."
 
-        let alertController = APMAlertController(iconTitleStyle: .Negative, message: message, preferredStyle: .Alert)
+        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
             action in
             NSLog("The simple alert cancel action.")
