@@ -1,7 +1,4 @@
 //
-//  ViewController.swift
-//  APMAlertController
-//
 //  Created by Alexander Maslennikov on 11/09/2015.
 //  Copyright (c) 2015 Alexander Maslennikov. All rights reserved.
 //
@@ -12,17 +9,17 @@ import APMAlertController
 class ViewController: UIViewController {
     let tableView = UITableView()
     private static let cellIdentifier = "Cell"
-    let sectionsArray = ["System", "My Alert", "My ActionSheet"]
+    let sectionsArray = ["System", "Custom Alert", "Custom ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
-            ["My Alert Text Title", "My Alert Icon Title", "Alert 3", "Alert 4"],
-            ["ActionSheet 1", "ActionSheet 2", "ActionSheet 3"]
+            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title"],
+            ["In progress"]
     ]
-    var actions: [[(indexPath: NSIndexPath) -> Void]] {
+    var actions: Array<Array<(indexPath:NSIndexPath) -> Void>> {
         return [
-            [systemAlert, systemActionSheet],
-            [myAlertTextTitle, myAlertImageTitle, systemAlert, systemAlert],
-            [systemActionSheet, systemActionSheet, systemActionSheet]
+                [systemAlert, systemActionSheet],
+                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitle],
+                [systemActionSheet]
         ]
     }
 
@@ -36,6 +33,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 44.0
+        tableView.tableFooterView = UIView()
         view.addSubview(tableView)
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.dynamicType.cellIdentifier)
         view.addConstraints([
@@ -46,10 +44,10 @@ class ViewController: UIViewController {
         ])
     }
 
-    //System
+    // System Alert
     func systemAlert(indexPath: NSIndexPath) {
-        var title = titlesArray[indexPath.section][indexPath.row]
-        var message = "This is message. One, Two. Message."
+        let title = titlesArray[indexPath.section][indexPath.row]
+        let message = "This is message. One, Two. Message."
 
         let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) {
@@ -92,7 +90,8 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func myAlertTextTitle(indexPath: NSIndexPath) {
+    // Custom Alert
+    func alertTextTitle(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
         let message = "This is message. One, Two. Message."
 
@@ -105,8 +104,25 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func myAlertImageTitle(indexPath: NSIndexPath) {
+    func alertTextTitleColoredButtons(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
+        let message = "This is message. One, Two. Message."
+
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+            action in
+            NSLog("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
+        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+            action in
+            NSLog("The simple alert test action.")
+        }
+        alertController.addAction(testAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func alertImageTitle(indexPath: NSIndexPath) {
         let message = "This is message. One, Two. Message. Long message. Test."
 
         let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
