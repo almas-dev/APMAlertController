@@ -17,6 +17,7 @@ public enum APMAlertActionStyle {
 
 public class APMAlertController: UIViewController {
     private let alertView = UIView()
+    private let contentView = UIScrollView()
     private let titleLabel = UILabel()
     private let imageView = UIImageView()
     private let messageLabel = UILabel()
@@ -94,9 +95,19 @@ public class APMAlertController: UIViewController {
         alertView.clipsToBounds = true
         view.addSubview(alertView)
         view.addConstraints([
+                NSLayoutConstraint(item: alertView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: alertView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: alertView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 50),
-                NSLayoutConstraint(item: alertView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: -50)
+                NSLayoutConstraint(item: alertView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 270)/*,
+                NSLayoutConstraint(item: alertView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: view, attribute: .Height, multiplier: 1.0, constant: -50)*/
+        ])
+
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.addSubview(contentView)
+        alertView.addConstraints([
+                NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: contentView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: contentView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 200)
         ])
 
         let anyTitleObject: AnyObject
@@ -106,23 +117,25 @@ public class APMAlertController: UIViewController {
             imageView.contentMode = .ScaleAspectFit
             imageView.image = alertTitleImage
             imageView.alpha = 0.8
-            alertView.addSubview(imageView)
-            alertView.addConstraints([
-                    NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 20),
-                    NSLayoutConstraint(item: imageView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 30),
-                    NSLayoutConstraint(item: imageView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: -30)
+            contentView.addSubview(imageView)
+            contentView.addConstraints([
+                    NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 20),
+                    NSLayoutConstraint(item: imageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
+                    NSLayoutConstraint(item: imageView, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30)
             ])
         } else {
             anyTitleObject = titleLabel
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.font = UIFont.boldSystemFontOfSize(16)
             titleLabel.textAlignment = .Center
+            titleLabel.numberOfLines = 0
             titleLabel.text = alertTitle
-            alertView.addSubview(titleLabel)
-            alertView.addConstraints([
-                    NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 20),
-                    NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 30),
-                    NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: -30)
+            contentView.addSubview(titleLabel)
+            contentView.addConstraints([
+                    NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 20),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 210)
             ])
         }
 
@@ -131,18 +144,21 @@ public class APMAlertController: UIViewController {
         messageLabel.textAlignment = .Center
         messageLabel.text = alertMessage
         messageLabel.numberOfLines = 0
-        alertView.addSubview(messageLabel)
-        alertView.addConstraints([
+        contentView.addSubview(messageLabel)
+        contentView.addConstraints([
                 NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: anyTitleObject, attribute: .Bottom, multiplier: 1.0, constant: 12),
-                NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 30),
-                NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: -30)
+                NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
+                NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30),
+                NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: -18),
+                NSLayoutConstraint(item: messageLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 210),
+                NSLayoutConstraint(item: messageLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 80)
         ])
 
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         buttonsView.backgroundColor = UIColor(white: 0.75, alpha: 0.6)
         alertView.addSubview(buttonsView)
         alertView.addConstraints([
-                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: messageLabel, attribute: .Bottom, multiplier: 1.0, constant: 18),
+                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Bottom, relatedBy: .Equal, toItem: alertView, attribute: .Bottom, multiplier: 1.0, constant: 0),
