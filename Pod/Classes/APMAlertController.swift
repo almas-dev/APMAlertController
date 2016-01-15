@@ -16,8 +16,12 @@ public enum APMAlertActionStyle {
 }
 
 public class APMAlertController: UIViewController {
+    private let verticalAlertIndent: CGFloat = 25
+
     private let alertView = UIView()
-    private let contentView = UIScrollView()
+    private let topScrollView = UIScrollView()
+    private var topScrollViewHeightConstraint = NSLayoutConstraint()
+    private let contentView = UIView()
     private let titleLabel = UILabel()
     private let imageView = UIImageView()
     private let messageLabel = UILabel()
@@ -97,17 +101,29 @@ public class APMAlertController: UIViewController {
         view.addConstraints([
                 NSLayoutConstraint(item: alertView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: alertView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: alertView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 270)/*,
-                NSLayoutConstraint(item: alertView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: view, attribute: .Height, multiplier: 1.0, constant: -50)*/
+                NSLayoutConstraint(item: alertView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 270),
+                NSLayoutConstraint(item: alertView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: view, attribute: .Height, multiplier: 1.0, constant: -(verticalAlertIndent * 2))
+        ])
+
+        topScrollViewHeightConstraint = NSLayoutConstraint(item: topScrollView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
+
+        topScrollView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.addSubview(topScrollView)
+        alertView.addConstraints([
+                NSLayoutConstraint(item: topScrollView, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: topScrollView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: topScrollView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
+                topScrollViewHeightConstraint
         ])
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        alertView.addSubview(contentView)
-        alertView.addConstraints([
-                NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: contentView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: contentView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 200)
+        topScrollView.addSubview(contentView)
+        topScrollView.addConstraints([
+                NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: topScrollView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: contentView, attribute: .Right, relatedBy: .Equal, toItem: topScrollView, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: contentView, attribute: .Bottom, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: topScrollView, attribute: .Width, multiplier: 1.0, constant: 0)
         ])
 
         let anyTitleObject: AnyObject
@@ -134,8 +150,7 @@ public class APMAlertController: UIViewController {
             contentView.addConstraints([
                     NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 20),
                     NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
-                    NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30),
-                    NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 210)
+                    NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30)
             ])
         }
 
@@ -149,21 +164,31 @@ public class APMAlertController: UIViewController {
                 NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: anyTitleObject, attribute: .Bottom, multiplier: 1.0, constant: 12),
                 NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
                 NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30),
-                NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: -18),
-                NSLayoutConstraint(item: messageLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 210),
-                NSLayoutConstraint(item: messageLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 80)
+                NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: -18)
         ])
 
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         buttonsView.backgroundColor = UIColor(white: 0.75, alpha: 0.6)
         alertView.addSubview(buttonsView)
         alertView.addConstraints([
-                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Bottom, relatedBy: .Equal, toItem: alertView, attribute: .Bottom, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 45)
         ])
+    }
+
+    public override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        topScrollView.updateConstraintsIfNeeded()
+        topScrollView.contentSize = contentView.frame.size
+        if view.frame.size.height - verticalAlertIndent * 2 - 45 >= contentView.frame.size.height {
+            topScrollViewHeightConstraint.constant = contentView.frame.size.height
+        } else {
+            topScrollViewHeightConstraint.constant = view.frame.size.height - verticalAlertIndent * 2 - 45
+        }
     }
 
     public func addAction(action: APMAlertAction) {
