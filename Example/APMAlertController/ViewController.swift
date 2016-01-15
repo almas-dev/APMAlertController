@@ -46,43 +46,48 @@ class ViewController: UIViewController {
 
     // System Alert
     func systemAlert(indexPath: NSIndexPath) {
-        let title = titlesArray[indexPath.section][indexPath.row]
-        let message = "This is message. One, Two. Message."
+        let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
+        let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
 
-        let alertController: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
             action in
             //Do some stuff
         }
         alertController.addAction(cancelAction)
-        let nextAction: UIAlertAction = UIAlertAction(title: "Ok", style: .Default) {
+        let defaultAction = UIAlertAction(title: "Default", style: .Default) {
             action in
             //Do some stuff
         }
-        alertController.addAction(nextAction)
-        alertController.addTextFieldWithConfigurationHandler {
+        alertController.addAction(defaultAction)
+        let desctructAction = UIAlertAction(title: "Destruct", style: .Destructive) {
+            action in
+            //Do some stuff
+        }
+        alertController.addAction(desctructAction)
+        /*alertController.addTextFieldWithConfigurationHandler {
             textField in
             textField.textColor = UIColor.whiteColor()
             textField.backgroundColor = UIColor.magentaColor()
-        }
+        }*/
         presentViewController(alertController, animated: true, completion: nil)
     }
 
     func systemActionSheet(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
 
-        let alertController: UIAlertController = UIAlertController(title: title, message: "This is message", preferredStyle: .ActionSheet)
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = UIAlertController(title: title, message: "This is message", preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
             action in
             //Just dismiss the action sheet
         }
         alertController.addAction(cancelAction)
-        let takePictureAction: UIAlertAction = UIAlertAction(title: "Take Picture", style: .Default) {
+        let takePictureAction = UIAlertAction(title: "Take Picture", style: .Default) {
             action in
             //Code for launching the camera goes here
         }
         alertController.addAction(takePictureAction)
-        let choosePictureAction: UIAlertAction = UIAlertAction(title: "Choose From Camera Roll", style: .Default) {
+        let choosePictureAction = UIAlertAction(title: "Choose From Camera Roll", style: .Default) {
             action in
             //Code for picking from camera roll goes here
         }
@@ -105,8 +110,8 @@ class ViewController: UIViewController {
     }
 
     func alertTextTitleColoredButtons(indexPath: NSIndexPath) {
-        let title = titlesArray[indexPath.section][indexPath.row]
-        let message = "This is message. One, Two. Message."
+        let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
+        let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
@@ -119,6 +124,11 @@ class ViewController: UIViewController {
             NSLog("The simple alert test action.")
         }
         alertController.addAction(testAction)
+        let desctructAction = APMAlertAction(title: "Destruct", style: .Destructive) {
+            action in
+            NSLog("The simple alert destruct action.")
+        }
+        alertController.addAction(desctructAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
 
