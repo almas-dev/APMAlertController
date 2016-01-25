@@ -1,0 +1,25 @@
+{
+  "name": "APMAlertController",
+  "version": "0.2.0",
+  "summary": "A short description of APMAlertController.",
+  "description": "",
+  "homepage": "https://github.com/almas-dev/APMAlertController",
+  "license": "MIT",
+  "authors": {
+    "Alexander Maslennikov": "almas.dev@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/almas-dev/APMAlertController.git",
+    "tag": "0.2.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "APMAlertController": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}
