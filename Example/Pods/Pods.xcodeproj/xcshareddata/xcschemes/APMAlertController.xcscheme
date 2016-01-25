@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C81A2B0C4E9A176D9CD41F41'
-               BlueprintName = 'APMAlertController'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'APMAlertController.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E7C6EBBCD0BF08CC23B5552634435E5B"
+               BlueprintName = "APMAlertController"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "APMAlertController.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
