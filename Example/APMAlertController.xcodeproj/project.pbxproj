@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		D4DA3FDE1C565B1900ECB8EA /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA3FDD1C565B1900ECB8EA /* UITests.swift */; };
+		D4DA3FE61C565B9500ECB8EA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA3FE51C565B9500ECB8EA /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +25,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
 			remoteInfo = APMAlertController;
+		};
+		D4DA3FE01C565B1A00ECB8EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = APMAlertController_Example;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,6 +53,10 @@
 		7E26669B2E62C330E86C73DD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8C0E6878ED9BE65C48CBCCC9 /* Pods_APMAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4AD33FEA694019CE0E96D2 /* Pods-APMAlertController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMAlertController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D4DA3FDB1C565B1900ECB8EA /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4DA3FDD1C565B1900ECB8EA /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		D4DA3FDF1C565B1A00ECB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4DA3FE51C565B9500ECB8EA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		F673CDF013052C8496A2B6CF /* APMAlertController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = APMAlertController.podspec; path = ../APMAlertController.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +74,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F7C702056A8FA6022938315 /* Pods_APMAlertController_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4DA3FD81C565B1900ECB8EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +102,7 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for APMAlertController */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				D4DA3FDC1C565B1900ECB8EA /* UITests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				AE347FF6A993DDEE9B5215C7 /* Pods */,
 				007C9FB903A5322BA482A0A2 /* Frameworks */,
@@ -93,6 +114,7 @@
 			children = (
 				607FACD01AFB9204008FA782 /* APMAlertController_Example.app */,
 				607FACE51AFB9204008FA782 /* APMAlertController_Tests.xctest */,
+				D4DA3FDB1C565B1900ECB8EA /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +178,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D4DA3FDC1C565B1900ECB8EA /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA3FE51C565B9500ECB8EA /* SnapshotHelper.swift */,
+				D4DA3FDD1C565B1900ECB8EA /* UITests.swift */,
+				D4DA3FDF1C565B1A00ECB8EA /* Info.plist */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,6 +232,24 @@
 			productReference = 607FACE51AFB9204008FA782 /* APMAlertController_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D4DA3FDA1C565B1900ECB8EA /* UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4DA3FE41C565B1A00ECB8EA /* Build configuration list for PBXNativeTarget "UITests" */;
+			buildPhases = (
+				D4DA3FD71C565B1900ECB8EA /* Sources */,
+				D4DA3FD81C565B1900ECB8EA /* Frameworks */,
+				D4DA3FD91C565B1900ECB8EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4DA3FE11C565B1A00ECB8EA /* PBXTargetDependency */,
+			);
+			name = UITests;
+			productName = UITests;
+			productReference = D4DA3FDB1C565B1900ECB8EA /* UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,6 +265,10 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
+					D4DA3FDA1C565B1900ECB8EA = {
+						CreatedOnToolsVersion = 7.1.1;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -234,6 +288,7 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* APMAlertController_Example */,
 				607FACE41AFB9204008FA782 /* APMAlertController_Tests */,
+				D4DA3FDA1C565B1900ECB8EA /* UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +304,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		607FACE31AFB9204008FA782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4DA3FD91C565B1900ECB8EA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,6 +430,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4DA3FD71C565B1900ECB8EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4DA3FDE1C565B1900ECB8EA /* UITests.swift in Sources */,
+				D4DA3FE61C565B9500ECB8EA /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -375,6 +446,11 @@
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* APMAlertController_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+		};
+		D4DA3FE11C565B1A00ECB8EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* APMAlertController_Example */;
+			targetProxy = D4DA3FE01C565B1A00ECB8EA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -532,6 +608,33 @@
 			};
 			name = Release;
 		};
+		D4DA3FE21C565B1A00ECB8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.handh.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = APMAlertController_Example;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D4DA3FE31C565B1A00ECB8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.handh.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = APMAlertController_Example;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -561,6 +664,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D4DA3FE41C565B1A00ECB8EA /* Build configuration list for PBXNativeTarget "UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4DA3FE21C565B1A00ECB8EA /* Debug */,
+				D4DA3FE31C565B1A00ECB8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
