@@ -25,7 +25,7 @@ DerivedData
 # Bundler
 .bundle
 
-Carthage
+# Carthage
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
@@ -34,3 +34,6 @@ Carthage
 # `pod install` in .travis.yml
 #
 # Pods/
+
+# Fastlane
+Example/fastlane/screenshots

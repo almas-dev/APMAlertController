@@ -6,6 +6,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
+Light and customizable replacement for UIAlertController  
+![Screenshot1](/Screenshots/Screenshot1.png) ![Screenshot1](/Screenshots/Screenshot2.png)
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
