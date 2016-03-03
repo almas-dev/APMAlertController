@@ -12,13 +12,13 @@ class ViewController: UIViewController {
     let sectionsArray = ["System", "Custom Alert", "Custom ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
-            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title", "Alert Text Title Separator With Tint"],
+            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title With Tint", "Alert Text Title Separator With Tint"],
             ["In progress"]
     ]
     var actions: Array<Array<(indexPath:NSIndexPath) -> Void>> {
         return [
                 [systemAlert, systemActionSheet],
-                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitle, alertTextTitleSeparatorWithTint],
+                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitleWithTint, alertTextTitleSeparatorWithTint],
                 [systemActionSheet]
         ]
     }
@@ -132,7 +132,7 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func alertImageTitle(indexPath: NSIndexPath) {
+    func alertImageTitleWithTint(indexPath: NSIndexPath) {
         let message = "This is message. One, Two. Message. Long message. Test."
 
         let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
