@@ -136,6 +136,7 @@ class ViewController: UIViewController {
         let message = "This is message. One, Two. Message. Long message. Test."
 
         let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
+        alertController.tintColor = UIColor.brownColor()
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
             action in
             NSLog("The simple alert cancel action.")
@@ -155,6 +156,7 @@ class ViewController: UIViewController {
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
         alertController.showTitleMessageSeparator = true
+        alertController.tintColor = UIColor.purpleColor()
         let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
             action in
             NSLog("The simple alert cancel action.")

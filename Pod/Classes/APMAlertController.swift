@@ -19,6 +19,7 @@ public class APMAlertController: UIViewController {
     private let verticalAlertIndent: CGFloat = 25
 
     public var showTitleMessageSeparator: Bool = false
+    public var tintColor: UIColor = UIColor.blackColor()
 
     private let alertView = UIView()
     private let topScrollView = UIScrollView()
@@ -39,6 +40,10 @@ public class APMAlertController: UIViewController {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
             for (index, value) in buttons.enumerate() {
+                value.setTitleColor(tintColor, forState:.Normal)
+                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState:.Highlighted)
+                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState:.Selected)
+
                 let top = NSLayoutConstraint(item: value, attribute: .Top, relatedBy: .Equal, toItem: buttonsView, attribute: .Top, multiplier: 1.0, constant: 1)
                 let bottom = NSLayoutConstraint(item: value, attribute: .Bottom, relatedBy: .Equal, toItem: buttonsView, attribute: .Bottom, multiplier: 1.0, constant: 0)
 
@@ -135,7 +140,7 @@ public class APMAlertController: UIViewController {
             anyTitleObject = imageView
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .ScaleAspectFit
-            imageView.image = alertTitleImage
+            imageView.image = alertTitleImage.imageWithRenderingMode(.AlwaysTemplate)
             imageView.alpha = 0.8
             contentView.addSubview(imageView)
             contentView.addConstraints([
@@ -209,6 +214,10 @@ public class APMAlertController: UIViewController {
 
         titleMessageSeparator.hidden = !showTitleMessageSeparator
         topTitleMessageSeparatorConstraint.constant = showTitleMessageSeparator ? 14 : 0
+
+        titleLabel.textColor = tintColor
+        imageView.tintColor = tintColor
+        messageLabel.textColor = tintColor
     }
 
     public func addAction(action: APMAlertAction) {
