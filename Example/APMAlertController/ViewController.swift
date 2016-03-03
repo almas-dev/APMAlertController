@@ -12,13 +12,13 @@ class ViewController: UIViewController {
     let sectionsArray = ["System", "Custom Alert", "Custom ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
-            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title"],
+            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title", "Alert Text Title Separator With Tint"],
             ["In progress"]
     ]
     var actions: Array<Array<(indexPath:NSIndexPath) -> Void>> {
         return [
                 [systemAlert, systemActionSheet],
-                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitle],
+                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitle, alertTextTitleSeparatorWithTint],
                 [systemActionSheet]
         ]
     }
@@ -146,6 +146,20 @@ class ViewController: UIViewController {
             NSLog("The simple alert test action.")
         }
         alertController.addAction(testAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func alertTextTitleSeparatorWithTint(indexPath: NSIndexPath) {
+        let title = "ABC123-45678-90"
+        let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertController.showTitleMessageSeparator = true
+        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+            action in
+            NSLog("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
 }
