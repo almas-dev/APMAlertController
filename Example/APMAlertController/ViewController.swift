@@ -12,13 +12,13 @@ class ViewController: UIViewController {
     let sectionsArray = ["System", "Custom Alert", "Custom ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
-            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title"],
+            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title With Tint", "Alert Text Title Separator With Tint"],
             ["In progress"]
     ]
     var actions: Array<Array<(indexPath:NSIndexPath) -> Void>> {
         return [
                 [systemAlert, systemActionSheet],
-                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitle],
+                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitleWithTint, alertTextTitleSeparatorWithTint],
                 [systemActionSheet]
         ]
     }
@@ -132,10 +132,11 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    func alertImageTitle(indexPath: NSIndexPath) {
+    func alertImageTitleWithTint(indexPath: NSIndexPath) {
         let message = "This is message. One, Two. Message. Long message. Test."
 
         let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
+        alertController.tintColor = UIColor.brownColor()
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
             action in
             NSLog("The simple alert cancel action.")
@@ -146,6 +147,21 @@ class ViewController: UIViewController {
             NSLog("The simple alert test action.")
         }
         alertController.addAction(testAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func alertTextTitleSeparatorWithTint(indexPath: NSIndexPath) {
+        let title = "ABC123-45678-90"
+        let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertController.showTitleMessageSeparator = true
+        alertController.tintColor = UIColor.purpleColor()
+        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+            action in
+            NSLog("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
 }

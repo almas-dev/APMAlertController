@@ -18,12 +18,17 @@ public enum APMAlertActionStyle {
 public class APMAlertController: UIViewController {
     private let verticalAlertIndent: CGFloat = 25
 
+    public var showTitleMessageSeparator: Bool = false
+    public var tintColor: UIColor = UIColor.blackColor()
+
     private let alertView = UIView()
     private let topScrollView = UIScrollView()
     private var topScrollViewHeightConstraint = NSLayoutConstraint()
     private let contentView = UIView()
     private let titleLabel = UILabel()
     private let imageView = UIImageView()
+    private var topTitleMessageSeparatorConstraint = NSLayoutConstraint()
+    private let titleMessageSeparator = UIView()
     private let messageLabel = UILabel()
     private let buttonsView = UIView()
     private let button = UIButton()
@@ -35,6 +40,10 @@ public class APMAlertController: UIViewController {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
             for (index, value) in buttons.enumerate() {
+                value.setTitleColor(tintColor, forState:.Normal)
+                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState:.Highlighted)
+                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState:.Selected)
+
                 let top = NSLayoutConstraint(item: value, attribute: .Top, relatedBy: .Equal, toItem: buttonsView, attribute: .Top, multiplier: 1.0, constant: 1)
                 let bottom = NSLayoutConstraint(item: value, attribute: .Bottom, relatedBy: .Equal, toItem: buttonsView, attribute: .Bottom, multiplier: 1.0, constant: 0)
 
@@ -131,7 +140,7 @@ public class APMAlertController: UIViewController {
             anyTitleObject = imageView
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .ScaleAspectFit
-            imageView.image = alertTitleImage
+            imageView.image = alertTitleImage.imageWithRenderingMode(.AlwaysTemplate)
             imageView.alpha = 0.8
             contentView.addSubview(imageView)
             contentView.addConstraints([
@@ -154,6 +163,19 @@ public class APMAlertController: UIViewController {
             ])
         }
 
+        topTitleMessageSeparatorConstraint = NSLayoutConstraint(item: titleMessageSeparator, attribute: .Top, relatedBy: .Equal, toItem: anyTitleObject, attribute: .Bottom, multiplier: 1.0, constant: 0)
+
+        titleMessageSeparator.translatesAutoresizingMaskIntoConstraints = false
+        titleMessageSeparator.backgroundColor = UIColor(white: 0.75, alpha: 0.6)
+        titleMessageSeparator.hidden = true
+        contentView.addSubview(titleMessageSeparator)
+        contentView.addConstraints([
+                topTitleMessageSeparatorConstraint,
+                NSLayoutConstraint(item: titleMessageSeparator, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: titleMessageSeparator, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: titleMessageSeparator, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 1)
+        ])
+
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.font = UIFont.systemFontOfSize(16)
         messageLabel.textAlignment = .Center
@@ -161,10 +183,10 @@ public class APMAlertController: UIViewController {
         messageLabel.numberOfLines = 0
         contentView.addSubview(messageLabel)
         contentView.addConstraints([
-                NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: anyTitleObject, attribute: .Bottom, multiplier: 1.0, constant: 12),
+                NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: titleMessageSeparator, attribute: .Bottom, multiplier: 1.0, constant: 12),
                 NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
                 NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30),
-                NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: -18)
+                NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: -16)
         ])
 
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -189,6 +211,13 @@ public class APMAlertController: UIViewController {
         } else {
             topScrollViewHeightConstraint.constant = view.frame.size.height - verticalAlertIndent * 2 - 45
         }
+
+        titleMessageSeparator.hidden = !showTitleMessageSeparator
+        topTitleMessageSeparatorConstraint.constant = showTitleMessageSeparator ? 14 : 0
+
+        titleLabel.textColor = tintColor
+        imageView.tintColor = tintColor
+        messageLabel.textColor = tintColor
     }
 
     public func addAction(action: APMAlertAction) {
