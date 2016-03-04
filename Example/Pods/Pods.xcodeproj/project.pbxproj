@@ -10,6 +10,8 @@
 		0F66F8301CAFD8081FEEACC4171748B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		2705665E7D700374E5D3D2301BC4DEB3 /* APMAlertController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF26C3FFC1A17E2AE108201979B3F584 /* APMAlertController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AD374B497D112EEC887D616FF84DD9A /* Pods-APMAlertController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151108685CBC9492214E2C357FE9E55 /* Pods-APMAlertController_Example-dummy.m */; };
+		2DBA13A595D9465E07CE783E /* APMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1CACDE0658D6D0DCCFCA /* APMAlertAction.swift */; };
+		2DBA18BAB29AFBB592A8E290 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1121AC5E064051E37184 /* APMAlertAnimation.swift */; };
 		3324E4E27FD24EE1F026CC1FBA757EDD /* Pods-APMAlertController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D0E49EF410A65F4C41B5E91F974D0AC /* Pods-APMAlertController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E0B2BCB299A3F906E826A5F3BB3D4F9 /* Pods-APMAlertController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A055904DC2873FDC093737D8FEB1F1 /* Pods-APMAlertController_Tests-dummy.m */; };
 		4A169C2826EC034778144C884739E76D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
@@ -50,6 +52,8 @@
 		15A055904DC2873FDC093737D8FEB1F1 /* Pods-APMAlertController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-APMAlertController_Tests-dummy.m"; sourceTree = "<group>"; };
 		1799DBF50EA6943B5A19AD31AA34597F /* Pods-APMAlertController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Example-frameworks.sh"; sourceTree = "<group>"; };
 		1DC91E600D6D3FDD9FC5E912EF563572 /* Pods-APMAlertController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2DBA1121AC5E064051E37184 /* APMAlertAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMAlertAnimation.swift; sourceTree = "<group>"; };
+		2DBA1CACDE0658D6D0DCCFCA /* APMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMAlertAction.swift; sourceTree = "<group>"; };
 		3B8B4C28A7203AD38A99360FFC459AE8 /* Pods_APMAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3EDB439956EDD3B973323CD2F35107FE /* Pods-APMAlertController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				98FFE4FB61D38E0383C8030C7A058AF4 /* APMAlertController.swift */,
+				2DBA1CACDE0658D6D0DCCFCA /* APMAlertAction.swift */,
+				2DBA1121AC5E064051E37184 /* APMAlertAnimation.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -402,6 +408,8 @@
 			files = (
 				D04A2867C1ADDA68C335F866A6E672DC /* APMAlertController-dummy.m in Sources */,
 				A5398AB97B24B712F18E4C3166E9F012 /* APMAlertController.swift in Sources */,
+				2DBA13A595D9465E07CE783E /* APMAlertAction.swift in Sources */,
+				2DBA18BAB29AFBB592A8E290 /* APMAlertAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

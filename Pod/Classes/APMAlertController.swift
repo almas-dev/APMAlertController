@@ -9,19 +9,13 @@ public enum APMAlertControllerStyle {
     case ActionSheet
 }
 
-public enum APMAlertActionStyle {
-    case Default
-    case Cancel
-    case Destructive
-}
-
 public class APMAlertController: UIViewController {
     private let verticalAlertIndent: CGFloat = 25
 
     public var showTitleMessageSeparator: Bool = false
     public var tintColor: UIColor = UIColor.blackColor()
 
-    private let alertView = UIView()
+    let alertView = UIView()
     private let topScrollView = UIScrollView()
     private var topScrollViewHeightConstraint = NSLayoutConstraint()
     private let contentView = UIView()
@@ -253,90 +247,5 @@ extension APMAlertController: UIViewControllerTransitioningDelegate {
 
     public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
-    }
-}
-
-public class APMAlertAction : NSObject {
-    let title: String
-    let style: APMAlertActionStyle
-    let handler: ((APMAlertAction!) -> Void)!
-
-    public required init(coder aDecoder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
-
-    public init(title: String, style: APMAlertActionStyle, handler: ((APMAlertAction!) -> Void)!) {
-        self.title = title
-        self.style = style
-        self.handler = handler
-    }
-}
-
-class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
-    let presenting: Bool
-
-    init(presenting: Bool) {
-        self.presenting = presenting
-    }
-
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        if (presenting) {
-            return 0.5
-        } else {
-            return 0.3
-        }
-    }
-
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        if (presenting) {
-            presentAnimateTransition(transitionContext)
-        } else {
-            dismissAnimateTransition(transitionContext)
-        }
-    }
-
-    func presentAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! APMAlertController
-        let containerView = transitionContext.containerView()
-
-        alertController.view.backgroundColor = UIColor.clearColor()
-        alertController.alertView.alpha = 0.0
-        alertController.alertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
-        containerView!.addSubview(alertController.view)
-
-        UIView.animateWithDuration(0.33,
-                animations: {
-                    alertController.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
-                    alertController.alertView.alpha = 1.0
-                    alertController.alertView.transform = CGAffineTransformMakeScale(1.05, 1.05)
-                },
-                completion: {
-                    finished in
-                    UIView.animateWithDuration(0.2,
-                            animations: {
-                                alertController.alertView.transform = CGAffineTransformIdentity
-                            },
-                            completion: {
-                                finished in
-                                if (finished) {
-                                    transitionContext.completeTransition(true)
-                                }
-                            })
-                })
-    }
-
-    func dismissAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! APMAlertController
-
-        UIView.animateWithDuration(0.33,
-                animations: {
-                    alertController.view.backgroundColor = UIColor.clearColor()
-                    alertController.alertView.alpha = 0.0
-                    alertController.alertView.transform = CGAffineTransformMakeScale(0.9, 0.9)
-                },
-                completion: {
-                    finished in
-                    transitionContext.completeTransition(true)
-                })
     }
 }
