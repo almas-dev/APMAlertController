@@ -1,6 +1,6 @@
 # APMAlertController
 
-[![CI Status](http://img.shields.io/travis/Alexander Maslennikov/APMAlertController.svg?style=flat)](https://travis-ci.org/Alexander Maslennikov/APMAlertController)
+[![Build Status](https://travis-ci.org/almas-dev/APMAlertController.svg?branch=develop)](https://travis-ci.org/almas-dev/APMAlertController)
 [![Version](https://img.shields.io/cocoapods/v/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![License](https://img.shields.io/cocoapods/l/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
