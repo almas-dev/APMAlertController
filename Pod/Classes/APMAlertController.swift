@@ -29,6 +29,7 @@ public class APMAlertController: UIViewController {
     private var alertTitle: String?
     private var alertTitleImage: UIImage?
     private var alertMessage: String?
+    private var alertAttributedMessage: NSAttributedString?
     private var actions = [APMAlertAction]()
     private var buttons: [UIButton] = [] {
         didSet {
@@ -80,6 +81,12 @@ public class APMAlertController: UIViewController {
         self.init(titleObject: UILabel())
         self.alertTitle = title
         self.alertMessage = message
+    }
+
+    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle: APMAlertControllerStyle) {
+        self.init(titleObject: UILabel())
+        self.alertTitle = title
+        self.alertAttributedMessage = attributedMessage
     }
 
     public convenience init(titleImage: UIImage?, message: String?, preferredStyle: APMAlertControllerStyle) {
@@ -134,7 +141,12 @@ public class APMAlertController: UIViewController {
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.font = UIFont.systemFontOfSize(16)
         messageLabel.textAlignment = .Center
-        messageLabel.text = alertMessage
+        if let alertMessage = self.alertMessage {
+            messageLabel.text = alertMessage
+        }
+        if let alertAttributedMessage = self.alertAttributedMessage {
+            messageLabel.attributedText = alertAttributedMessage
+        }
         messageLabel.numberOfLines = 0
         contentView.addSubview(messageLabel)
 
@@ -221,7 +233,9 @@ public class APMAlertController: UIViewController {
         default:
             break
         }
-        messageLabel.textColor = tintColor
+        if alertAttributedMessage == nil {
+            messageLabel.textColor = tintColor
+        }
     }
 
     public func addAction(action: APMAlertAction) {

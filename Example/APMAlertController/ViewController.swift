@@ -179,9 +179,17 @@ class ViewController: UIViewController {
 
     func alertTextTitleAttributedMessage(indexPath: NSIndexPath) {
         let title = "ABC123-45678-90"
-        let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+        let attributedMessage = NSMutableAttributedString(string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.")
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue", size:16.0)!, range:NSMakeRange(0,28))
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-Bold", size:14.0)!, range:NSMakeRange(28,29))
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-MediumItalic", size:16.0)!, range:NSMakeRange(57,22))
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-Medium", size:10.0)!, range:NSMakeRange(79,44))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.581, green:0.129, blue:0.575, alpha:1.0), range:NSMakeRange(0,28))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.276, green:0.32, blue:0.6, alpha:1.0), range:NSMakeRange(28,29))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.488, green:0.593, blue:0.424, alpha:1.0), range:NSMakeRange(57,22))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.0, green:0.656, blue:0.571, alpha:1.0), range:NSMakeRange(79,44))
 
-        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .Alert)
         alertController.showTitleMessageSeparator = true
         alertController.tintColor = UIColor.purpleColor()
         let defaultAction = APMAlertAction(title: "Default", style: .Default) {
