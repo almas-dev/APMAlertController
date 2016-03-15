@@ -2,6 +2,7 @@
 
 [![Swift 2.1](https://img.shields.io/badge/Swift%20Version-2.1-orange.svg)](https://developer.apple.com/swift/)
 [![iOS 8.0+](https://img.shields.io/badge/iOS%20Version-8.0+-blue.svg)](https://developer.apple.com/ios/)
+[![Release](https://img.shields.io/github/release/almas-dev/APMAlertController.svg)](https://github.com/almas-dev/APMAlertController/releases)
 [![Travis CI](https://travis-ci.org/almas-dev/APMAlertController.svg?branch=develop)](https://travis-ci.org/almas-dev/APMAlertController)
 [![Version](https://img.shields.io/cocoapods/v/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![License](https://img.shields.io/cocoapods/l/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
