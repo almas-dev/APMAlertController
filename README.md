@@ -2,11 +2,12 @@
 
 [![Swift 2.1](https://img.shields.io/badge/Swift%20Version-2.1-orange.svg)](https://developer.apple.com/swift/)
 [![iOS 8.0+](https://img.shields.io/badge/iOS%20Version-8.0+-blue.svg)](https://developer.apple.com/ios/)
-[![Build Status](https://travis-ci.org/almas-dev/APMAlertController.svg?branch=develop)](https://travis-ci.org/almas-dev/APMAlertController)
+[![Travis CI](https://travis-ci.org/almas-dev/APMAlertController.svg?branch=develop)](https://travis-ci.org/almas-dev/APMAlertController)
 [![Version](https://img.shields.io/cocoapods/v/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![License](https://img.shields.io/cocoapods/l/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=56e7b3ec501a7001005978b2&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/56e7b3ec501a7001005978b2/build/latest)
 
 Light and customizable replacement for UIAlertController  
 ![Screenshot1](/Screenshots/Screenshot1.png) ![Screenshot1](/Screenshots/Screenshot2.png)
