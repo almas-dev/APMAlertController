@@ -12,13 +12,25 @@ class ViewController: UIViewController {
     let sectionsArray = ["System", "Custom Alert", "Custom ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
-            ["Alert Text Title", "Alert Text Title Colored Buttons", "Alert Icon Title With Tint", "Alert Text Title Separator With Tint"],
+            [
+                    "Alert Text Title",
+                    "Alert Text Title Colored Buttons",
+                    "Alert Icon Title With Tint",
+                    "Alert Text Title Separator With Tint",
+                    "Alert Text Title Attributed Message"
+            ],
             ["In progress"]
     ]
     var actions: Array<Array<(indexPath:NSIndexPath) -> Void>> {
         return [
                 [systemAlert, systemActionSheet],
-                [alertTextTitle, alertTextTitleColoredButtons, alertImageTitleWithTint, alertTextTitleSeparatorWithTint],
+                [
+                        alertTextTitle,
+                        alertTextTitleColoredButtons,
+                        alertImageTitleWithTint,
+                        alertTextTitleSeparatorWithTint,
+                        alertTextTitleAttributedMessage
+                ],
                 [systemActionSheet]
         ]
     }
@@ -157,6 +169,34 @@ class ViewController: UIViewController {
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
         alertController.showTitleMessageSeparator = true
         alertController.tintColor = UIColor.purpleColor()
+        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+            action in
+            NSLog("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func alertTextTitleAttributedMessage(indexPath: NSIndexPath) {
+        let title = "ABC123-45678-90"
+        let attributedMessage = NSMutableAttributedString(string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.")
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue", size:16.0)!, range:NSMakeRange(0,28))
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-Bold", size:14.0)!, range:NSMakeRange(28,29))
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-MediumItalic", size:16.0)!, range:NSMakeRange(57,22))
+        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-Medium", size:10.0)!, range:NSMakeRange(79,44))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.581, green:0.129, blue:0.575, alpha:1.0), range:NSMakeRange(0,28))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.276, green:0.32, blue:0.6, alpha:1.0), range:NSMakeRange(28,29))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.488, green:0.593, blue:0.424, alpha:1.0), range:NSMakeRange(57,22))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.0, green:0.656, blue:0.571, alpha:1.0), range:NSMakeRange(79,44))
+
+        let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .Alert)
+        alertController.showTitleMessageSeparator = true
+        alertController.tintColor = UIColor.purpleColor()
+        let defaultAction = APMAlertAction(title: "Default", style: .Default) {
+            action in
+            NSLog("The simple alert default action.")
+        }
+        alertController.addAction(defaultAction)
         let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
             action in
             NSLog("The simple alert cancel action.")
