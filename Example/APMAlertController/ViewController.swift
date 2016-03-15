@@ -17,7 +17,8 @@ class ViewController: UIViewController {
                     "Alert Text Title Colored Buttons",
                     "Alert Icon Title With Tint",
                     "Alert Text Title Separator With Tint",
-                    "Alert Text Title Attributed Message"
+                    "Alert Text Title Attributed Message",
+                    "Alert Text Title View Message"
             ],
             ["In progress"]
     ]
@@ -29,7 +30,8 @@ class ViewController: UIViewController {
                         alertTextTitleColoredButtons,
                         alertImageTitleWithTint,
                         alertTextTitleSeparatorWithTint,
-                        alertTextTitleAttributedMessage
+                        alertTextTitleAttributedMessage,
+                        alertTextTitleViewMessage
                 ],
                 [systemActionSheet]
         ]
@@ -197,6 +199,20 @@ class ViewController: UIViewController {
             NSLog("The simple alert default action.")
         }
         alertController.addAction(defaultAction)
+        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+            action in
+            NSLog("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func alertTextTitleViewMessage(indexPath: NSIndexPath) {
+        let title = "ABC123-45678-90"
+        let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertController.showTitleMessageSeparator = true
         let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
             action in
             NSLog("The simple alert cancel action.")
