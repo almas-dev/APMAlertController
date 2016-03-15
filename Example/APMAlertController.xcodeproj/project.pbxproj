@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159F75937D41370005ADB555 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D4B0BC378684ABF6F86C6D /* SystemConfiguration.framework */; };
+		2C15FE53FB89834FC0C4EDDC /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E4B2B9AD633B20ABB033FB /* AssetsLibrary.framework */; };
 		32544BB1D0EEF4EF3AE22C90 /* Pods_APMAlertController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FC335614F12580A9A298DA /* Pods_APMAlertController_Example.framework */; };
 		4F7C702056A8FA6022938315 /* Pods_APMAlertController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0E6878ED9BE65C48CBCCC9 /* Pods_APMAlertController_Tests.framework */; };
+		554BF5FE7A10AC556B2639BF /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10E5A32491CB6A226B55881 /* BuddyBuildSDK.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		85C3FF591BFC77CCE62F49F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62EE0D235C38228DA50B966F /* QuartzCore.framework */; };
+		92CCF65557743EC4920DC2AC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184B82C3297BD89368BD0E79 /* CoreTelephony.framework */; };
 		D4DA3FDE1C565B1900ECB8EA /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA3FDD1C565B1900ECB8EA /* UITests.swift */; };
 		D4DA3FE61C565B9500ECB8EA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA3FE51C565B9500ECB8EA /* SnapshotHelper.swift */; };
+		DE4EF254B1626256AE376448 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F6A3D4B36E8F117F08A0BE /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		02B963B04BD2CE09B3833D6F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		184B82C3297BD89368BD0E79 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		20D4B0BC378684ABF6F86C6D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5F559BFF557B260CB43E752F /* Pods-APMAlertController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMAlertController_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APMAlertController_Tests/Pods-APMAlertController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* APMAlertController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APMAlertController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,16 +55,21 @@
 		607FACE51AFB9204008FA782 /* APMAlertController_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMAlertController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		62EE0D235C38228DA50B966F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		669429F356AD96FC8F9DAA55 /* Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		67FC335614F12580A9A298DA /* Pods_APMAlertController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BD996EAA040B62654FCC66 /* Pods-APMAlertController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMAlertController_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6CCE45ABD78A752296E192A0 /* Pods-APMAlertController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMAlertController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMAlertController_Tests/Pods-APMAlertController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7E26669B2E62C330E86C73DD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8C0E6878ED9BE65C48CBCCC9 /* Pods_APMAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4AD33FEA694019CE0E96D2 /* Pods-APMAlertController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMAlertController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B4F6A3D4B36E8F117F08A0BE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D4DA3FDB1C565B1900ECB8EA /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DA3FDD1C565B1900ECB8EA /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		D4DA3FDF1C565B1A00ECB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4DA3FE51C565B9500ECB8EA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		D6E4B2B9AD633B20ABB033FB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		E10E5A32491CB6A226B55881 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		F673CDF013052C8496A2B6CF /* APMAlertController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = APMAlertController.podspec; path = ../APMAlertController.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +79,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				32544BB1D0EEF4EF3AE22C90 /* Pods_APMAlertController_Example.framework in Frameworks */,
+				554BF5FE7A10AC556B2639BF /* BuddyBuildSDK.framework in Frameworks */,
+				2C15FE53FB89834FC0C4EDDC /* AssetsLibrary.framework in Frameworks */,
+				DE4EF254B1626256AE376448 /* CoreText.framework in Frameworks */,
+				92CCF65557743EC4920DC2AC /* CoreTelephony.framework in Frameworks */,
+				159F75937D41370005ADB555 /* SystemConfiguration.framework in Frameworks */,
+				85C3FF591BFC77CCE62F49F3 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +111,12 @@
 			children = (
 				67FC335614F12580A9A298DA /* Pods_APMAlertController_Example.framework */,
 				8C0E6878ED9BE65C48CBCCC9 /* Pods_APMAlertController_Tests.framework */,
+				E10E5A32491CB6A226B55881 /* BuddyBuildSDK.framework */,
+				D6E4B2B9AD633B20ABB033FB /* AssetsLibrary.framework */,
+				B4F6A3D4B36E8F117F08A0BE /* CoreText.framework */,
+				184B82C3297BD89368BD0E79 /* CoreTelephony.framework */,
+				20D4B0BC378684ABF6F86C6D /* SystemConfiguration.framework */,
+				62EE0D235C38228DA50B966F /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,6 +131,7 @@
 				607FACD11AFB9204008FA782 /* Products */,
 				AE347FF6A993DDEE9B5215C7 /* Pods */,
 				007C9FB903A5322BA482A0A2 /* Frameworks */,
+				669429F356AD96FC8F9DAA55 /* Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -553,12 +579,17 @@
 			baseConfigurationReference = 69BD996EAA040B62654FCC66 /* Pods-APMAlertController_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = APMAlertController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -567,12 +598,17 @@
 			baseConfigurationReference = 8E4AD33FEA694019CE0E96D2 /* Pods-APMAlertController_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = APMAlertController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -672,6 +708,7 @@
 				D4DA3FE31C565B1A00ECB8EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
