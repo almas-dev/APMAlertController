@@ -11,8 +11,8 @@ public enum APMAlertControllerStyle {
 
 public class APMAlertController: UIViewController {
     private let verticalAlertIndent: CGFloat = 25
-    private let separatorColor = UIColor(white: 0.75, alpha: 0.6)
 
+    public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
     public var showTitleMessageSeparator: Bool = false
     public var tintColor: UIColor = UIColor.blackColor()
     public let messageContentView: UIView = UIView()

@@ -243,6 +243,17 @@ class ViewController: UIViewController {
                 NSLayoutConstraint(item: view1, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: -10)
         ])
 
+        let view2 = UIView()
+        view2.translatesAutoresizingMaskIntoConstraints = false
+        view2.backgroundColor = alertController.separatorColor
+        view.addSubview(view2)
+        view.addConstraints([
+                NSLayoutConstraint(item: view2, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view2, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view2, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view2, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 2)
+        ])
+
         presentViewController(alertController, animated: true, completion: nil)
     }
 }
