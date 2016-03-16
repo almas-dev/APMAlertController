@@ -217,6 +217,32 @@ class ViewController: UIViewController {
             NSLog("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
+
+        let contentView = alertController.messageContentView
+
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.1)
+        contentView.addSubview(view)
+        contentView.addConstraints([
+                NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 50)
+        ])
+
+        let view1 = UIView()
+        view1.translatesAutoresizingMaskIntoConstraints = false
+        view1.backgroundColor = UIColor.purpleColor().colorWithAlphaComponent(0.2)
+        view.addSubview(view1)
+        view.addConstraints([
+                NSLayoutConstraint(item: view1, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 10),
+                NSLayoutConstraint(item: view1, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 5),
+                NSLayoutConstraint(item: view1, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: -5),
+                NSLayoutConstraint(item: view1, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: -10)
+        ])
+
         presentViewController(alertController, animated: true, completion: nil)
     }
 }
