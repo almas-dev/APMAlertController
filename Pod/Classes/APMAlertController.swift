@@ -247,7 +247,7 @@ public class APMAlertController: UIViewController {
         }
 
         titleMessageSeparator.hidden = !showTitleMessageSeparator
-        topTitleMessageSeparatorConstraint.constant = showTitleMessageSeparator ? 14 : 0
+        topTitleMessageSeparatorConstraint.constant = showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
