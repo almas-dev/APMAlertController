@@ -9,40 +9,36 @@ public enum APMAlertControllerStyle {
     case ActionSheet
 }
 
-public enum APMAlertActionStyle {
-    case Default
-    case Cancel
-    case Destructive
-}
-
 public class APMAlertController: UIViewController {
     private let verticalAlertIndent: CGFloat = 25
 
+    public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
     public var showTitleMessageSeparator: Bool = false
     public var tintColor: UIColor = UIColor.blackColor()
+    public let messageContentView: UIView = UIView()
 
-    private let alertView = UIView()
+    let alertView = UIView()
     private let topScrollView = UIScrollView()
     private var topScrollViewHeightConstraint = NSLayoutConstraint()
     private let contentView = UIView()
-    private let titleLabel = UILabel()
-    private let imageView = UIImageView()
+    private var anyTitleObject: AnyObject
     private var topTitleMessageSeparatorConstraint = NSLayoutConstraint()
     private let titleMessageSeparator = UIView()
-    private let messageLabel = UILabel()
+    private var messageLabel: UILabel?
     private let buttonsView = UIView()
     private let button = UIButton()
     private var alertTitle: String?
     private var alertTitleImage: UIImage?
     private var alertMessage: String?
+    private var alertAttributedMessage: NSAttributedString?
     private var actions = [APMAlertAction]()
     private var buttons: [UIButton] = [] {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
             for (index, value) in buttons.enumerate() {
-                value.setTitleColor(tintColor, forState:.Normal)
-                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState:.Highlighted)
-                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState:.Selected)
+                value.setTitleColor(tintColor, forState: .Normal)
+                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState: .Highlighted)
+                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState: .Selected)
 
                 let top = NSLayoutConstraint(item: value, attribute: .Top, relatedBy: .Equal, toItem: buttonsView, attribute: .Top, multiplier: 1.0, constant: 1)
                 let bottom = NSLayoutConstraint(item: value, attribute: .Bottom, relatedBy: .Equal, toItem: buttonsView, attribute: .Bottom, multiplier: 1.0, constant: 0)
@@ -74,39 +70,107 @@ public class APMAlertController: UIViewController {
         fatalError("NSCoding not supported")
     }
 
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
+    public init(titleObject: AnyObject) {
+        self.anyTitleObject = titleObject
+        super.init(nibName: nil, bundle: nil)
+
+        self.modalPresentationStyle = UIModalPresentationStyle.Custom
+        self.transitioningDelegate = self
     }
 
     public convenience init(title: String?, message: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(nibName: nil, bundle: nil)
+        self.init(titleObject: UILabel())
         self.alertTitle = title
-        self.alertTitleImage = nil
         self.alertMessage = message
-        commonInit()
+    }
+
+    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle: APMAlertControllerStyle) {
+        self.init(titleObject: UILabel())
+        self.alertTitle = title
+        self.alertAttributedMessage = attributedMessage
     }
 
     public convenience init(titleImage: UIImage?, message: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(nibName: nil, bundle: nil)
-        self.alertTitle = nil
+        self.init(titleObject: UIImageView())
         self.alertTitleImage = titleImage
         self.alertMessage = message
-        commonInit()
     }
 
-    private func commonInit() {
-        modalPresentationStyle = UIModalPresentationStyle.Custom
-        transitioningDelegate = self
+    public convenience init(title: String?, preferredStyle: APMAlertControllerStyle) {
+        self.init(titleObject: UILabel())
+        self.alertTitle = title
     }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureView()
+        configureLayout()
+    }
+
+    func configureView() {
         alertView.translatesAutoresizingMaskIntoConstraints = false
         alertView.backgroundColor = UIColor(white: 1, alpha: 0.95)
         alertView.layer.cornerRadius = 12
         alertView.clipsToBounds = true
         view.addSubview(alertView)
+
+        topScrollView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.addSubview(topScrollView)
+
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        topScrollView.addSubview(contentView)
+
+        switch anyTitleObject {
+        case let titleImageView as UIImageView:
+            titleImageView.translatesAutoresizingMaskIntoConstraints = false
+            titleImageView.contentMode = .ScaleAspectFit
+            titleImageView.image = alertTitleImage?.imageWithRenderingMode(.AlwaysTemplate)
+            titleImageView.alpha = 0.8
+            contentView.addSubview(titleImageView)
+        case let titleLabel as UILabel:
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+            titleLabel.font = UIFont.boldSystemFontOfSize(16)
+            titleLabel.textAlignment = .Center
+            titleLabel.numberOfLines = 0
+            titleLabel.text = alertTitle
+            contentView.addSubview(titleLabel)
+        default:
+            break
+        }
+
+        titleMessageSeparator.translatesAutoresizingMaskIntoConstraints = false
+        titleMessageSeparator.backgroundColor = separatorColor
+        titleMessageSeparator.hidden = true
+        contentView.addSubview(titleMessageSeparator)
+
+        messageContentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(messageContentView)
+
+        if alertMessage != nil || alertAttributedMessage != nil {
+            messageLabel = UILabel()
+        }
+
+        if let messageLabel = self.messageLabel {
+            messageLabel.translatesAutoresizingMaskIntoConstraints = false
+            messageLabel.font = UIFont.systemFontOfSize(16)
+            messageLabel.textAlignment = .Center
+            if let alertMessage = self.alertMessage {
+                messageLabel.text = alertMessage
+            }
+            if let alertAttributedMessage = self.alertAttributedMessage {
+                messageLabel.attributedText = alertAttributedMessage
+            }
+            messageLabel.numberOfLines = 0
+            messageContentView.addSubview(messageLabel)
+        }
+
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsView.backgroundColor = separatorColor
+        alertView.addSubview(buttonsView)
+    }
+
+    func configureLayout() {
         view.addConstraints([
                 NSLayoutConstraint(item: alertView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: alertView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0),
@@ -116,8 +180,6 @@ public class APMAlertController: UIViewController {
 
         topScrollViewHeightConstraint = NSLayoutConstraint(item: topScrollView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
 
-        topScrollView.translatesAutoresizingMaskIntoConstraints = false
-        alertView.addSubview(topScrollView)
         alertView.addConstraints([
                 NSLayoutConstraint(item: topScrollView, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: topScrollView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -125,8 +187,6 @@ public class APMAlertController: UIViewController {
                 topScrollViewHeightConstraint
         ])
 
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        topScrollView.addSubview(contentView)
         topScrollView.addConstraints([
                 NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Top, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: topScrollView, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -135,40 +195,14 @@ public class APMAlertController: UIViewController {
                 NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: topScrollView, attribute: .Width, multiplier: 1.0, constant: 0)
         ])
 
-        let anyTitleObject: AnyObject
-        if let alertTitleImage = self.alertTitleImage {
-            anyTitleObject = imageView
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .ScaleAspectFit
-            imageView.image = alertTitleImage.imageWithRenderingMode(.AlwaysTemplate)
-            imageView.alpha = 0.8
-            contentView.addSubview(imageView)
-            contentView.addConstraints([
-                    NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 20),
-                    NSLayoutConstraint(item: imageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
-                    NSLayoutConstraint(item: imageView, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30)
-            ])
-        } else {
-            anyTitleObject = titleLabel
-            titleLabel.translatesAutoresizingMaskIntoConstraints = false
-            titleLabel.font = UIFont.boldSystemFontOfSize(16)
-            titleLabel.textAlignment = .Center
-            titleLabel.numberOfLines = 0
-            titleLabel.text = alertTitle
-            contentView.addSubview(titleLabel)
-            contentView.addConstraints([
-                    NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 20),
-                    NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
-                    NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30)
-            ])
-        }
+        contentView.addConstraints([
+                NSLayoutConstraint(item: anyTitleObject, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 20),
+                NSLayoutConstraint(item: anyTitleObject, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
+                NSLayoutConstraint(item: anyTitleObject, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30)
+        ])
 
         topTitleMessageSeparatorConstraint = NSLayoutConstraint(item: titleMessageSeparator, attribute: .Top, relatedBy: .Equal, toItem: anyTitleObject, attribute: .Bottom, multiplier: 1.0, constant: 0)
 
-        titleMessageSeparator.translatesAutoresizingMaskIntoConstraints = false
-        titleMessageSeparator.backgroundColor = UIColor(white: 0.75, alpha: 0.6)
-        titleMessageSeparator.hidden = true
-        contentView.addSubview(titleMessageSeparator)
         contentView.addConstraints([
                 topTitleMessageSeparatorConstraint,
                 NSLayoutConstraint(item: titleMessageSeparator, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -176,22 +210,22 @@ public class APMAlertController: UIViewController {
                 NSLayoutConstraint(item: titleMessageSeparator, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 1)
         ])
 
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.font = UIFont.systemFontOfSize(16)
-        messageLabel.textAlignment = .Center
-        messageLabel.text = alertMessage
-        messageLabel.numberOfLines = 0
-        contentView.addSubview(messageLabel)
         contentView.addConstraints([
-                NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: titleMessageSeparator, attribute: .Bottom, multiplier: 1.0, constant: 12),
-                NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
-                NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30),
-                NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: -16)
+                NSLayoutConstraint(item: messageContentView, attribute: .Top, relatedBy: .Equal, toItem: titleMessageSeparator, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: messageContentView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: messageContentView, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: messageContentView, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0)
         ])
 
-        buttonsView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsView.backgroundColor = UIColor(white: 0.75, alpha: 0.6)
-        alertView.addSubview(buttonsView)
+        if let messageLabel = self.messageLabel {
+            messageContentView.addConstraints([
+                    NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: messageContentView, attribute: .Top, multiplier: 1.0, constant: 12),
+                    NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: messageContentView, attribute: .Left, multiplier: 1.0, constant: 30),
+                    NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: messageContentView, attribute: .Right, multiplier: 1.0, constant: -30),
+                    NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: messageContentView, attribute: .Bottom, multiplier: 1.0, constant: -16)
+            ])
+        }
+
         alertView.addConstraints([
                 NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -213,11 +247,19 @@ public class APMAlertController: UIViewController {
         }
 
         titleMessageSeparator.hidden = !showTitleMessageSeparator
-        topTitleMessageSeparatorConstraint.constant = showTitleMessageSeparator ? 14 : 0
+        topTitleMessageSeparatorConstraint.constant = showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0
 
-        titleLabel.textColor = tintColor
-        imageView.tintColor = tintColor
-        messageLabel.textColor = tintColor
+        switch anyTitleObject {
+        case let titleImageView as UIImageView:
+            titleImageView.tintColor = tintColor
+        case let titleLabel as UILabel:
+            titleLabel.textColor = tintColor
+        default:
+            break
+        }
+        if let messageLabel = self.messageLabel where alertAttributedMessage == nil {
+            messageLabel.textColor = tintColor
+        }
     }
 
     public func addAction(action: APMAlertAction) {
@@ -253,90 +295,5 @@ extension APMAlertController: UIViewControllerTransitioningDelegate {
 
     public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
-    }
-}
-
-public class APMAlertAction : NSObject {
-    let title: String
-    let style: APMAlertActionStyle
-    let handler: ((APMAlertAction!) -> Void)!
-
-    public required init(coder aDecoder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
-
-    public init(title: String, style: APMAlertActionStyle, handler: ((APMAlertAction!) -> Void)!) {
-        self.title = title
-        self.style = style
-        self.handler = handler
-    }
-}
-
-class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
-    let presenting: Bool
-
-    init(presenting: Bool) {
-        self.presenting = presenting
-    }
-
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        if (presenting) {
-            return 0.5
-        } else {
-            return 0.3
-        }
-    }
-
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        if (presenting) {
-            presentAnimateTransition(transitionContext)
-        } else {
-            dismissAnimateTransition(transitionContext)
-        }
-    }
-
-    func presentAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! APMAlertController
-        let containerView = transitionContext.containerView()
-
-        alertController.view.backgroundColor = UIColor.clearColor()
-        alertController.alertView.alpha = 0.0
-        alertController.alertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
-        containerView!.addSubview(alertController.view)
-
-        UIView.animateWithDuration(0.33,
-                animations: {
-                    alertController.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
-                    alertController.alertView.alpha = 1.0
-                    alertController.alertView.transform = CGAffineTransformMakeScale(1.05, 1.05)
-                },
-                completion: {
-                    finished in
-                    UIView.animateWithDuration(0.2,
-                            animations: {
-                                alertController.alertView.transform = CGAffineTransformIdentity
-                            },
-                            completion: {
-                                finished in
-                                if (finished) {
-                                    transitionContext.completeTransition(true)
-                                }
-                            })
-                })
-    }
-
-    func dismissAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! APMAlertController
-
-        UIView.animateWithDuration(0.33,
-                animations: {
-                    alertController.view.backgroundColor = UIColor.clearColor()
-                    alertController.alertView.alpha = 0.0
-                    alertController.alertView.transform = CGAffineTransformMakeScale(0.9, 0.9)
-                },
-                completion: {
-                    finished in
-                    transitionContext.completeTransition(true)
-                })
     }
 }
