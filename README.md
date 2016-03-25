@@ -8,6 +8,7 @@
 [![License](https://img.shields.io/cocoapods/l/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/APMAlertController.svg?style=flat)](http://cocoapods.org/pods/APMAlertController)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![codebeat badge](https://codebeat.co/badges/6ecf1755-6742-4d66-a1e0-b9e0847e14fe)](https://codebeat.co/projects/github-com-almas-dev-apmalertcontroller)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=56e7b3ec501a7001005978b2&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/56e7b3ec501a7001005978b2/build/latest)
 
 Light and customizable replacement for UIAlertController  
