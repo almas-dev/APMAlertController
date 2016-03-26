@@ -118,6 +118,14 @@ public class APMAlertController: UIViewController {
         topScrollView.translatesAutoresizingMaskIntoConstraints = false
         alertView.addSubview(topScrollView)
 
+        configureTopScrollView()
+
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsView.backgroundColor = separatorColor
+        alertView.addSubview(buttonsView)
+    }
+
+    func configureTopScrollView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         topScrollView.addSubview(contentView)
 
@@ -164,10 +172,6 @@ public class APMAlertController: UIViewController {
             messageLabel.numberOfLines = 0
             messageContentView.addSubview(messageLabel)
         }
-
-        buttonsView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsView.backgroundColor = separatorColor
-        alertView.addSubview(buttonsView)
     }
 
     func configureLayout() {
