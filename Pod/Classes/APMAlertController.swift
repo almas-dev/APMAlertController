@@ -118,6 +118,14 @@ public class APMAlertController: UIViewController {
         topScrollView.translatesAutoresizingMaskIntoConstraints = false
         alertView.addSubview(topScrollView)
 
+        configureTopScrollView()
+
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsView.backgroundColor = separatorColor
+        alertView.addSubview(buttonsView)
+    }
+
+    func configureTopScrollView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         topScrollView.addSubview(contentView)
 
@@ -164,10 +172,6 @@ public class APMAlertController: UIViewController {
             messageLabel.numberOfLines = 0
             messageContentView.addSubview(messageLabel)
         }
-
-        buttonsView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsView.backgroundColor = separatorColor
-        alertView.addSubview(buttonsView)
     }
 
     func configureLayout() {
@@ -187,6 +191,18 @@ public class APMAlertController: UIViewController {
                 topScrollViewHeightConstraint
         ])
 
+        configureTopScrollViewLayout()
+
+        alertView.addConstraints([
+                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Bottom, relatedBy: .Equal, toItem: alertView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 45)
+        ])
+    }
+
+    func configureTopScrollViewLayout() {
         topScrollView.addConstraints([
                 NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Top, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: topScrollView, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -225,14 +241,6 @@ public class APMAlertController: UIViewController {
                     NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: messageContentView, attribute: .Bottom, multiplier: 1.0, constant: -16)
             ])
         }
-
-        alertView.addConstraints([
-                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Bottom, relatedBy: .Equal, toItem: alertView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 45)
-        ])
     }
 
     public override func viewWillLayoutSubviews() {
@@ -271,7 +279,7 @@ public class APMAlertController: UIViewController {
         button.setTitle(action.title, forState: .Normal)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Selected)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-        button.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(btnPressed(_:)), forControlEvents: .TouchUpInside)
         button.tag = buttons.count + 1
         button.backgroundColor = UIColor.whiteColor()
         buttonsView.addSubview(button)
