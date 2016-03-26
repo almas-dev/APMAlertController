@@ -187,6 +187,18 @@ public class APMAlertController: UIViewController {
                 topScrollViewHeightConstraint
         ])
 
+        configureTopScrollViewLayout()
+
+        alertView.addConstraints([
+                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Bottom, relatedBy: .Equal, toItem: alertView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: buttonsView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 45)
+        ])
+    }
+
+    func configureTopScrollViewLayout() {
         topScrollView.addConstraints([
                 NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Top, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: topScrollView, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -225,14 +237,6 @@ public class APMAlertController: UIViewController {
                     NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: messageContentView, attribute: .Bottom, multiplier: 1.0, constant: -16)
             ])
         }
-
-        alertView.addConstraints([
-                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Bottom, relatedBy: .Equal, toItem: alertView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 45)
-        ])
     }
 
     public override func viewWillLayoutSubviews() {
