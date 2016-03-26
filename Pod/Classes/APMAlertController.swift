@@ -275,7 +275,7 @@ public class APMAlertController: UIViewController {
         button.setTitle(action.title, forState: .Normal)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Selected)
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-        button.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(btnPressed(_:)), forControlEvents: .TouchUpInside)
         button.tag = buttons.count + 1
         button.backgroundColor = UIColor.whiteColor()
         buttonsView.addSubview(button)
