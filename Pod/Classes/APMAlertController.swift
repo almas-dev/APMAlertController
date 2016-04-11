@@ -31,7 +31,7 @@ public class APMAlertController: UIViewController {
     private var alertTitleImage: UIImage?
     private var alertMessage: String?
     private var alertAttributedMessage: NSAttributedString?
-    private var actions = [APMAlertAction]()
+    private var actions = [APMAlertActionProtocol]()
     private var buttons: [UIButton] = [] {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
@@ -270,7 +270,7 @@ public class APMAlertController: UIViewController {
         }
     }
 
-    public func addAction(action: APMAlertAction) {
+    public func addAction(action: APMAlertActionProtocol) {
         actions.append(action)
 
         let button = UIButton()
@@ -288,11 +288,10 @@ public class APMAlertController: UIViewController {
 
     func btnPressed(button: UIButton) {
         button.selected = true
-        let action = actions[button.tag - 1]
-        if (action.handler != nil) {
-            action.handler(action)
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: {
+            let action = self.actions[button.tag - 1]
+            action.handler?(action)
+        })
     }
 }
 
