@@ -288,11 +288,12 @@ public class APMAlertController: UIViewController {
 
     func btnPressed(button: UIButton) {
         button.selected = true
-        let action = actions[button.tag - 1]
-        if (action.handler != nil) {
-            action.handler(action)
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: {
+            let action = self.actions[button.tag - 1]
+            if (action.handler != nil) {
+                action.handler(action)
+            }
+        })
     }
 }
 
