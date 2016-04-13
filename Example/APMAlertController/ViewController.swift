@@ -117,7 +117,7 @@ class ViewController: UIViewController {
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
             action in
-            NSLog("The simple alert cancel action.")
+            print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
@@ -130,17 +130,17 @@ class ViewController: UIViewController {
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
             action in
-            NSLog("The simple alert cancel action.")
+            print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
         let testAction = APMAlertAction(title: "Test", style: .Cancel) {
             action in
-            NSLog("The simple alert test action.")
+            print("The simple alert test action.")
         }
         alertController.addAction(testAction)
         let desctructAction = APMAlertAction(title: "Destruct", style: .Destructive) {
             action in
-            NSLog("The simple alert destruct action.")
+            print("The simple alert destruct action.")
         }
         alertController.addAction(desctructAction)
         presentViewController(alertController, animated: true, completion: nil)
@@ -153,12 +153,12 @@ class ViewController: UIViewController {
         alertController.tintColor = UIColor.brownColor()
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
             action in
-            NSLog("The simple alert cancel action.")
+            print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
         let testAction = APMAlertAction(title: "Test", style: .Cancel) {
             action in
-            NSLog("The simple alert test action.")
+            print("The simple alert test action.")
         }
         alertController.addAction(testAction)
         presentViewController(alertController, animated: true, completion: nil)
@@ -173,7 +173,7 @@ class ViewController: UIViewController {
         alertController.tintColor = UIColor.purpleColor()
         let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
             action in
-            NSLog("The simple alert cancel action.")
+            print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
@@ -196,12 +196,12 @@ class ViewController: UIViewController {
         alertController.tintColor = UIColor.purpleColor()
         let defaultAction = APMAlertAction(title: "Default", style: .Default) {
             action in
-            NSLog("The simple alert default action.")
+            print("The simple alert default action.")
         }
         alertController.addAction(defaultAction)
         let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
             action in
-            NSLog("The simple alert cancel action.")
+            print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
@@ -214,7 +214,7 @@ class ViewController: UIViewController {
         alertController.showTitleMessageSeparator = true
         let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
             action in
-            NSLog("The simple alert cancel action.")
+            print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
 
