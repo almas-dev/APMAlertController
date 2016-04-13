@@ -10,16 +10,18 @@ public enum APMAlertActionStyle {
     case Destructive
 }
 
-public class APMAlertAction : NSObject {
-    let title: String
-    let style: APMAlertActionStyle
-    let handler: ((APMAlertAction!) -> Void)!
+public protocol APMAlertActionProtocol {
+    var title: String { get }
+    var style: APMAlertActionStyle { get }
+    var handler: ((APMAlertActionProtocol) -> Void)? { get }
+}
 
-    public required init(coder aDecoder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
+public struct APMAlertAction: APMAlertActionProtocol {
+    public let title: String
+    public let style: APMAlertActionStyle
+    public let handler: ((APMAlertActionProtocol) -> Void)?
 
-    public init(title: String, style: APMAlertActionStyle, handler: ((APMAlertAction!) -> Void)!) {
+    public init(title: String, style: APMAlertActionStyle, handler: ((APMAlertActionProtocol) -> Void)?) {
         self.title = title
         self.style = style
         self.handler = handler
