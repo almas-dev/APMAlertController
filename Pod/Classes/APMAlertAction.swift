@@ -25,5 +25,6 @@ import Foundation
         self.title = title
         self.style = style
         self.handler = handler
+        super.init()
     }
 }
