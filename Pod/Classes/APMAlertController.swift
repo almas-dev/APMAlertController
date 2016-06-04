@@ -4,12 +4,12 @@
 
 import UIKit
 
-public enum APMAlertControllerStyle {
+@objc public enum APMAlertControllerStyle: Int {
     case Alert
     case ActionSheet
 }
 
-public class APMAlertController: UIViewController {
+@objc public class APMAlertController: UIViewController {
     private let verticalAlertIndent: CGFloat = 25
 
     public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
