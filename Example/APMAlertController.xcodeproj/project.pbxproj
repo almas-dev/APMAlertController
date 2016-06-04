@@ -226,12 +226,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "APMAlertController_Example" */;
 			buildPhases = (
-				10BAFD901414E80C7E805EF2 /* 📦 Check Pods Manifest.lock */,
+				10BAFD901414E80C7E805EF2 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				22B0BC4EC701BDB2EB1D8916 /* 📦 Embed Pods Frameworks */,
-				04469BC4E2587F15B6A4B8AA /* 📦 Copy Pods Resources */,
+				22B0BC4EC701BDB2EB1D8916 /* [CP] Embed Pods Frameworks */,
+				04469BC4E2587F15B6A4B8AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,12 +246,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "APMAlertController_Tests" */;
 			buildPhases = (
-				493A59E136B95EF09A9777F1 /* 📦 Check Pods Manifest.lock */,
+				493A59E136B95EF09A9777F1 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				B86E31A85E11EE93E4CD0F2E /* 📦 Embed Pods Frameworks */,
-				B27B99EE9A0C6A8DE253FA71 /* 📦 Copy Pods Resources */,
+				B86E31A85E11EE93E4CD0F2E /* [CP] Embed Pods Frameworks */,
+				B27B99EE9A0C6A8DE253FA71 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -351,14 +351,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04469BC4E2587F15B6A4B8AA /* 📦 Copy Pods Resources */ = {
+		04469BC4E2587F15B6A4B8AA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,14 +366,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		10BAFD901414E80C7E805EF2 /* 📦 Check Pods Manifest.lock */ = {
+		10BAFD901414E80C7E805EF2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,14 +381,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		22B0BC4EC701BDB2EB1D8916 /* 📦 Embed Pods Frameworks */ = {
+		22B0BC4EC701BDB2EB1D8916 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,14 +396,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		493A59E136B95EF09A9777F1 /* 📦 Check Pods Manifest.lock */ = {
+		493A59E136B95EF09A9777F1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,14 +411,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B27B99EE9A0C6A8DE253FA71 /* 📦 Copy Pods Resources */ = {
+		B27B99EE9A0C6A8DE253FA71 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,14 +426,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APMAlertController_Tests/Pods-APMAlertController_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B86E31A85E11EE93E4CD0F2E /* 📦 Embed Pods Frameworks */ = {
+		B86E31A85E11EE93E4CD0F2E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
