@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  APMAlertController: d59bd36f9d3b1f02979bea4c9278a39261055140
+  APMAlertController: d0b7193dbf1cebd0eff566bc8fda69ad3da214fb
 
 PODFILE CHECKSUM: 9671854b9170f88e29fca4b095cd638523ff61d7
 
