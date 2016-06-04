@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "APMAlertController"
-  s.version          = "0.5"
+  s.version          = "0.5.1"
   s.summary          = "AlertController written in Swift"
   s.description      = "Light and convenient replacement for UIAlertController with many customization options"
 
