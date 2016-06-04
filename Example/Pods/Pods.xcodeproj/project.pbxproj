@@ -7,180 +7,165 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F66F8301CAFD8081FEEACC4171748B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		2705665E7D700374E5D3D2301BC4DEB3 /* APMAlertController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF26C3FFC1A17E2AE108201979B3F584 /* APMAlertController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2AD374B497D112EEC887D616FF84DD9A /* Pods-APMAlertController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151108685CBC9492214E2C357FE9E55 /* Pods-APMAlertController_Example-dummy.m */; };
-		2DBA13A595D9465E07CE783E /* APMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1CACDE0658D6D0DCCFCA /* APMAlertAction.swift */; };
-		2DBA18BAB29AFBB592A8E290 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1121AC5E064051E37184 /* APMAlertAnimation.swift */; };
-		3324E4E27FD24EE1F026CC1FBA757EDD /* Pods-APMAlertController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D0E49EF410A65F4C41B5E91F974D0AC /* Pods-APMAlertController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3E0B2BCB299A3F906E826A5F3BB3D4F9 /* Pods-APMAlertController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A055904DC2873FDC093737D8FEB1F1 /* Pods-APMAlertController_Tests-dummy.m */; };
-		4A169C2826EC034778144C884739E76D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		4E1B5AAAEBE3DB7511834DAF52B8FD2C /* Pods-APMAlertController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 463D3BBB62C95A5BD5630ACBBA3F6F95 /* Pods-APMAlertController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5398AB97B24B712F18E4C3166E9F012 /* APMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FFE4FB61D38E0383C8030C7A058AF4 /* APMAlertController.swift */; };
-		BB5F355EEF2BD03DA87CD5D41C5B5F7B /* APMAlertController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8328DECA7CB300A767236CC1C0DAA0E8 /* APMAlertController.bundle */; };
-		C5E5886F37180AACEA7158815EFBEE38 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		D04A2867C1ADDA68C335F866A6E672DC /* APMAlertController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFD94A989AD24F3DF5BF155F91527 /* APMAlertController-dummy.m */; };
+		0C99C02C6F558351555B793CA952BFF9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		1A0FFF612497FC79BEF0A806A7385D5F /* APMAlertController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 038006955EF87226F9BDBB5A485A618A /* APMAlertController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F2EFF724D7318C7E9DD3F2853BE894E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		4D0A914463B8806E32889D1A936AA067 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		54972CD3E67FB07438DEF85CFF540D1E /* APMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76801534AB260DC3C16CE2A77602AC3 /* APMAlertController.swift */; };
+		6CC073E93A37CEA487FBA8B65E2D3861 /* APMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74997F69ACFB53DC1B671AEC3DA45E60 /* APMAlertAction.swift */; };
+		7ABD7F47005DE3D8995F90BA5CD32427 /* Pods-APMAlertController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151108685CBC9492214E2C357FE9E55 /* Pods-APMAlertController_Example-dummy.m */; };
+		7C377263CEFF78E1B95DCE66804FA536 /* Pods-APMAlertController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D0E49EF410A65F4C41B5E91F974D0AC /* Pods-APMAlertController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		813CBEF75539FA3C2CFFBDC8C1656AFB /* Pods-APMAlertController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 463D3BBB62C95A5BD5630ACBBA3F6F95 /* Pods-APMAlertController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A8E1A7067233EFFF93FB3D1E2583255 /* APMAlertController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E2F89890EB9B7F60020D591E221CA9CC /* APMAlertController.bundle */; };
+		9F88E280EF291E1F5F4E815E3012CA78 /* Pods-APMAlertController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A055904DC2873FDC093737D8FEB1F1 /* Pods-APMAlertController_Tests-dummy.m */; };
+		ACD8637E9D5F2A9994190EBDDED78A77 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA3B7CCACC04A1C920CDF45A3611D0 /* APMAlertAnimation.swift */; };
+		E8266115C93AD4408809C4AA7FF6823A /* APMAlertController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 735ACF1839A6EF3AF87F6AA4DE25263D /* APMAlertController-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		15422EC212A09309EA0472B912B9F14C /* PBXContainerItemProxy */ = {
+		6ED3DCDBD198DF643163DFEBE7C86792 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EF8793F4CE73050C18203C475ACFC3F9;
+			remoteGlobalIDString = 07CD8498B56EBFE08FD88E122C5F7F81;
 			remoteInfo = "APMAlertController-APMAlertController";
 		};
-		85356D3152477B48DC6CBB48711012DC /* PBXContainerItemProxy */ = {
+		F108EAC83A14B224331042F7DBE1E21B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E7C6EBBCD0BF08CC23B5552634435E5B;
-			remoteInfo = APMAlertController;
-		};
-		AFBD1C3FB2EF1A8DB606B07E69FD36F2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E7C6EBBCD0BF08CC23B5552634435E5B;
+			remoteGlobalIDString = 898869504BF9BF5C551285E9117342D6;
 			remoteInfo = APMAlertController;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01495BE806E2DD7A3BE10D481BB510D5 /* APMAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APMAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		038006955EF87226F9BDBB5A485A618A /* APMAlertController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APMAlertController-umbrella.h"; sourceTree = "<group>"; };
 		0559588EB9D44250503FE322C856D5AA /* Pods-APMAlertController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-APMAlertController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		142F42464CB6622EF2DC2C5E3B9DC85A /* Pods-APMAlertController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		15A055904DC2873FDC093737D8FEB1F1 /* Pods-APMAlertController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-APMAlertController_Tests-dummy.m"; sourceTree = "<group>"; };
 		1799DBF50EA6943B5A19AD31AA34597F /* Pods-APMAlertController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Example-frameworks.sh"; sourceTree = "<group>"; };
 		1DC91E600D6D3FDD9FC5E912EF563572 /* Pods-APMAlertController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		2DBA1121AC5E064051E37184 /* APMAlertAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMAlertAnimation.swift; sourceTree = "<group>"; };
-		2DBA1CACDE0658D6D0DCCFCA /* APMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APMAlertAction.swift; sourceTree = "<group>"; };
-		3B8B4C28A7203AD38A99360FFC459AE8 /* Pods_APMAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		1F46DDA2B8DEFBF2E1E85E7A7C3D2E92 /* ResourceBundle-APMAlertController-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-APMAlertController-Info.plist"; sourceTree = "<group>"; };
 		3EDB439956EDD3B973323CD2F35107FE /* Pods-APMAlertController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		42602C990B871664C33E121C0ECD71A7 /* Pods-APMAlertController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-APMAlertController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		463D3BBB62C95A5BD5630ACBBA3F6F95 /* Pods-APMAlertController_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-APMAlertController_Example-umbrella.h"; sourceTree = "<group>"; };
-		511D820131551FDCAD312EE1FA2DF5B9 /* APMAlertController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APMAlertController-prefix.pch"; sourceTree = "<group>"; };
+		53D085C3539663CDD7DE9093544BF2FC /* Pods_APMAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DAE38A01AE7AB47CE52F7EC4F313FCA /* Pods-APMAlertController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-APMAlertController_Example.modulemap"; sourceTree = "<group>"; };
 		6896C499089C91C17EA6E5C5C9B1F688 /* Pods-APMAlertController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-APMAlertController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		712B68D695D152336F38CE0E56DAD3F3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8328DECA7CB300A767236CC1C0DAA0E8 /* APMAlertController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMAlertController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		735ACF1839A6EF3AF87F6AA4DE25263D /* APMAlertController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "APMAlertController-dummy.m"; sourceTree = "<group>"; };
+		74997F69ACFB53DC1B671AEC3DA45E60 /* APMAlertAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APMAlertAction.swift; sourceTree = "<group>"; };
+		76EA3B7CCACC04A1C920CDF45A3611D0 /* APMAlertAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APMAlertAnimation.swift; sourceTree = "<group>"; };
 		859400BA5970D953CE655257CB0D7775 /* Pods-APMAlertController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-APMAlertController_Tests.modulemap"; sourceTree = "<group>"; };
 		9151108685CBC9492214E2C357FE9E55 /* Pods-APMAlertController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-APMAlertController_Example-dummy.m"; sourceTree = "<group>"; };
 		923C8F0EE4329335A26B58F9B7EAF195 /* Pods-APMAlertController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Example.release.xcconfig"; sourceTree = "<group>"; };
-		98FFE4FB61D38E0383C8030C7A058AF4 /* APMAlertController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APMAlertController.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D0E49EF410A65F4C41B5E91F974D0AC /* Pods-APMAlertController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-APMAlertController_Tests-umbrella.h"; sourceTree = "<group>"; };
-		AF26C3FFC1A17E2AE108201979B3F584 /* APMAlertController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APMAlertController-umbrella.h"; sourceTree = "<group>"; };
-		AF659C5FE1A57D8086A08415EAAE8054 /* Pods_APMAlertController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3EB6445629F059E0C7436436CCD6ECE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BA92A41BF234E5D46AF13BB2FD0A6D72 /* APMAlertController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = APMAlertController.modulemap; sourceTree = "<group>"; };
-		BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = APMAlertController.xcconfig; sourceTree = "<group>"; };
-		BE0AFD94A989AD24F3DF5BF155F91527 /* APMAlertController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "APMAlertController-dummy.m"; sourceTree = "<group>"; };
+		BB12852AE11C19AD2BB505E0317A08E1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF37A76F7602937449549A9F0B9B5A4E /* APMAlertController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = APMAlertController.modulemap; sourceTree = "<group>"; };
+		C0045AABE7629BA9CDD6227BB68837F2 /* APMAlertController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APMAlertController-prefix.pch"; sourceTree = "<group>"; };
 		CD9009EB84AD9B1C2EBFC8B09F497794 /* Pods-APMAlertController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D6E7C140B6ABF436BB457E557D6F25E5 /* Pods_APMAlertController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA790195AF3E9F13EE992B222D5248E2 /* Pods-APMAlertController_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Example-resources.sh"; sourceTree = "<group>"; };
 		DADEB737A39B8180D11816E452DA857C /* Pods-APMAlertController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-APMAlertController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		E2F89890EB9B7F60020D591E221CA9CC /* APMAlertController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMAlertController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76801534AB260DC3C16CE2A77602AC3 /* APMAlertController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APMAlertController.swift; sourceTree = "<group>"; };
+		E8BABAAD0536E58255E5333A3AA4E5A1 /* APMAlertController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = APMAlertController.xcconfig; sourceTree = "<group>"; };
 		E9D36234988ACA569D012E1D7834848F /* Pods-APMAlertController_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Tests-resources.sh"; sourceTree = "<group>"; };
 		F1050F5B02846790A1ABA9AD80696608 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FBFCEEC395472266DDAA9C695BBA670F /* APMAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APMAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4064B82894F3A323317D05D6245B14B0 /* Frameworks */ = {
+		1AD3CD6311C4F1B60EC3EAA0542C6840 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5E5886F37180AACEA7158815EFBEE38 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		42E9A0BC83338764FF04CB1F7FB1EB91 /* Frameworks */ = {
+		585635FD8B7C60F645DDA1D7866DF6DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A169C2826EC034778144C884739E76D /* Foundation.framework in Frameworks */,
+				1F2EFF724D7318C7E9DD3F2853BE894E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C639765531BB478ED01B2F5E7A364905 /* Frameworks */ = {
+		8B1D2491F89A4D8067B37E22F7A414E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F66F8301CAFD8081FEEACC4171748B9 /* Foundation.framework in Frameworks */,
+				4D0A914463B8806E32889D1A936AA067 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1C6A18D82FDA96F612423E43878DD21 /* Frameworks */ = {
+		A64DB5292D179265162912F6D792E24F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C99C02C6F558351555B793CA952BFF9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1EC003769B45A638AB622A72AF051880 /* Products */ = {
+		05EC5839EA27F56169220DACFE2A51DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8328DECA7CB300A767236CC1C0DAA0E8 /* APMAlertController.bundle */,
-				FBFCEEC395472266DDAA9C695BBA670F /* APMAlertController.framework */,
-				AF659C5FE1A57D8086A08415EAAE8054 /* Pods_APMAlertController_Example.framework */,
-				3B8B4C28A7203AD38A99360FFC459AE8 /* Pods_APMAlertController_Tests.framework */,
+				E2F89890EB9B7F60020D591E221CA9CC /* APMAlertController.bundle */,
+				01495BE806E2DD7A3BE10D481BB510D5 /* APMAlertController.framework */,
+				D6E7C140B6ABF436BB457E557D6F25E5 /* Pods_APMAlertController_Example.framework */,
+				53D085C3539663CDD7DE9093544BF2FC /* Pods_APMAlertController_Tests.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		661EA390DAD7FDCD0738F560F3CCCBA6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF37A76F7602937449549A9F0B9B5A4E /* APMAlertController.modulemap */,
+				E8BABAAD0536E58255E5333A3AA4E5A1 /* APMAlertController.xcconfig */,
+				735ACF1839A6EF3AF87F6AA4DE25263D /* APMAlertController-dummy.m */,
+				C0045AABE7629BA9CDD6227BB68837F2 /* APMAlertController-prefix.pch */,
+				038006955EF87226F9BDBB5A485A618A /* APMAlertController-umbrella.h */,
+				BB12852AE11C19AD2BB505E0317A08E1 /* Info.plist */,
+				1F46DDA2B8DEFBF2E1E85E7A7C3D2E92 /* ResourceBundle-APMAlertController-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/APMAlertController";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				E64D8BC32C61D693EA776D0EAD3F90DD /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				1EC003769B45A638AB622A72AF051880 /* Products */,
+				05EC5839EA27F56169220DACFE2A51DD /* Products */,
 				D79C3A6A3BFC23EC8A4E8B0B3B2AF545 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		99F873082F0E231AAC3F9DAE32D33605 /* APMAlertController */ = {
+		B0813D95EC5F866FFEFBA5FC008723BF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AD47A91842F5DDD634FE89F04E832F62 /* Pod */,
-				B2980BB8CD98E5B1F4DCEFBEE4A72DB2 /* Support Files */,
-			);
-			name = APMAlertController;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		AA7CC39A87047AA333BAEB6C51E7219F /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				98FFE4FB61D38E0383C8030C7A058AF4 /* APMAlertController.swift */,
-				2DBA1CACDE0658D6D0DCCFCA /* APMAlertAction.swift */,
-				2DBA1121AC5E064051E37184 /* APMAlertAnimation.swift */,
+				74997F69ACFB53DC1B671AEC3DA45E60 /* APMAlertAction.swift */,
+				76EA3B7CCACC04A1C920CDF45A3611D0 /* APMAlertAnimation.swift */,
+				E76801534AB260DC3C16CE2A77602AC3 /* APMAlertController.swift */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		AD47A91842F5DDD634FE89F04E832F62 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				AA7CC39A87047AA333BAEB6C51E7219F /* Classes */,
-			);
-			path = Pod;
-			sourceTree = "<group>";
-		};
-		B2980BB8CD98E5B1F4DCEFBEE4A72DB2 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BA92A41BF234E5D46AF13BB2FD0A6D72 /* APMAlertController.modulemap */,
-				BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */,
-				BE0AFD94A989AD24F3DF5BF155F91527 /* APMAlertController-dummy.m */,
-				511D820131551FDCAD312EE1FA2DF5B9 /* APMAlertController-prefix.pch */,
-				AF26C3FFC1A17E2AE108201979B3F584 /* APMAlertController-umbrella.h */,
-				B3EB6445629F059E0C7436436CCD6ECE /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/APMAlertController";
 			sourceTree = "<group>";
 		};
 		B35D2EF8EF2BAF1A50E28B2BAAB9084B /* Pods-APMAlertController_Example */ = {
@@ -201,20 +186,20 @@
 			path = "Target Support Files/Pods-APMAlertController_Example";
 			sourceTree = "<group>";
 		};
+		B74709F1370C1B67599DE9412853E8B6 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				B0813D95EC5F866FFEFBA5FC008723BF /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		CBAD1BE5B34A43EFD5CA5EC95300C11F /* Pods-APMAlertController_Tests */ = {
@@ -247,103 +232,58 @@
 		E64D8BC32C61D693EA776D0EAD3F90DD /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				99F873082F0E231AAC3F9DAE32D33605 /* APMAlertController */,
+				EEA4938A0E4B9F409DBF95DCF240502C /* APMAlertController */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		EEA4938A0E4B9F409DBF95DCF240502C /* APMAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				B74709F1370C1B67599DE9412853E8B6 /* Pod */,
+				661EA390DAD7FDCD0738F560F3CCCBA6 /* Support Files */,
+			);
+			name = APMAlertController;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		084DAD7BD612B899912C324F151B956F /* Headers */ = {
+		06ADA5DCF84FF2082E293F6790201FED /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3324E4E27FD24EE1F026CC1FBA757EDD /* Pods-APMAlertController_Tests-umbrella.h in Headers */,
+				813CBEF75539FA3C2CFFBDC8C1656AFB /* Pods-APMAlertController_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		110A9F94B99886102F63240DA1DA4FF2 /* Headers */ = {
+		B4F943A47316FBE54A46D1FD43F59FF9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2705665E7D700374E5D3D2301BC4DEB3 /* APMAlertController-umbrella.h in Headers */,
+				1A0FFF612497FC79BEF0A806A7385D5F /* APMAlertController-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC11836EDC1A5D0F2BEBFF3B8699ADB8 /* Headers */ = {
+		EEDD32EB418BF9F8D7E72165D287DEA1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E1B5AAAEBE3DB7511834DAF52B8FD2C /* Pods-APMAlertController_Example-umbrella.h in Headers */,
+				7C377263CEFF78E1B95DCE66804FA536 /* Pods-APMAlertController_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2D02ED6FBBC134D0CEBC364030969B48 /* Pods-APMAlertController_Example */ = {
+		07CD8498B56EBFE08FD88E122C5F7F81 /* APMAlertController-APMAlertController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8D7AF7A7C7C04B5A03F9D60A8DE9F27 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */;
+			buildConfigurationList = 1A58441F605B52B8465263CEC92DFAC6 /* Build configuration list for PBXNativeTarget "APMAlertController-APMAlertController" */;
 			buildPhases = (
-				691CAA66250D7A7A5436AF452B4D617B /* Sources */,
-				C639765531BB478ED01B2F5E7A364905 /* Frameworks */,
-				DC11836EDC1A5D0F2BEBFF3B8699ADB8 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FC92FB64B8FC50AA4C1AC133600EA378 /* PBXTargetDependency */,
-			);
-			name = "Pods-APMAlertController_Example";
-			productName = "Pods-APMAlertController_Example";
-			productReference = AF659C5FE1A57D8086A08415EAAE8054 /* Pods_APMAlertController_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E7C6EBBCD0BF08CC23B5552634435E5B /* APMAlertController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D0E6DF933650788CEEF54AF4CD99C744 /* Build configuration list for PBXNativeTarget "APMAlertController" */;
-			buildPhases = (
-				327F0564068472277F12531343CBCC11 /* Sources */,
-				4064B82894F3A323317D05D6245B14B0 /* Frameworks */,
-				8CAD7F22B2AE53D2C2C7BCE0A8C2C18C /* Resources */,
-				110A9F94B99886102F63240DA1DA4FF2 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BFA986E586E3306FE117D45BF9C038C1 /* PBXTargetDependency */,
-			);
-			name = APMAlertController;
-			productName = APMAlertController;
-			productReference = FBFCEEC395472266DDAA9C695BBA670F /* APMAlertController.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EE72321705D49D0641A9F2633F759C08 /* Pods-APMAlertController_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 71B6AD7B6239A56ECDE2953D9DC63939 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Tests" */;
-			buildPhases = (
-				DD4D473BD2C9B3425613DB2C3DBF5551 /* Sources */,
-				42E9A0BC83338764FF04CB1F7FB1EB91 /* Frameworks */,
-				084DAD7BD612B899912C324F151B956F /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8001ED0B3AAFE04C9129BE6207CD922 /* PBXTargetDependency */,
-			);
-			name = "Pods-APMAlertController_Tests";
-			productName = "Pods-APMAlertController_Tests";
-			productReference = 3B8B4C28A7203AD38A99360FFC459AE8 /* Pods_APMAlertController_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EF8793F4CE73050C18203C475ACFC3F9 /* APMAlertController-APMAlertController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F4E8329972FB0CEBBA78947BC4678517 /* Build configuration list for PBXNativeTarget "APMAlertController-APMAlertController" */;
-			buildPhases = (
-				B0758B3C6475F9226223657D92148C52 /* Sources */,
-				F1C6A18D82FDA96F612423E43878DD21 /* Frameworks */,
-				89A40CC946B0FDC23D1524FE8CE46281 /* Resources */,
+				BBB7FD842868C8213C946C4F3B5A294E /* Sources */,
+				1AD3CD6311C4F1B60EC3EAA0542C6840 /* Frameworks */,
+				7E112BFF14301C8B0DBD88BA6A911DFA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -351,8 +291,62 @@
 			);
 			name = "APMAlertController-APMAlertController";
 			productName = "APMAlertController-APMAlertController";
-			productReference = 8328DECA7CB300A767236CC1C0DAA0E8 /* APMAlertController.bundle */;
+			productReference = E2F89890EB9B7F60020D591E221CA9CC /* APMAlertController.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		176CAAF4D5F1D09DB232BF2C95D480AA /* Pods-APMAlertController_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A75B1BBC59864E9D447EC8238674B52 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Tests" */;
+			buildPhases = (
+				0EDBFAC397631A4218C975127A659019 /* Sources */,
+				8B1D2491F89A4D8067B37E22F7A414E1 /* Frameworks */,
+				EEDD32EB418BF9F8D7E72165D287DEA1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-APMAlertController_Tests";
+			productName = "Pods-APMAlertController_Tests";
+			productReference = 53D085C3539663CDD7DE9093544BF2FC /* Pods_APMAlertController_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2C0C695962561DCCB4C9BF11D5DD9C30 /* Pods-APMAlertController_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC487A9FBE779E61F38354B5E136A950 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */;
+			buildPhases = (
+				9AAC3EDC13E4DED2B27534625D951A16 /* Sources */,
+				A64DB5292D179265162912F6D792E24F /* Frameworks */,
+				06ADA5DCF84FF2082E293F6790201FED /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14B26057685C34EC4E50DB52128B9E00 /* PBXTargetDependency */,
+			);
+			name = "Pods-APMAlertController_Example";
+			productName = "Pods-APMAlertController_Example";
+			productReference = D6E7C140B6ABF436BB457E557D6F25E5 /* Pods_APMAlertController_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		898869504BF9BF5C551285E9117342D6 /* APMAlertController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CC575ABEAD0288D1CB572EC7C86EDBE /* Build configuration list for PBXNativeTarget "APMAlertController" */;
+			buildPhases = (
+				492B53FDF5B45E8B64F1A110C6B10B17 /* Sources */,
+				585635FD8B7C60F645DDA1D7866DF6DE /* Frameworks */,
+				BF3EB96E1BE3338F5E26B7F7EC63D7C9 /* Resources */,
+				B4F943A47316FBE54A46D1FD43F59FF9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7361804680920CE94C7C64FEC4192378 /* PBXTargetDependency */,
+			);
+			name = APMAlertController;
+			productName = APMAlertController;
+			productReference = 01495BE806E2DD7A3BE10D481BB510D5 /* APMAlertController.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -360,7 +354,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -371,209 +365,111 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 1EC003769B45A638AB622A72AF051880 /* Products */;
+			productRefGroup = 05EC5839EA27F56169220DACFE2A51DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E7C6EBBCD0BF08CC23B5552634435E5B /* APMAlertController */,
-				EF8793F4CE73050C18203C475ACFC3F9 /* APMAlertController-APMAlertController */,
-				2D02ED6FBBC134D0CEBC364030969B48 /* Pods-APMAlertController_Example */,
-				EE72321705D49D0641A9F2633F759C08 /* Pods-APMAlertController_Tests */,
+				898869504BF9BF5C551285E9117342D6 /* APMAlertController */,
+				07CD8498B56EBFE08FD88E122C5F7F81 /* APMAlertController-APMAlertController */,
+				2C0C695962561DCCB4C9BF11D5DD9C30 /* Pods-APMAlertController_Example */,
+				176CAAF4D5F1D09DB232BF2C95D480AA /* Pods-APMAlertController_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		89A40CC946B0FDC23D1524FE8CE46281 /* Resources */ = {
+		7E112BFF14301C8B0DBD88BA6A911DFA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CAD7F22B2AE53D2C2C7BCE0A8C2C18C /* Resources */ = {
+		BF3EB96E1BE3338F5E26B7F7EC63D7C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB5F355EEF2BD03DA87CD5D41C5B5F7B /* APMAlertController.bundle in Resources */,
+				8A8E1A7067233EFFF93FB3D1E2583255 /* APMAlertController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		327F0564068472277F12531343CBCC11 /* Sources */ = {
+		0EDBFAC397631A4218C975127A659019 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D04A2867C1ADDA68C335F866A6E672DC /* APMAlertController-dummy.m in Sources */,
-				A5398AB97B24B712F18E4C3166E9F012 /* APMAlertController.swift in Sources */,
-				2DBA13A595D9465E07CE783E /* APMAlertAction.swift in Sources */,
-				2DBA18BAB29AFBB592A8E290 /* APMAlertAnimation.swift in Sources */,
+				9F88E280EF291E1F5F4E815E3012CA78 /* Pods-APMAlertController_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		691CAA66250D7A7A5436AF452B4D617B /* Sources */ = {
+		492B53FDF5B45E8B64F1A110C6B10B17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AD374B497D112EEC887D616FF84DD9A /* Pods-APMAlertController_Example-dummy.m in Sources */,
+				6CC073E93A37CEA487FBA8B65E2D3861 /* APMAlertAction.swift in Sources */,
+				ACD8637E9D5F2A9994190EBDDED78A77 /* APMAlertAnimation.swift in Sources */,
+				E8266115C93AD4408809C4AA7FF6823A /* APMAlertController-dummy.m in Sources */,
+				54972CD3E67FB07438DEF85CFF540D1E /* APMAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0758B3C6475F9226223657D92148C52 /* Sources */ = {
+		9AAC3EDC13E4DED2B27534625D951A16 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ABD7F47005DE3D8995F90BA5CD32427 /* Pods-APMAlertController_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD4D473BD2C9B3425613DB2C3DBF5551 /* Sources */ = {
+		BBB7FD842868C8213C946C4F3B5A294E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E0B2BCB299A3F906E826A5F3BB3D4F9 /* Pods-APMAlertController_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B8001ED0B3AAFE04C9129BE6207CD922 /* PBXTargetDependency */ = {
+		14B26057685C34EC4E50DB52128B9E00 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = APMAlertController;
-			target = E7C6EBBCD0BF08CC23B5552634435E5B /* APMAlertController */;
-			targetProxy = 85356D3152477B48DC6CBB48711012DC /* PBXContainerItemProxy */;
+			target = 898869504BF9BF5C551285E9117342D6 /* APMAlertController */;
+			targetProxy = F108EAC83A14B224331042F7DBE1E21B /* PBXContainerItemProxy */;
 		};
-		BFA986E586E3306FE117D45BF9C038C1 /* PBXTargetDependency */ = {
+		7361804680920CE94C7C64FEC4192378 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "APMAlertController-APMAlertController";
-			target = EF8793F4CE73050C18203C475ACFC3F9 /* APMAlertController-APMAlertController */;
-			targetProxy = 15422EC212A09309EA0472B912B9F14C /* PBXContainerItemProxy */;
-		};
-		FC92FB64B8FC50AA4C1AC133600EA378 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = APMAlertController;
-			target = E7C6EBBCD0BF08CC23B5552634435E5B /* APMAlertController */;
-			targetProxy = AFBD1C3FB2EF1A8DB606B07E69FD36F2 /* PBXContainerItemProxy */;
+			target = 07CD8498B56EBFE08FD88E122C5F7F81 /* APMAlertController-APMAlertController */;
+			targetProxy = 6ED3DCDBD198DF643163DFEBE7C86792 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1F1CB3433FC658239835D9792C16F736 /* Debug */ = {
+		370FCA289EB147541CFBA7E11F670F2C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */;
+			baseConfigurationReference = E8BABAAD0536E58255E5333A3AA4E5A1 /* APMAlertController.xcconfig */;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/APMAlertController";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/APMAlertController/ResourceBundle-APMAlertController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = APMAlertController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		31AF93056238BD9ECFD3F8F517E50613 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = APMAlertController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
-		400CD8B42586BBC62D8988347B02479D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/APMAlertController/APMAlertController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/APMAlertController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/APMAlertController/APMAlertController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = APMAlertController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8D7B189EF8B9517D6C2E8B2E52C1E8B9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/APMAlertController/APMAlertController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/APMAlertController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/APMAlertController/APMAlertController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = APMAlertController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9BE9CFB0573DABC0B554C67F15FA24B3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EDB439956EDD3B973323CD2F35107FE /* Pods-APMAlertController_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_APMAlertController_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
+		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -588,10 +484,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -609,17 +507,52 @@
 			};
 			name = Debug;
 		};
-		A9B93846A5B61C0DBA42FC120C6BA9D1 /* Debug */ = {
+		69B886C29486A18EE34D8DA1AC6C016F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DC91E600D6D3FDD9FC5E912EF563572 /* Pods-APMAlertController_Tests.debug.xcconfig */;
+			baseConfigurationReference = 142F42464CB6622EF2DC2C5E3B9DC85A /* Pods-APMAlertController_Tests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Tests/Pods-APMAlertController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_APMAlertController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7052AD48B4A618B6043F57D34B1F7AA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DC91E600D6D3FDD9FC5E912EF563572 /* Pods-APMAlertController_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -630,7 +563,41 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_APMAlertController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		724AEA85E53C88362D77D0B12433857A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EDB439956EDD3B973323CD2F35107FE /* Pods-APMAlertController_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_APMAlertController_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -640,70 +607,41 @@
 			};
 			name = Debug;
 		};
-		AFDDADC66A7861CFA53981075548BD47 /* Release */ = {
+		93D5C2E43D693B2766130364AE0240DA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 142F42464CB6622EF2DC2C5E3B9DC85A /* Pods-APMAlertController_Tests.release.xcconfig */;
+			baseConfigurationReference = E8BABAAD0536E58255E5333A3AA4E5A1 /* APMAlertController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Tests/Info.plist";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/APMAlertController/APMAlertController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/APMAlertController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Tests/Pods-APMAlertController_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_APMAlertController_Tests;
+				MODULEMAP_FILE = "Target Support Files/APMAlertController/APMAlertController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = APMAlertController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		EFBD55EF8EA5E0D15CCAAA19BEDD2A45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 923C8F0EE4329335A26B58F9B7EAF195 /* Pods-APMAlertController_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_APMAlertController_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
+		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -720,7 +658,10 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -734,50 +675,129 @@
 			};
 			name = Release;
 		};
+		B3146EFE99CA57238E4A2DDE74669D5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8BABAAD0536E58255E5333A3AA4E5A1 /* APMAlertController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/APMAlertController/APMAlertController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/APMAlertController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/APMAlertController/APMAlertController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = APMAlertController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B934FB900CC02B2B9C3BEB4F11576D28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 923C8F0EE4329335A26B58F9B7EAF195 /* Pods-APMAlertController_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_APMAlertController_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ED5884BDA8A2DC0603AE998E487CEDD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8BABAAD0536E58255E5333A3AA4E5A1 /* APMAlertController.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/APMAlertController";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/APMAlertController/ResourceBundle-APMAlertController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = APMAlertController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1A58441F605B52B8465263CEC92DFAC6 /* Build configuration list for PBXNativeTarget "APMAlertController-APMAlertController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED5884BDA8A2DC0603AE998E487CEDD1 /* Debug */,
+				370FCA289EB147541CFBA7E11F670F2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
-				FB45FFD90572718D82AB9092B750F0CA /* Release */,
+				47BEF9D903506B003EA5C2B249729489 /* Debug */,
+				AAF678CED40D3499169D10F63CA0719E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71B6AD7B6239A56ECDE2953D9DC63939 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Tests" */ = {
+		7A75B1BBC59864E9D447EC8238674B52 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9B93846A5B61C0DBA42FC120C6BA9D1 /* Debug */,
-				AFDDADC66A7861CFA53981075548BD47 /* Release */,
+				7052AD48B4A618B6043F57D34B1F7AA8 /* Debug */,
+				69B886C29486A18EE34D8DA1AC6C016F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8D7AF7A7C7C04B5A03F9D60A8DE9F27 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */ = {
+		8CC575ABEAD0288D1CB572EC7C86EDBE /* Build configuration list for PBXNativeTarget "APMAlertController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9BE9CFB0573DABC0B554C67F15FA24B3 /* Debug */,
-				EFBD55EF8EA5E0D15CCAAA19BEDD2A45 /* Release */,
+				93D5C2E43D693B2766130364AE0240DA /* Debug */,
+				B3146EFE99CA57238E4A2DDE74669D5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0E6DF933650788CEEF54AF4CD99C744 /* Build configuration list for PBXNativeTarget "APMAlertController" */ = {
+		AC487A9FBE779E61F38354B5E136A950 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				400CD8B42586BBC62D8988347B02479D /* Debug */,
-				8D7B189EF8B9517D6C2E8B2E52C1E8B9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F4E8329972FB0CEBBA78947BC4678517 /* Build configuration list for PBXNativeTarget "APMAlertController-APMAlertController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F1CB3433FC658239835D9792C16F736 /* Debug */,
-				31AF93056238BD9ECFD3F8F517E50613 /* Release */,
+				724AEA85E53C88362D77D0B12433857A /* Debug */,
+				B934FB900CC02B2B9C3BEB4F11576D28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

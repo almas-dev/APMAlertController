@@ -1,5 +1,5 @@
 PODS:
-  - APMAlertController (0.2.0)
+  - APMAlertController (0.5)
 
 DEPENDENCIES:
   - APMAlertController (from `../`)
@@ -9,6 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  APMAlertController: 6d575e757386113282f94ba2862f879d4b6cc85f
+  APMAlertController: d59bd36f9d3b1f02979bea4c9278a39261055140
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 9671854b9170f88e29fca4b095cd638523ff61d7
+
+COCOAPODS: 1.0.1
