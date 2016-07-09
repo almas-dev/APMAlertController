@@ -12,6 +12,8 @@ import UIKit
 @objc public class APMAlertController: UIViewController {
     private let verticalAlertIndent: CGFloat = 25
 
+    public var buttonTitleColor: UIColor?
+    public var buttonBackgroundColor: UIColor?
     public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
     public var showTitleMessageSeparator: Bool = false
     public var tintColor: UIColor = UIColor.blackColor()
@@ -36,9 +38,13 @@ import UIKit
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
             for (index, value) in buttons.enumerate() {
-                value.setTitleColor(tintColor, forState: .Normal)
-                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState: .Highlighted)
-                value.setTitleColor(tintColor.colorWithAlphaComponent(0.33), forState: .Selected)
+                value.setTitleColor(buttonTitleColor ?? tintColor, forState: .Normal)
+                value.setTitleColor(buttonTitleColor ?? tintColor.colorWithAlphaComponent(0.33), forState: .Highlighted)
+                value.setTitleColor(buttonTitleColor ?? tintColor.colorWithAlphaComponent(0.33), forState: .Selected)
+
+                if let backgroundColor = buttonBackgroundColor {
+                    value.backgroundColor = backgroundColor
+                }
 
                 let top = NSLayoutConstraint(item: value, attribute: .Top, relatedBy: .Equal, toItem: buttonsView, attribute: .Top, multiplier: 1.0, constant: 1)
                 let bottom = NSLayoutConstraint(item: value, attribute: .Bottom, relatedBy: .Equal, toItem: buttonsView, attribute: .Bottom, multiplier: 1.0, constant: 0)
