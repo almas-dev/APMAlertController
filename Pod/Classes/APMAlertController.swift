@@ -14,7 +14,10 @@ import SnapKit
     private let verticalAlertIndent: CGFloat = 25
 
     public var buttonTitleColor: UIColor?
+    public var customButtonFont: UIFont?
     public var buttonBackgroundColor: UIColor?
+    public var customDescriptionFont: UIFont?
+    public var disableImageIconTemplate: Bool = false
     public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
     public var showTitleMessageSeparator: Bool = false
     public var tintColor: UIColor = UIColor.blackColor()
@@ -46,6 +49,7 @@ import SnapKit
                 if let backgroundColor = buttonBackgroundColor {
                     value.backgroundColor = backgroundColor
                 }
+
 
                 let top = NSLayoutConstraint(item: value, attribute: .Top, relatedBy: .Equal, toItem: buttonsView, attribute: .Top, multiplier: 1.0, constant: 1)
                 let bottom = NSLayoutConstraint(item: value, attribute: .Bottom, relatedBy: .Equal, toItem: buttonsView, attribute: .Bottom, multiplier: 1.0, constant: 0)
@@ -135,7 +139,7 @@ import SnapKit
         switch anyTitleObject {
         case let titleImageView as UIImageView:
             titleImageView.contentMode = .ScaleAspectFit
-            titleImageView.image = alertTitleImage?.imageWithRenderingMode(.AlwaysTemplate)
+            titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.imageWithRenderingMode(.AlwaysTemplate)
             titleImageView.alpha = 0.8
             contentView.addSubview(titleImageView)
         case let titleLabel as UILabel:
@@ -155,20 +159,19 @@ import SnapKit
         contentView.addSubview(messageContentView)
 
         if alertMessage != nil || alertAttributedMessage != nil {
-            messageLabel = UILabel()
-        }
+            let messageLabel = UILabel()
 
-        if let messageLabel = self.messageLabel {
-            messageLabel.font = UIFont.systemFontOfSize(16)
+            messageLabel.font = self.customDescriptionFont ?? UIFont.systemFontOfSize(16)
             messageLabel.textAlignment = .Center
             if let alertMessage = self.alertMessage {
                 messageLabel.text = alertMessage
-            }
-            if let alertAttributedMessage = self.alertAttributedMessage {
+            } else if let alertAttributedMessage = self.alertAttributedMessage {
                 messageLabel.attributedText = alertAttributedMessage
             }
             messageLabel.numberOfLines = 0
             messageContentView.addSubview(messageLabel)
+
+            self.messageLabel = messageLabel
         }
     }
 
@@ -261,6 +264,9 @@ import SnapKit
         actions.append(action)
 
         let button = UIButton()
+        if let buttonFont = self.customButtonFont {
+            button.titleLabel?.font = buttonFont
+        }
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.setTitle(action.title, forState: .Normal)
