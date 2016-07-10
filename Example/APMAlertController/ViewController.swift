@@ -273,7 +273,11 @@ class ViewController: UIViewController {
         let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
         alertController.separatorColor = UIColor.whiteColor()
         alertController.buttonTitleColor = UIColor.whiteColor()
+        alertController.customButtonFont = UIFont.systemFontOfSize(30)
+        alertController.customDescriptionFont = UIFont.systemFontOfSize(25)
         alertController.buttonBackgroundColor = UIColor(red: 48 / 255, green: 176 / 255, blue: 214 / 255, alpha: 1)
+        alertController.disableImageIconTemplate = true
+        alertController.tintColor = UIColor.magentaColor()
         let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
             action in
             print("The simple alert cancel action.")
