@@ -15,7 +15,7 @@ before_install:
 #  - brew update
 # - brew install xctool
   - gem install cocoapods # Since Travis is not always on latest version
-# - pod install --project-directory=Example
+  - pod install --project-directory=Example
 script:
   - xctool -workspace Example/APMAlertController.xcworkspace -scheme APMAlertController-Example -sdk iphonesimulator9.3 -destination 'platform=iOS Simulator,name=iPhone 6s' ONLY_ACTIVE_ARCH=NO clean build
 #- set -o pipefail && xcodebuild build -workspace Example/APMAlertController.xcworkspace -scheme APMAlertController-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
