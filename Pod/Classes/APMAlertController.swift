@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import SnapKit
 
 @objc public enum APMAlertControllerStyle: Int {
     case Alert
@@ -21,10 +22,10 @@ import UIKit
 
     let alertView = UIView()
     private let topScrollView = UIScrollView()
-    private var topScrollViewHeightConstraint = NSLayoutConstraint()
+    private var topScrollViewHeightConstraint: Constraint?
     private let contentView = UIView()
     private var anyTitleObject: AnyObject
-    private var topTitleMessageSeparatorConstraint = NSLayoutConstraint()
+    private var topTitleMessageSeparatorConstraint: Constraint?
     private let titleMessageSeparator = UIView()
     private var messageLabel: UILabel?
     private let buttonsView = UIView()
@@ -115,35 +116,29 @@ import UIKit
     }
 
     func configureView() {
-        alertView.translatesAutoresizingMaskIntoConstraints = false
         alertView.backgroundColor = UIColor(white: 1, alpha: 0.95)
         alertView.layer.cornerRadius = 12
         alertView.clipsToBounds = true
         view.addSubview(alertView)
 
-        topScrollView.translatesAutoresizingMaskIntoConstraints = false
         alertView.addSubview(topScrollView)
 
         configureTopScrollView()
 
-        buttonsView.translatesAutoresizingMaskIntoConstraints = false
         buttonsView.backgroundColor = separatorColor
         alertView.addSubview(buttonsView)
     }
 
     func configureTopScrollView() {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         topScrollView.addSubview(contentView)
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
-            titleImageView.translatesAutoresizingMaskIntoConstraints = false
             titleImageView.contentMode = .ScaleAspectFit
             titleImageView.image = alertTitleImage?.imageWithRenderingMode(.AlwaysTemplate)
             titleImageView.alpha = 0.8
             contentView.addSubview(titleImageView)
         case let titleLabel as UILabel:
-            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.font = UIFont.boldSystemFontOfSize(16)
             titleLabel.textAlignment = .Center
             titleLabel.numberOfLines = 0
@@ -153,12 +148,10 @@ import UIKit
             break
         }
 
-        titleMessageSeparator.translatesAutoresizingMaskIntoConstraints = false
         titleMessageSeparator.backgroundColor = separatorColor
         titleMessageSeparator.hidden = true
         contentView.addSubview(titleMessageSeparator)
 
-        messageContentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(messageContentView)
 
         if alertMessage != nil || alertAttributedMessage != nil {
@@ -166,7 +159,6 @@ import UIKit
         }
 
         if let messageLabel = self.messageLabel {
-            messageLabel.translatesAutoresizingMaskIntoConstraints = false
             messageLabel.font = UIFont.systemFontOfSize(16)
             messageLabel.textAlignment = .Center
             if let alertMessage = self.alertMessage {
@@ -181,71 +173,60 @@ import UIKit
     }
 
     func configureLayout() {
-        view.addConstraints([
-                NSLayoutConstraint(item: alertView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: alertView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: alertView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 270),
-                NSLayoutConstraint(item: alertView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: view, attribute: .Height, multiplier: 1.0, constant: -(verticalAlertIndent * 2))
-        ])
+        alertView.snp_makeConstraints {
+            $0.center.equalTo(view)
+            $0.width.equalTo(270)
+            $0.height.lessThanOrEqualTo(view).offset(-(verticalAlertIndent * 2))
+        }
 
-        topScrollViewHeightConstraint = NSLayoutConstraint(item: topScrollView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
-
-        alertView.addConstraints([
-                NSLayoutConstraint(item: topScrollView, attribute: .Top, relatedBy: .Equal, toItem: alertView, attribute: .Top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: topScrollView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: topScrollView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
-                topScrollViewHeightConstraint
-        ])
+        topScrollView.snp_makeConstraints {
+            $0.top.equalTo(alertView)
+            $0.left.equalTo(alertView)
+            $0.right.equalTo(alertView)
+            topScrollViewHeightConstraint = $0.height.equalTo(0).constraint
+        }
 
         configureTopScrollViewLayout()
 
-        alertView.addConstraints([
-                NSLayoutConstraint(item: buttonsView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Left, relatedBy: .Equal, toItem: alertView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Right, relatedBy: .Equal, toItem: alertView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Bottom, relatedBy: .Equal, toItem: alertView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: buttonsView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 45)
-        ])
+        buttonsView.snp_makeConstraints {
+            $0.top.equalTo(topScrollView.snp_bottom)
+            $0.left.equalTo(alertView)
+            $0.right.equalTo(alertView)
+            $0.bottom.equalTo(alertView)
+            $0.height.equalTo(45)
+        }
     }
 
     func configureTopScrollViewLayout() {
-        topScrollView.addConstraints([
-                NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: topScrollView, attribute: .Top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: contentView, attribute: .Left, relatedBy: .Equal, toItem: topScrollView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: contentView, attribute: .Right, relatedBy: .Equal, toItem: topScrollView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: contentView, attribute: .Bottom, relatedBy: .Equal, toItem: topScrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: topScrollView, attribute: .Width, multiplier: 1.0, constant: 0)
-        ])
+        contentView.snp_makeConstraints {
+            $0.edges.equalTo(topScrollView)
+            $0.width.equalTo(topScrollView)
+        }
 
-        contentView.addConstraints([
-                NSLayoutConstraint(item: anyTitleObject, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 20),
-                NSLayoutConstraint(item: anyTitleObject, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 30),
-                NSLayoutConstraint(item: anyTitleObject, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: -30)
-        ])
+        (anyTitleObject as! UIView).snp_makeConstraints {
+            $0.top.equalTo(contentView).offset(20)
+            $0.left.equalTo(contentView).offset(30)
+            $0.right.equalTo(contentView).offset(-30)
+        }
 
-        topTitleMessageSeparatorConstraint = NSLayoutConstraint(item: titleMessageSeparator, attribute: .Top, relatedBy: .Equal, toItem: anyTitleObject, attribute: .Bottom, multiplier: 1.0, constant: 0)
+        titleMessageSeparator.snp_makeConstraints {
+            topTitleMessageSeparatorConstraint = $0.top.equalTo((anyTitleObject as! UIView).snp_bottom).constraint
+            $0.left.equalTo(contentView)
+            $0.right.equalTo(contentView)
+            $0.height.equalTo(1)
+        }
 
-        contentView.addConstraints([
-                topTitleMessageSeparatorConstraint,
-                NSLayoutConstraint(item: titleMessageSeparator, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: titleMessageSeparator, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: titleMessageSeparator, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 1)
-        ])
-
-        contentView.addConstraints([
-                NSLayoutConstraint(item: messageContentView, attribute: .Top, relatedBy: .Equal, toItem: titleMessageSeparator, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: messageContentView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: messageContentView, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: messageContentView, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0)
-        ])
+        messageContentView.snp_makeConstraints {
+            $0.top.equalTo(titleMessageSeparator.snp_bottom)
+            $0.left.equalTo(contentView)
+            $0.right.equalTo(contentView)
+            $0.bottom.equalTo(contentView)
+        }
 
         if let messageLabel = self.messageLabel {
-            messageContentView.addConstraints([
-                    NSLayoutConstraint(item: messageLabel, attribute: .Top, relatedBy: .Equal, toItem: messageContentView, attribute: .Top, multiplier: 1.0, constant: 12),
-                    NSLayoutConstraint(item: messageLabel, attribute: .Left, relatedBy: .Equal, toItem: messageContentView, attribute: .Left, multiplier: 1.0, constant: 30),
-                    NSLayoutConstraint(item: messageLabel, attribute: .Right, relatedBy: .Equal, toItem: messageContentView, attribute: .Right, multiplier: 1.0, constant: -30),
-                    NSLayoutConstraint(item: messageLabel, attribute: .Bottom, relatedBy: .Equal, toItem: messageContentView, attribute: .Bottom, multiplier: 1.0, constant: -16)
-            ])
+            messageLabel.snp_makeConstraints {
+                $0.edges.equalTo(messageContentView).offset(UIEdgeInsetsMake(12, 30, -16, -30))
+            }
         }
     }
 
@@ -255,13 +236,13 @@ import UIKit
         topScrollView.updateConstraintsIfNeeded()
         topScrollView.contentSize = contentView.frame.size
         if view.frame.size.height - verticalAlertIndent * 2 - 45 >= contentView.frame.size.height {
-            topScrollViewHeightConstraint.constant = contentView.frame.size.height
+            topScrollViewHeightConstraint?.updateOffset(contentView.frame.size.height)
         } else {
-            topScrollViewHeightConstraint.constant = view.frame.size.height - verticalAlertIndent * 2 - 45
+            topScrollViewHeightConstraint?.updateOffset(view.frame.size.height - verticalAlertIndent * 2 - 45)
         }
 
         titleMessageSeparator.hidden = !showTitleMessageSeparator
-        topTitleMessageSeparatorConstraint.constant = showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0
+        topTitleMessageSeparatorConstraint?.updateOffset(showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
