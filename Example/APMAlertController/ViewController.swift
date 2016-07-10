@@ -8,17 +8,17 @@ import APMAlertController
 
 class ViewController: UIViewController {
     let tableView = UITableView()
-    private static let cellIdentifier = "Cell"
     let sectionsArray = ["System", "Custom Alert", "Custom ActionSheet"]
     let titlesArray = [
             ["System Alert", "System ActionSheet"],
             [
                     "Alert Text Title",
-                    "Alert Text Title Colored Buttons",
-                    "Alert Icon Title With Tint",
+                    "Alert Text Title Long",
+                    "Alert Image Title With Tint",
                     "Alert Text Title Separator With Tint",
                     "Alert Text Title Attributed Message",
-                    "Alert Text Title View Message"
+                    "Alert Text Title View Message",
+                    "Alert Image Title Colored Button"
             ],
             ["In progress"]
     ]
@@ -31,7 +31,8 @@ class ViewController: UIViewController {
                         alertImageTitleWithTint,
                         alertTextTitleSeparatorWithTint,
                         alertTextTitleAttributedMessage,
-                        alertTextTitleViewMessage
+                        alertTextTitleViewMessage,
+                        alertImageTitleColoredButton
                 ],
                 [systemActionSheet]
         ]
@@ -49,7 +50,7 @@ class ViewController: UIViewController {
         tableView.rowHeight = 44.0
         tableView.tableFooterView = UIView()
         view.addSubview(tableView)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: self.dynamicType.cellIdentifier)
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
         view.addConstraints([
                 NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: tableView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -65,7 +66,8 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
-    // System Alert
+    // MARK: - System Alert
+
     func systemAlert(indexPath: NSIndexPath) {
         let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
         let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
@@ -116,7 +118,8 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
 
-    // Custom Alert
+    // MARK: - Custom Alert
+
     func alertTextTitle(indexPath: NSIndexPath) {
         let title = titlesArray[indexPath.section][indexPath.row]
         let message = "This is message. One, Two. Message."
@@ -263,6 +266,27 @@ class ViewController: UIViewController {
 
         presentViewController(alertController, animated: true, completion: nil)
     }
+
+    func alertImageTitleColoredButton(indexPath: NSIndexPath) {
+        let message = "This is message. One, Two. Message. Long message. Test."
+
+        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
+        alertController.separatorColor = UIColor.whiteColor()
+        alertController.buttonTitleColor = UIColor.whiteColor()
+        alertController.buttonBackgroundColor = UIColor(red: 48 / 255, green: 176 / 255, blue: 214 / 255, alpha: 1)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+            action in
+            print("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
+        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+            action in
+            print("The simple alert test action.")
+        }
+        alertController.addAction(testAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
 }
 
 extension ViewController: UITableViewDelegate {
@@ -288,7 +312,7 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.dynamicType.cellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
         cell.textLabel?.text = titlesArray[indexPath.section][indexPath.row]
         return cell
     }

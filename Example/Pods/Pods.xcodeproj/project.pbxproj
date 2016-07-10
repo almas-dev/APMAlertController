@@ -7,73 +7,140 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		070EF9DB9DFA72DDE7BE6C4A3A3959A1 /* APMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144AE1DE98E668E2B47F580C0E4E15F /* APMAlertAction.swift */; };
-		0C99C02C6F558351555B793CA952BFF9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		309C8C398AC7D407C7091D0C44CDD336 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		341FD13945A7BC648922ED14F6F9A7C5 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2BE9A07CDC874F6E85F6B97E6FB781 /* APMAlertAnimation.swift */; };
-		4D0A914463B8806E32889D1A936AA067 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		6DF26F7C49546C0C13132DD4011C0C90 /* APMAlertController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFD94A989AD24F3DF5BF155F91527 /* APMAlertController-dummy.m */; };
-		710109656AED58387D54AB143AC2B1BE /* APMAlertController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF26C3FFC1A17E2AE108201979B3F584 /* APMAlertController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7ABD7F47005DE3D8995F90BA5CD32427 /* Pods-APMAlertController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151108685CBC9492214E2C357FE9E55 /* Pods-APMAlertController_Example-dummy.m */; };
+		0B36E6E6BA73501A7D3D3B462260B947 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB846E6A499B21514C1E298F56DE3B /* ConstraintAttributes.swift */; };
+		1A0C1BA0479C67652B8F78889D99C8E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1D10525428EE42117D40A1A64556D6 /* Foundation.framework */; };
+		1C2771FA5C5B76BFFF2E938D09208C86 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA1CFBED61FB63BBC905CD3AFEE402C /* SnapKit.swift */; };
+		269C6E109D1FA085C7A901801C9D4BA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1D10525428EE42117D40A1A64556D6 /* Foundation.framework */; };
+		3C408FD48C90DC191203AB59F3DE3C13 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 079E5EE3CDB090004C84E658BC83AEB7 /* SnapKit-dummy.m */; };
+		3D653219BC563ADABA04CBCACE85A740 /* APMAlertController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFD94A989AD24F3DF5BF155F91527 /* APMAlertController-dummy.m */; };
+		46F5F179DA5005563E5084DEFADFF9AF /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A877C5C14A8B495ECAB69BE839FFA44 /* ViewController+SnapKit.swift */; };
+		4AB3ED0B8DF0C51B95ADF22F691A6073 /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB547CA6D4862CCE70A4B51F1EABAE /* View+SnapKit.swift */; };
+		4BF122E00A13233A9F6B4E9133B34526 /* Pods-APMAlertController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 463D3BBB62C95A5BD5630ACBBA3F6F95 /* Pods-APMAlertController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D0A914463B8806E32889D1A936AA067 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1D10525428EE42117D40A1A64556D6 /* Foundation.framework */; };
+		62FAF6861859349A4F1DA44F29B562B8 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17ED37A4D4337C9AC445D07BA9E09051 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		665E9E64DF02031E7D8A6F3D4668682E /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DD83C2BF9A16815558CBFACD79C938 /* ConstraintRelation.swift */; };
+		6EC1CAB5AE3BCF88A7CE22F9BA0DF03D /* Pods-APMAlertController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151108685CBC9492214E2C357FE9E55 /* Pods-APMAlertController_Example-dummy.m */; };
+		70A1A53FCADD78223C819165C1513022 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42E6B36692CB79785C933E25719FA6F /* SnapKit.framework */; };
+		794D23440085404D916FFB256F10EBCB /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869919EAC3B1E5EF05B0107B595C13C /* LayoutConstraint.swift */; };
 		7C377263CEFF78E1B95DCE66804FA536 /* Pods-APMAlertController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D0E49EF410A65F4C41B5E91F974D0AC /* Pods-APMAlertController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		813CBEF75539FA3C2CFFBDC8C1656AFB /* Pods-APMAlertController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 463D3BBB62C95A5BD5630ACBBA3F6F95 /* Pods-APMAlertController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7DC5E3019FFECFB4C18797B9E0F427AA /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3061A45F7542E986BCB23EBBD8AD4A13 /* ConstraintDescription.swift */; };
+		8E7F813071DF8FF8AC7E8E092C82C7F3 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C496DA4CA3F61B29BB063F74876C70 /* EdgeInsets.swift */; };
 		9F88E280EF291E1F5F4E815E3012CA78 /* Pods-APMAlertController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A055904DC2873FDC093737D8FEB1F1 /* Pods-APMAlertController_Tests-dummy.m */; };
-		F1F0A299E1A4CEE69D8C0364F4467016 /* APMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01CFB901F7F16A81EBB7CE02103E4D4 /* APMAlertController.swift */; };
+		A06099750EE4E3D25B92D0388672785A /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03EFFB295211A70F01FAD48D41DF5F3 /* ConstraintMaker.swift */; };
+		B17F06A5655440C3D217D6AFB323B910 /* APMAlertController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF26C3FFC1A17E2AE108201979B3F584 /* APMAlertController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B960326D39EDA4350098CF478A1A41D2 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ED5648C0C88C2BBB8B1737D3C811DF /* ConstraintItem.swift */; };
+		C46B4A37EF10BA365432ED0D2A7D1AB7 /* APMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01CFB901F7F16A81EBB7CE02103E4D4 /* APMAlertController.swift */; };
+		C8E615607A56848069BD43CF803528EF /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C745F502C842A223464EC61885F02BB /* Constraint.swift */; };
+		CC3BDE90A8756A205DE92360DD36F873 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2BE9A07CDC874F6E85F6B97E6FB781 /* APMAlertAnimation.swift */; };
+		D06ED65AF212D2A0F7E0A509907E73CE /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415D45FAC3D162C8D3F9CFE592F79E42 /* Debugging.swift */; };
+		D344B70CFF84263E0E54FDBA34147E7B /* APMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144AE1DE98E668E2B47F580C0E4E15F /* APMAlertAction.swift */; };
+		F8E6124324B4D253B42E7E7E98C43709 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1D10525428EE42117D40A1A64556D6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F108EAC83A14B224331042F7DBE1E21B /* PBXContainerItemProxy */ = {
+		3A9598ABDC33E6EFEEFF8C7141634620 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DD7ADDF4643494CD2A4A2BC3D90F4F90;
+			remoteGlobalIDString = 822483D00639CF268B6BC1AC4B9C706B;
 			remoteInfo = APMAlertController;
+		};
+		9486FC33D4B8B07C8D7979EA2E0AD790 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 261C80D4151553F9E4ABBFD3A271F1F5;
+			remoteInfo = SnapKit;
+		};
+		9A73F5CB4497B0A1EF591648E1A836C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 261C80D4151553F9E4ABBFD3A271F1F5;
+			remoteInfo = SnapKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0144AE1DE98E668E2B47F580C0E4E15F /* APMAlertAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APMAlertAction.swift; sourceTree = "<group>"; };
 		0559588EB9D44250503FE322C856D5AA /* Pods-APMAlertController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-APMAlertController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		0870EB1205337D52496364B4AE98BEBD /* APMAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APMAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		079E5EE3CDB090004C84E658BC83AEB7 /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
+		141D9C83F679347DCE00E4A26414761C /* Pods_APMAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		142F42464CB6622EF2DC2C5E3B9DC85A /* Pods-APMAlertController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		15A055904DC2873FDC093737D8FEB1F1 /* Pods-APMAlertController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-APMAlertController_Tests-dummy.m"; sourceTree = "<group>"; };
-		16132C52865DD3C4DAB548A0ACE5159B /* Pods_APMAlertController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1799DBF50EA6943B5A19AD31AA34597F /* Pods-APMAlertController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Example-frameworks.sh"; sourceTree = "<group>"; };
+		17ED37A4D4337C9AC445D07BA9E09051 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
+		1A877C5C14A8B495ECAB69BE839FFA44 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ViewController+SnapKit.swift"; path = "Source/ViewController+SnapKit.swift"; sourceTree = "<group>"; };
 		1DC91E600D6D3FDD9FC5E912EF563572 /* Pods-APMAlertController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1EA1CFBED61FB63BBC905CD3AFEE402C /* SnapKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SnapKit.swift; path = Source/SnapKit.swift; sourceTree = "<group>"; };
+		3061A45F7542E986BCB23EBBD8AD4A13 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		3EDB439956EDD3B973323CD2F35107FE /* Pods-APMAlertController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		415D45FAC3D162C8D3F9CFE592F79E42 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
 		42602C990B871664C33E121C0ECD71A7 /* Pods-APMAlertController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-APMAlertController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		463D3BBB62C95A5BD5630ACBBA3F6F95 /* Pods-APMAlertController_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-APMAlertController_Example-umbrella.h"; sourceTree = "<group>"; };
+		495929FB6F57FC07CF2233838AD92579 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
+		4D1D10525428EE42117D40A1A64556D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		511D820131551FDCAD312EE1FA2DF5B9 /* APMAlertController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APMAlertController-prefix.pch"; sourceTree = "<group>"; };
+		55BB547CA6D4862CCE70A4B51F1EABAE /* View+SnapKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "View+SnapKit.swift"; path = "Source/View+SnapKit.swift"; sourceTree = "<group>"; };
+		56B1FCA085C2AC4CDCEB52E3588F26EB /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		5DAE38A01AE7AB47CE52F7EC4F313FCA /* Pods-APMAlertController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-APMAlertController_Example.modulemap"; sourceTree = "<group>"; };
 		6896C499089C91C17EA6E5C5C9B1F688 /* Pods-APMAlertController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-APMAlertController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		68E49011A831D3196A451C533F9EC69A /* APMAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APMAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2BE9A07CDC874F6E85F6B97E6FB781 /* APMAlertAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APMAlertAnimation.swift; sourceTree = "<group>"; };
 		712B68D695D152336F38CE0E56DAD3F3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		859400BA5970D953CE655257CB0D7775 /* Pods-APMAlertController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-APMAlertController_Tests.modulemap"; sourceTree = "<group>"; };
-		8C6F26F92018DC70C457FFDC0C225228 /* Pods_APMAlertController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CEBA58D2AA27C43DE1C9128D68E1110 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D8599FCFCA98DB19D3DE0AD81D9CD6 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		9151108685CBC9492214E2C357FE9E55 /* Pods-APMAlertController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-APMAlertController_Example-dummy.m"; sourceTree = "<group>"; };
 		923C8F0EE4329335A26B58F9B7EAF195 /* Pods-APMAlertController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-APMAlertController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		92DD83C2BF9A16815558CBFACD79C938 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		985F4E1E898BB7D349752A708E352E89 /* Pods_APMAlertController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APMAlertController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C745F502C842A223464EC61885F02BB /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		9D0E49EF410A65F4C41B5E91F974D0AC /* Pods-APMAlertController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-APMAlertController_Tests-umbrella.h"; sourceTree = "<group>"; };
+		A03EFFB295211A70F01FAD48D41DF5F3 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
+		A7C496DA4CA3F61B29BB063F74876C70 /* EdgeInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EdgeInsets.swift; path = Source/EdgeInsets.swift; sourceTree = "<group>"; };
+		A804ABA92EC1DA52844E140917F08DF4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF26C3FFC1A17E2AE108201979B3F584 /* APMAlertController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APMAlertController-umbrella.h"; sourceTree = "<group>"; };
-		B3EB6445629F059E0C7436436CCD6ECE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3EB6445629F059E0C7436436CCD6ECE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B869919EAC3B1E5EF05B0107B595C13C /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
 		BA92A41BF234E5D46AF13BB2FD0A6D72 /* APMAlertController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = APMAlertController.modulemap; sourceTree = "<group>"; };
 		BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = APMAlertController.xcconfig; sourceTree = "<group>"; };
 		BE0AFD94A989AD24F3DF5BF155F91527 /* APMAlertController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "APMAlertController-dummy.m"; sourceTree = "<group>"; };
 		C01CFB901F7F16A81EBB7CE02103E4D4 /* APMAlertController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APMAlertController.swift; sourceTree = "<group>"; };
+		C42E6B36692CB79785C933E25719FA6F /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9009EB84AD9B1C2EBFC8B09F497794 /* Pods-APMAlertController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DA790195AF3E9F13EE992B222D5248E2 /* Pods-APMAlertController_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Example-resources.sh"; sourceTree = "<group>"; };
 		DADEB737A39B8180D11816E452DA857C /* Pods-APMAlertController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-APMAlertController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		DEFB846E6A499B21514C1E298F56DE3B /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
+		E7ED5648C0C88C2BBB8B1737D3C811DF /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		E9D36234988ACA569D012E1D7834848F /* Pods-APMAlertController_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-APMAlertController_Tests-resources.sh"; sourceTree = "<group>"; };
 		F1050F5B02846790A1ABA9AD80696608 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		43F10971463B5C52FDB62BB6AA591580 /* Frameworks */ = {
+		064DC3DFBF44BD46216C00D4F6D0DDAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				309C8C398AC7D407C7091D0C44CDD336 /* Foundation.framework in Frameworks */,
+				1A0C1BA0479C67652B8F78889D99C8E6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CA3EF4E35874C4FD0E1F3F963B52F66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				269C6E109D1FA085C7A901801C9D4BA3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70FD5C2BC40A38FA9E75EF12D3E7F80B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8E6124324B4D253B42E7E7E98C43709 /* Foundation.framework in Frameworks */,
+				70A1A53FCADD78223C819165C1513022 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,23 +152,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A64DB5292D179265162912F6D792E24F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0C99C02C6F558351555B793CA952BFF9 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+		2440D2F0DE05BA4C51023CFF723CBC72 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+				68E49011A831D3196A451C533F9EC69A /* APMAlertController.framework */,
+				985F4E1E898BB7D349752A708E352E89 /* Pods_APMAlertController_Example.framework */,
+				141D9C83F679347DCE00E4A26414761C /* Pods_APMAlertController_Tests.framework */,
+				8CEBA58D2AA27C43DE1C9128D68E1110 /* SnapKit.framework */,
 			);
-			name = iOS;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A30ADABC44CCA0D9BC282B82A6F71FB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A804ABA92EC1DA52844E140917F08DF4 /* Info.plist */,
+				56B1FCA085C2AC4CDCEB52E3588F26EB /* SnapKit.modulemap */,
+				90D8599FCFCA98DB19D3DE0AD81D9CD6 /* SnapKit.xcconfig */,
+				079E5EE3CDB090004C84E658BC83AEB7 /* SnapKit-dummy.m */,
+				495929FB6F57FC07CF2233838AD92579 /* SnapKit-prefix.pch */,
+				17ED37A4D4337C9AC445D07BA9E09051 /* SnapKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SnapKit";
 			sourceTree = "<group>";
 		};
 		7B50FDC6D3B88E971BA51879DCC6153A /* Pod */ = {
@@ -112,25 +188,24 @@
 			path = Pod;
 			sourceTree = "<group>";
 		};
+		7BD5C0E670D2006F5A5363B366998FC5 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4D1D10525428EE42117D40A1A64556D6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				E64D8BC32C61D693EA776D0EAD3F90DD /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				86E91CC68D4234789D90D15B7BAF27FE /* Products */,
+				D8B25C6DF01BE2C3F2FA6A25AEE6417A /* Frameworks */,
+				AAD880A40C1D678CA44C4575218EDE0E /* Pods */,
+				2440D2F0DE05BA4C51023CFF723CBC72 /* Products */,
 				D79C3A6A3BFC23EC8A4E8B0B3B2AF545 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		86E91CC68D4234789D90D15B7BAF27FE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0870EB1205337D52496364B4AE98BEBD /* APMAlertController.framework */,
-				8C6F26F92018DC70C457FFDC0C225228 /* Pods_APMAlertController_Example.framework */,
-				16132C52865DD3C4DAB548A0ACE5159B /* Pods_APMAlertController_Tests.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		99F873082F0E231AAC3F9DAE32D33605 /* APMAlertController */ = {
@@ -153,6 +228,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		AAD880A40C1D678CA44C4575218EDE0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3254E0B2B4708A89CF556DF239CDBA9 /* SnapKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B2980BB8CD98E5B1F4DCEFBEE4A72DB2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +248,26 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/APMAlertController";
+			sourceTree = "<group>";
+		};
+		B3254E0B2B4708A89CF556DF239CDBA9 /* SnapKit */ = {
+			isa = PBXGroup;
+			children = (
+				9C745F502C842A223464EC61885F02BB /* Constraint.swift */,
+				DEFB846E6A499B21514C1E298F56DE3B /* ConstraintAttributes.swift */,
+				3061A45F7542E986BCB23EBBD8AD4A13 /* ConstraintDescription.swift */,
+				E7ED5648C0C88C2BBB8B1737D3C811DF /* ConstraintItem.swift */,
+				A03EFFB295211A70F01FAD48D41DF5F3 /* ConstraintMaker.swift */,
+				92DD83C2BF9A16815558CBFACD79C938 /* ConstraintRelation.swift */,
+				415D45FAC3D162C8D3F9CFE592F79E42 /* Debugging.swift */,
+				A7C496DA4CA3F61B29BB063F74876C70 /* EdgeInsets.swift */,
+				B869919EAC3B1E5EF05B0107B595C13C /* LayoutConstraint.swift */,
+				1EA1CFBED61FB63BBC905CD3AFEE402C /* SnapKit.swift */,
+				55BB547CA6D4862CCE70A4B51F1EABAE /* View+SnapKit.swift */,
+				1A877C5C14A8B495ECAB69BE839FFA44 /* ViewController+SnapKit.swift */,
+				7A30ADABC44CCA0D9BC282B82A6F71FB /* Support Files */,
+			);
+			path = SnapKit;
 			sourceTree = "<group>";
 		};
 		B35D2EF8EF2BAF1A50E28B2BAAB9084B /* Pods-APMAlertController_Example */ = {
@@ -183,14 +286,6 @@
 			);
 			name = "Pods-APMAlertController_Example";
 			path = "Target Support Files/Pods-APMAlertController_Example";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CBAD1BE5B34A43EFD5CA5EC95300C11F /* Pods-APMAlertController_Tests */ = {
@@ -220,6 +315,15 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		D8B25C6DF01BE2C3F2FA6A25AEE6417A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C42E6B36692CB79785C933E25719FA6F /* SnapKit.framework */,
+				7BD5C0E670D2006F5A5363B366998FC5 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E64D8BC32C61D693EA776D0EAD3F90DD /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,19 +335,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		06ADA5DCF84FF2082E293F6790201FED /* Headers */ = {
+		439C5B8D1368A1273A8AC1B469E520A6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				813CBEF75539FA3C2CFFBDC8C1656AFB /* Pods-APMAlertController_Example-umbrella.h in Headers */,
+				4BF122E00A13233A9F6B4E9133B34526 /* Pods-APMAlertController_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07525D80CF74531036C545A47738B51B /* Headers */ = {
+		5E361370D8A5E18B040A194698B719D7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				710109656AED58387D54AB143AC2B1BE /* APMAlertController-umbrella.h in Headers */,
+				B17F06A5655440C3D217D6AFB323B910 /* APMAlertController-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60DB0F8578B7CDBFEA96BF56E90A3801 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62FAF6861859349A4F1DA44F29B562B8 /* SnapKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,42 +384,61 @@
 			);
 			name = "Pods-APMAlertController_Tests";
 			productName = "Pods-APMAlertController_Tests";
-			productReference = 16132C52865DD3C4DAB548A0ACE5159B /* Pods_APMAlertController_Tests.framework */;
+			productReference = 141D9C83F679347DCE00E4A26414761C /* Pods_APMAlertController_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2C0C695962561DCCB4C9BF11D5DD9C30 /* Pods-APMAlertController_Example */ = {
+		1A164E3324E4EE63CEA920A70E2612F5 /* Pods-APMAlertController_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AC487A9FBE779E61F38354B5E136A950 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */;
+			buildConfigurationList = 5B81934DF56E4B964A22C8453A830625 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */;
 			buildPhases = (
-				9AAC3EDC13E4DED2B27534625D951A16 /* Sources */,
-				A64DB5292D179265162912F6D792E24F /* Frameworks */,
-				06ADA5DCF84FF2082E293F6790201FED /* Headers */,
+				DFB64B2B95785D45DEDF126BF82726E4 /* Sources */,
+				064DC3DFBF44BD46216C00D4F6D0DDAE /* Frameworks */,
+				439C5B8D1368A1273A8AC1B469E520A6 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				14B26057685C34EC4E50DB52128B9E00 /* PBXTargetDependency */,
+				9642545923BE29AEAD500108B9703130 /* PBXTargetDependency */,
+				107B767712F6C5F9E27BABDB8380E9CF /* PBXTargetDependency */,
 			);
 			name = "Pods-APMAlertController_Example";
 			productName = "Pods-APMAlertController_Example";
-			productReference = 8C6F26F92018DC70C457FFDC0C225228 /* Pods_APMAlertController_Example.framework */;
+			productReference = 985F4E1E898BB7D349752A708E352E89 /* Pods_APMAlertController_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DD7ADDF4643494CD2A4A2BC3D90F4F90 /* APMAlertController */ = {
+		261C80D4151553F9E4ABBFD3A271F1F5 /* SnapKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2FCEE8C50A35FEBCAD05B6E475B1F81 /* Build configuration list for PBXNativeTarget "APMAlertController" */;
+			buildConfigurationList = 6ACB4BC9FCA9AC5235878C2C91A30889 /* Build configuration list for PBXNativeTarget "SnapKit" */;
 			buildPhases = (
-				FC609AA6DEE96AEB37CC653C0FC6EE3B /* Sources */,
-				43F10971463B5C52FDB62BB6AA591580 /* Frameworks */,
-				07525D80CF74531036C545A47738B51B /* Headers */,
+				E62E93FD800E8B93520AB01249954407 /* Sources */,
+				1CA3EF4E35874C4FD0E1F3F963B52F66 /* Frameworks */,
+				60DB0F8578B7CDBFEA96BF56E90A3801 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = SnapKit;
+			productName = SnapKit;
+			productReference = 8CEBA58D2AA27C43DE1C9128D68E1110 /* SnapKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		822483D00639CF268B6BC1AC4B9C706B /* APMAlertController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2858A9C1BE3DED61510A7255A2A3AFFE /* Build configuration list for PBXNativeTarget "APMAlertController" */;
+			buildPhases = (
+				4D37A918249DE7D6EE6889DE422DDD34 /* Sources */,
+				70FD5C2BC40A38FA9E75EF12D3E7F80B /* Frameworks */,
+				5E361370D8A5E18B040A194698B719D7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DF4A7A4D87DA8FDB7E41C57FA6E4592 /* PBXTargetDependency */,
+			);
 			name = APMAlertController;
 			productName = APMAlertController;
-			productReference = 0870EB1205337D52496364B4AE98BEBD /* APMAlertController.framework */;
+			productReference = 68E49011A831D3196A451C533F9EC69A /* APMAlertController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -327,13 +458,14 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 86E91CC68D4234789D90D15B7BAF27FE /* Products */;
+			productRefGroup = 2440D2F0DE05BA4C51023CFF723CBC72 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DD7ADDF4643494CD2A4A2BC3D90F4F90 /* APMAlertController */,
-				2C0C695962561DCCB4C9BF11D5DD9C30 /* Pods-APMAlertController_Example */,
+				822483D00639CF268B6BC1AC4B9C706B /* APMAlertController */,
+				1A164E3324E4EE63CEA920A70E2612F5 /* Pods-APMAlertController_Example */,
 				176CAAF4D5F1D09DB232BF2C95D480AA /* Pods-APMAlertController_Tests */,
+				261C80D4151553F9E4ABBFD3A271F1F5 /* SnapKit */,
 			);
 		};
 /* End PBXProject section */
@@ -347,44 +479,135 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9AAC3EDC13E4DED2B27534625D951A16 /* Sources */ = {
+		4D37A918249DE7D6EE6889DE422DDD34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ABD7F47005DE3D8995F90BA5CD32427 /* Pods-APMAlertController_Example-dummy.m in Sources */,
+				D344B70CFF84263E0E54FDBA34147E7B /* APMAlertAction.swift in Sources */,
+				CC3BDE90A8756A205DE92360DD36F873 /* APMAlertAnimation.swift in Sources */,
+				3D653219BC563ADABA04CBCACE85A740 /* APMAlertController-dummy.m in Sources */,
+				C46B4A37EF10BA365432ED0D2A7D1AB7 /* APMAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC609AA6DEE96AEB37CC653C0FC6EE3B /* Sources */ = {
+		DFB64B2B95785D45DEDF126BF82726E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				070EF9DB9DFA72DDE7BE6C4A3A3959A1 /* APMAlertAction.swift in Sources */,
-				341FD13945A7BC648922ED14F6F9A7C5 /* APMAlertAnimation.swift in Sources */,
-				6DF26F7C49546C0C13132DD4011C0C90 /* APMAlertController-dummy.m in Sources */,
-				F1F0A299E1A4CEE69D8C0364F4467016 /* APMAlertController.swift in Sources */,
+				6EC1CAB5AE3BCF88A7CE22F9BA0DF03D /* Pods-APMAlertController_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E62E93FD800E8B93520AB01249954407 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8E615607A56848069BD43CF803528EF /* Constraint.swift in Sources */,
+				0B36E6E6BA73501A7D3D3B462260B947 /* ConstraintAttributes.swift in Sources */,
+				7DC5E3019FFECFB4C18797B9E0F427AA /* ConstraintDescription.swift in Sources */,
+				B960326D39EDA4350098CF478A1A41D2 /* ConstraintItem.swift in Sources */,
+				A06099750EE4E3D25B92D0388672785A /* ConstraintMaker.swift in Sources */,
+				665E9E64DF02031E7D8A6F3D4668682E /* ConstraintRelation.swift in Sources */,
+				D06ED65AF212D2A0F7E0A509907E73CE /* Debugging.swift in Sources */,
+				8E7F813071DF8FF8AC7E8E092C82C7F3 /* EdgeInsets.swift in Sources */,
+				794D23440085404D916FFB256F10EBCB /* LayoutConstraint.swift in Sources */,
+				3C408FD48C90DC191203AB59F3DE3C13 /* SnapKit-dummy.m in Sources */,
+				1C2771FA5C5B76BFFF2E938D09208C86 /* SnapKit.swift in Sources */,
+				4AB3ED0B8DF0C51B95ADF22F691A6073 /* View+SnapKit.swift in Sources */,
+				46F5F179DA5005563E5084DEFADFF9AF /* ViewController+SnapKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		14B26057685C34EC4E50DB52128B9E00 /* PBXTargetDependency */ = {
+		107B767712F6C5F9E27BABDB8380E9CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SnapKit;
+			target = 261C80D4151553F9E4ABBFD3A271F1F5 /* SnapKit */;
+			targetProxy = 9A73F5CB4497B0A1EF591648E1A836C1 /* PBXContainerItemProxy */;
+		};
+		9642545923BE29AEAD500108B9703130 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = APMAlertController;
-			target = DD7ADDF4643494CD2A4A2BC3D90F4F90 /* APMAlertController */;
-			targetProxy = F108EAC83A14B224331042F7DBE1E21B /* PBXContainerItemProxy */;
+			target = 822483D00639CF268B6BC1AC4B9C706B /* APMAlertController */;
+			targetProxy = 3A9598ABDC33E6EFEEFF8C7141634620 /* PBXContainerItemProxy */;
+		};
+		9DF4A7A4D87DA8FDB7E41C57FA6E4592 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SnapKit;
+			target = 261C80D4151553F9E4ABBFD3A271F1F5 /* SnapKit */;
+			targetProxy = 9486FC33D4B8B07C8D7979EA2E0AD790 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		42555BA56815D9B6AA0A80818CEE2B7D /* Release */ = {
+		03B240D233C734527F2A13F7CB252A87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90D8599FCFCA98DB19D3DE0AD81D9CD6 /* SnapKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SnapKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0D7861536179A0E401376B2D631CB5BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90D8599FCFCA98DB19D3DE0AD81D9CD6 /* SnapKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SnapKit/SnapKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SnapKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SnapKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0EE59B01CC5D3A7AD00A3854DF6C4E56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -397,15 +620,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/APMAlertController/APMAlertController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = APMAlertController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -449,6 +673,39 @@
 			};
 			name = Debug;
 		};
+		59BA917BB1DDA2697F714D42D3282A01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 923C8F0EE4329335A26B58F9B7EAF195 /* Pods-APMAlertController_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_APMAlertController_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		69B886C29486A18EE34D8DA1AC6C016F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 142F42464CB6622EF2DC2C5E3B9DC85A /* Pods-APMAlertController_Tests.release.xcconfig */;
@@ -481,6 +738,40 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		6E1B655EFEBA18C0BF2A7CC08185E27D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EDB439956EDD3B973323CD2F35107FE /* Pods-APMAlertController_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_APMAlertController_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		7052AD48B4A618B6043F57D34B1F7AA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -515,39 +806,34 @@
 			};
 			name = Debug;
 		};
-		724AEA85E53C88362D77D0B12433857A /* Debug */ = {
+		7DC44C1BD2A6B746CD3D0CB40438330A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EDB439956EDD3B973323CD2F35107FE /* Pods-APMAlertController_Example.debug.xcconfig */;
+			baseConfigurationReference = BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/APMAlertController/APMAlertController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/APMAlertController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_APMAlertController_Example;
+				MODULEMAP_FILE = "Target Support Files/APMAlertController/APMAlertController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = APMAlertController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -587,72 +873,18 @@
 			};
 			name = Release;
 		};
-		B934FB900CC02B2B9C3BEB4F11576D28 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 923C8F0EE4329335A26B58F9B7EAF195 /* Pods-APMAlertController_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-APMAlertController_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_APMAlertController_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EE661D63305ADD09730998F12B34B563 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB70CFD9FD5B7217F4C46AA6D597DE2B /* APMAlertController.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/APMAlertController/APMAlertController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/APMAlertController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/APMAlertController/APMAlertController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = APMAlertController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2858A9C1BE3DED61510A7255A2A3AFFE /* Build configuration list for PBXNativeTarget "APMAlertController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EE59B01CC5D3A7AD00A3854DF6C4E56 /* Debug */,
+				7DC44C1BD2A6B746CD3D0CB40438330A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -662,29 +894,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5B81934DF56E4B964A22C8453A830625 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E1B655EFEBA18C0BF2A7CC08185E27D /* Debug */,
+				59BA917BB1DDA2697F714D42D3282A01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ACB4BC9FCA9AC5235878C2C91A30889 /* Build configuration list for PBXNativeTarget "SnapKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D7861536179A0E401376B2D631CB5BA /* Debug */,
+				03B240D233C734527F2A13F7CB252A87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7A75B1BBC59864E9D447EC8238674B52 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7052AD48B4A618B6043F57D34B1F7AA8 /* Debug */,
 				69B886C29486A18EE34D8DA1AC6C016F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A2FCEE8C50A35FEBCAD05B6E475B1F81 /* Build configuration list for PBXNativeTarget "APMAlertController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EE661D63305ADD09730998F12B34B563 /* Debug */,
-				42555BA56815D9B6AA0A80818CEE2B7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AC487A9FBE779E61F38354B5E136A950 /* Build configuration list for PBXNativeTarget "Pods-APMAlertController_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				724AEA85E53C88362D77D0B12433857A /* Debug */,
-				B934FB900CC02B2B9C3BEB4F11576D28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
