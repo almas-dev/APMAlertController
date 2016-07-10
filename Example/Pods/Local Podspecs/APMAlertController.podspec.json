@@ -1,6 +1,6 @@
 {
   "name": "APMAlertController",
-  "version": "0.5",
+  "version": "0.5.2",
   "summary": "AlertController written in Swift",
   "description": "Light and convenient replacement for UIAlertController with many customization options",
   "homepage": "https://github.com/almas-dev/APMAlertController",
@@ -10,11 +10,16 @@
   },
   "source": {
     "git": "https://github.com/almas-dev/APMAlertController.git",
-    "tag": "0.5"
+    "tag": "0.5.2"
   },
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
-  "source_files": "Pod/Classes/**/*"
+  "source_files": "Pod/Classes/**/*",
+  "dependencies": {
+    "SnapKit": [
+
+    ]
+  }
 }

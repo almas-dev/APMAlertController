@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD7ADDF4643494CD2A4A2BC3D90F4F90"
+               BlueprintIdentifier = "822483D00639CF268B6BC1AC4B9C706B"
                BuildableName = "APMAlertController.framework"
                BlueprintName = "APMAlertController"
                ReferencedContainer = "container:Pods.xcodeproj">
