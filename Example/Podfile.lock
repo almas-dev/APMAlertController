@@ -1,5 +1,5 @@
 PODS:
-  - APMAlertController (0.5.2):
+  - APMAlertController (0.6):
     - SnapKit
   - SnapKit (0.21.1)
 
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  APMAlertController: 644a5dbdc281e3e8c3d2d92198346b29a3e4bc54
+  APMAlertController: 0c78f0f39def44669e960e7c033b22d721d818ae
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
 
 PODFILE CHECKSUM: 9671854b9170f88e29fca4b095cd638523ff61d7

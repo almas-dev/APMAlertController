@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "APMAlertController"
-  s.version          = "0.6"
+  s.version          = "0.6.1"
   s.summary          = "AlertController written in Swift"
 
   # This description is used to generate tags and improve search results.
@@ -31,12 +31,18 @@ Light and convenient replacement for UIAlertController with many customization o
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
   # s.resource_bundles = {
   #   'APMAlertController' => ['Pod/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'SnapKit'
+
+  s.default_subspec = "Core"
+
+  s.subspec "Core" do |ss|
+      ss.source_files = 'Pod/Classes/**/*'
+      ss.dependency 'SnapKit'
+  end
+
 end
