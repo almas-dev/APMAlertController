@@ -11,7 +11,7 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
         self.presenting = presenting
     }
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         if (presenting) {
             return 0.5
         } else {
@@ -19,7 +19,7 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
         }
     }
 
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         if (presenting) {
             presentAnimateTransition(transitionContext)
         } else {
@@ -27,26 +27,26 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
         }
     }
 
-    func presentAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! APMAlertController
-        let containerView = transitionContext.containerView()
+    func presentAnimateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        let alertController = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey) as! APMAlertController
+        let containerView = transitionContext.containerView
 
-        alertController.view.backgroundColor = UIColor.clearColor()
+        alertController.view.backgroundColor = UIColor.clear
         alertController.alertView.alpha = 0.0
-        alertController.alertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
-        containerView!.addSubview(alertController.view)
+        alertController.alertView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        containerView.addSubview(alertController.view)
 
-        UIView.animateWithDuration(0.33,
+        UIView.animate(withDuration: 0.33,
                 animations: {
                     alertController.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
                     alertController.alertView.alpha = 1.0
-                    alertController.alertView.transform = CGAffineTransformMakeScale(1.05, 1.05)
+                    alertController.alertView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
                 },
                 completion: {
                     finished in
-                    UIView.animateWithDuration(0.2,
+                    UIView.animate(withDuration: 0.2,
                             animations: {
-                                alertController.alertView.transform = CGAffineTransformIdentity
+                                alertController.alertView.transform = CGAffineTransform.identity
                             },
                             completion: {
                                 finished in
@@ -57,14 +57,14 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
                 })
     }
 
-    func dismissAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! APMAlertController
+    func dismissAnimateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        let alertController = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey) as! APMAlertController
 
-        UIView.animateWithDuration(0.33,
+        UIView.animate(withDuration: 0.33,
                 animations: {
-                    alertController.view.backgroundColor = UIColor.clearColor()
+                    alertController.view.backgroundColor = UIColor.clear
                     alertController.alertView.alpha = 0.0
-                    alertController.alertView.transform = CGAffineTransformMakeScale(0.9, 0.9)
+                    alertController.alertView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 },
                 completion: {
                     finished in

@@ -6,8 +6,8 @@ import UIKit
 import SnapKit
 
 @objc public enum APMAlertControllerStyle: Int {
-    case Alert
-    case ActionSheet
+    case alert
+    case actionSheet
 }
 
 @objc public class APMAlertController: UIViewController {
@@ -20,7 +20,7 @@ import SnapKit
     public var disableImageIconTemplate: Bool = false
     public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
     public var showTitleMessageSeparator: Bool = false
-    public var tintColor: UIColor = UIColor.blackColor()
+    public var tintColor: UIColor = UIColor.black
     public let messageContentView: UIView = UIView()
 
     let alertView = UIView()
@@ -36,28 +36,28 @@ import SnapKit
     private var alertTitle: String?
     private var alertTitleImage: UIImage?
     private var alertMessage: String?
-    private var alertAttributedMessage: NSAttributedString?
+    private var alertAttributedMessage: AttributedString?
     private var actions = [APMAlertActionProtocol]()
     private var buttons: [UIButton] = [] {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
-            for (index, value) in buttons.enumerate() {
-                value.setTitleColor(buttonTitleColor ?? tintColor, forState: .Normal)
-                value.setTitleColor(buttonTitleColor ?? tintColor.colorWithAlphaComponent(0.33), forState: .Highlighted)
-                value.setTitleColor(buttonTitleColor ?? tintColor.colorWithAlphaComponent(0.33), forState: .Selected)
+            for (index, value) in buttons.enumerated() {
+                value.setTitleColor(buttonTitleColor ?? tintColor, for: UIControlState())
+                value.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .highlighted)
+                value.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .selected)
 
                 if let backgroundColor = buttonBackgroundColor {
                     value.backgroundColor = backgroundColor
                 }
 
 
-                let top = NSLayoutConstraint(item: value, attribute: .Top, relatedBy: .Equal, toItem: buttonsView, attribute: .Top, multiplier: 1.0, constant: 1)
-                let bottom = NSLayoutConstraint(item: value, attribute: .Bottom, relatedBy: .Equal, toItem: buttonsView, attribute: .Bottom, multiplier: 1.0, constant: 0)
+                let top = NSLayoutConstraint(item: value, attribute: .top, relatedBy: .equal, toItem: buttonsView, attribute: .top, multiplier: 1.0, constant: 1)
+                let bottom = NSLayoutConstraint(item: value, attribute: .bottom, relatedBy: .equal, toItem: buttonsView, attribute: .bottom, multiplier: 1.0, constant: 0)
 
                 let left: NSLayoutConstraint
-                let right = NSLayoutConstraint(item: value, attribute: .Right, relatedBy: .Equal, toItem: buttonsView, attribute: .Right, multiplier: 1.0, constant: 0)
+                let right = NSLayoutConstraint(item: value, attribute: .right, relatedBy: .equal, toItem: buttonsView, attribute: .right, multiplier: 1.0, constant: 0)
                 if index == 0 {
-                    left = NSLayoutConstraint(item: value, attribute: .Left, relatedBy: .Equal, toItem: buttonsView, attribute: .Left, multiplier: 1.0, constant: 0)
+                    left = NSLayoutConstraint(item: value, attribute: .left, relatedBy: .equal, toItem: buttonsView, attribute: .left, multiplier: 1.0, constant: 0)
                     if buttons.count == 1 {
                         buttonsView.addConstraints([top, left, right, bottom])
                     } else {
@@ -65,8 +65,8 @@ import SnapKit
                     }
                 } else {
                     let previousButton = buttons[index - 1]
-                    left = NSLayoutConstraint(item: value, attribute: .Left, relatedBy: .Equal, toItem: previousButton, attribute: .Right, multiplier: 1.0, constant: 1)
-                    let width = NSLayoutConstraint(item: value, attribute: .Width, relatedBy: .Equal, toItem: previousButton, attribute: .Width, multiplier: 1.0, constant: 0)
+                    left = NSLayoutConstraint(item: value, attribute: .left, relatedBy: .equal, toItem: previousButton, attribute: .right, multiplier: 1.0, constant: 1)
+                    let width = NSLayoutConstraint(item: value, attribute: .width, relatedBy: .equal, toItem: previousButton, attribute: .width, multiplier: 1.0, constant: 0)
                     if index == buttons.count - 1 {
                         buttonsView.addConstraints([top, left, right, bottom, width])
                     } else {
@@ -85,7 +85,7 @@ import SnapKit
         self.anyTitleObject = titleObject
         super.init(nibName: nil, bundle: nil)
 
-        self.modalPresentationStyle = UIModalPresentationStyle.Custom
+        self.modalPresentationStyle = UIModalPresentationStyle.custom
         self.transitioningDelegate = self
     }
 
@@ -95,7 +95,7 @@ import SnapKit
         self.alertMessage = message
     }
 
-    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle: APMAlertControllerStyle) {
+    public convenience init(title: String?, attributedMessage: AttributedString?, preferredStyle: APMAlertControllerStyle) {
         self.init(titleObject: UILabel())
         self.alertTitle = title
         self.alertAttributedMessage = attributedMessage
@@ -138,13 +138,13 @@ import SnapKit
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
-            titleImageView.contentMode = .ScaleAspectFit
-            titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.imageWithRenderingMode(.AlwaysTemplate)
+            titleImageView.contentMode = .scaleAspectFit
+            titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.withRenderingMode(.alwaysTemplate)
             titleImageView.alpha = 0.8
             contentView.addSubview(titleImageView)
         case let titleLabel as UILabel:
-            titleLabel.font = UIFont.boldSystemFontOfSize(16)
-            titleLabel.textAlignment = .Center
+            titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+            titleLabel.textAlignment = .center
             titleLabel.numberOfLines = 0
             titleLabel.text = alertTitle
             contentView.addSubview(titleLabel)
@@ -153,7 +153,7 @@ import SnapKit
         }
 
         titleMessageSeparator.backgroundColor = separatorColor
-        titleMessageSeparator.hidden = true
+        titleMessageSeparator.isHidden = true
         contentView.addSubview(titleMessageSeparator)
 
         contentView.addSubview(messageContentView)
@@ -161,8 +161,8 @@ import SnapKit
         if alertMessage != nil || alertAttributedMessage != nil {
             let messageLabel = UILabel()
 
-            messageLabel.font = self.customDescriptionFont ?? UIFont.systemFontOfSize(16)
-            messageLabel.textAlignment = .Center
+            messageLabel.font = self.customDescriptionFont ?? UIFont.systemFont(ofSize: 16)
+            messageLabel.textAlignment = .center
             if let alertMessage = self.alertMessage {
                 messageLabel.text = alertMessage
             } else if let alertAttributedMessage = self.alertAttributedMessage {
@@ -244,7 +244,7 @@ import SnapKit
             topScrollViewHeightConstraint?.updateOffset(view.frame.size.height - verticalAlertIndent * 2 - 45)
         }
 
-        titleMessageSeparator.hidden = !showTitleMessageSeparator
+        titleMessageSeparator.isHidden = !showTitleMessageSeparator
         topTitleMessageSeparatorConstraint?.updateOffset(showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
 
         switch anyTitleObject {
@@ -260,7 +260,7 @@ import SnapKit
         }
     }
 
-    public func addAction(action: APMAlertActionProtocol) {
+    public func addAction(_ action: APMAlertActionProtocol) {
         actions.append(action)
 
         let button = UIButton()
@@ -268,20 +268,20 @@ import SnapKit
             button.titleLabel?.font = buttonFont
         }
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.setTitle(action.title, forState: .Normal)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Selected)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-        button.addTarget(self, action: #selector(btnPressed(_:)), forControlEvents: .TouchUpInside)
+        button.setTitleColor(UIColor.black, for: UIControlState())
+        button.setTitle(action.title, for: UIControlState())
+        button.setTitleColor(UIColor.lightGray, for: .selected)
+        button.setTitleColor(UIColor.lightGray, for: .highlighted)
+        button.addTarget(self, action: #selector(btnPressed(_:)), for: .touchUpInside)
         button.tag = buttons.count + 1
-        button.backgroundColor = UIColor.whiteColor()
+        button.backgroundColor = UIColor.white
         buttonsView.addSubview(button)
         buttons.append(button)
     }
 
-    func btnPressed(button: UIButton) {
-        button.selected = true
-        self.dismissViewControllerAnimated(true, completion: {
+    func btnPressed(_ button: UIButton) {
+        button.isSelected = true
+        self.dismiss(animated: true, completion: {
             let action = self.actions[button.tag - 1]
             action.handler?(action)
         })
@@ -289,11 +289,11 @@ import SnapKit
 }
 
 extension APMAlertController: UIViewControllerTransitioningDelegate {
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: true)
     }
 
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
     }
 }

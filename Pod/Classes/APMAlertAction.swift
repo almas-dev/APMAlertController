@@ -5,9 +5,9 @@
 import Foundation
 
 @objc public enum APMAlertActionStyle: Int {
-    case Default
-    case Cancel
-    case Destructive
+    case `default`
+    case cancel
+    case destructive
 }
 
 @objc public protocol APMAlertActionProtocol {
