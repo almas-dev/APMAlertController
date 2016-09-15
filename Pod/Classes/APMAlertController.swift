@@ -10,35 +10,35 @@ import SnapKit
     case actionSheet
 }
 
-@objc public class APMAlertController: UIViewController {
-    private let verticalAlertIndent: CGFloat = 25
+@objc open class APMAlertController: UIViewController {
+    fileprivate let verticalAlertIndent: CGFloat = 25
 
-    public var buttonTitleColor: UIColor?
-    public var customButtonFont: UIFont?
-    public var buttonBackgroundColor: UIColor?
-    public var customDescriptionFont: UIFont?
-    public var disableImageIconTemplate: Bool = false
-    public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
-    public var showTitleMessageSeparator: Bool = false
-    public var tintColor: UIColor = UIColor.black
-    public let messageContentView: UIView = UIView()
+    open var buttonTitleColor: UIColor?
+    open var customButtonFont: UIFont?
+    open var buttonBackgroundColor: UIColor?
+    open var customDescriptionFont: UIFont?
+    open var disableImageIconTemplate: Bool = false
+    open var separatorColor = UIColor(white: 0.75, alpha: 0.6)
+    open var showTitleMessageSeparator: Bool = false
+    open var tintColor: UIColor = UIColor.black
+    open let messageContentView: UIView = UIView()
 
     let alertView = UIView()
-    private let topScrollView = UIScrollView()
-    private var topScrollViewHeightConstraint: Constraint?
-    private let contentView = UIView()
-    private var anyTitleObject: AnyObject
-    private var topTitleMessageSeparatorConstraint: Constraint?
-    private let titleMessageSeparator = UIView()
-    private var messageLabel: UILabel?
-    private let buttonsView = UIView()
-    private let button = UIButton()
-    private var alertTitle: String?
-    private var alertTitleImage: UIImage?
-    private var alertMessage: String?
-    private var alertAttributedMessage: AttributedString?
-    private var actions = [APMAlertActionProtocol]()
-    private var buttons: [UIButton] = [] {
+    fileprivate let topScrollView = UIScrollView()
+    fileprivate var topScrollViewHeightConstraint: Constraint?
+    fileprivate let contentView = UIView()
+    fileprivate var anyTitleObject: AnyObject
+    fileprivate var topTitleMessageSeparatorConstraint: Constraint?
+    fileprivate let titleMessageSeparator = UIView()
+    fileprivate var messageLabel: UILabel?
+    fileprivate let buttonsView = UIView()
+    fileprivate let button = UIButton()
+    fileprivate var alertTitle: String?
+    fileprivate var alertTitleImage: UIImage?
+    fileprivate var alertMessage: String?
+    fileprivate var alertAttributedMessage: NSAttributedString?
+    fileprivate var actions = [APMAlertActionProtocol]()
+    fileprivate var buttons: [UIButton] = [] {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
             for (index, value) in buttons.enumerated() {
@@ -95,7 +95,7 @@ import SnapKit
         self.alertMessage = message
     }
 
-    public convenience init(title: String?, attributedMessage: AttributedString?, preferredStyle: APMAlertControllerStyle) {
+    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle: APMAlertControllerStyle) {
         self.init(titleObject: UILabel())
         self.alertTitle = title
         self.alertAttributedMessage = attributedMessage
@@ -112,7 +112,7 @@ import SnapKit
         self.alertTitle = title
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         configureView()
@@ -228,24 +228,27 @@ import SnapKit
 
         if let messageLabel = self.messageLabel {
             messageLabel.snp_makeConstraints {
-                $0.edges.equalTo(messageContentView).offset(UIEdgeInsetsMake(12, 30, -16, -30))
+                $0.top.equalTo(messageContentView).offset(12)
+                $0.left.equalTo(messageContentView).offset(30)
+                $0.bottom.equalTo(messageContentView).offset(-16)
+                $0.right.equalTo(messageContentView).offset(-30)
             }
         }
     }
 
-    public override func viewWillLayoutSubviews() {
+    open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
         topScrollView.updateConstraintsIfNeeded()
         topScrollView.contentSize = contentView.frame.size
         if view.frame.size.height - verticalAlertIndent * 2 - 45 >= contentView.frame.size.height {
-            topScrollViewHeightConstraint?.updateOffset(contentView.frame.size.height)
+            topScrollViewHeightConstraint?.updateOffset(amount: contentView.frame.size.height)
         } else {
-            topScrollViewHeightConstraint?.updateOffset(view.frame.size.height - verticalAlertIndent * 2 - 45)
+            topScrollViewHeightConstraint?.updateOffset(amount: view.frame.size.height - verticalAlertIndent * 2 - 45)
         }
 
         titleMessageSeparator.isHidden = !showTitleMessageSeparator
-        topTitleMessageSeparatorConstraint?.updateOffset(showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
+        topTitleMessageSeparatorConstraint?.updateOffset(amount: showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
@@ -255,12 +258,12 @@ import SnapKit
         default:
             break
         }
-        if let messageLabel = self.messageLabel where alertAttributedMessage == nil {
+        if let messageLabel = self.messageLabel , alertAttributedMessage == nil {
             messageLabel.textColor = tintColor
         }
     }
 
-    public func addAction(_ action: APMAlertActionProtocol) {
+    open func addAction(_ action: APMAlertActionProtocol) {
         actions.append(action)
 
         let button = UIButton()

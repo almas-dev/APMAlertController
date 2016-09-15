@@ -28,7 +28,7 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     func presentAnimateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey) as! APMAlertController
+        let alertController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as! APMAlertController
         let containerView = transitionContext.containerView
 
         alertController.view.backgroundColor = UIColor.clear
@@ -58,7 +58,7 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     func dismissAnimateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        let alertController = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey) as! APMAlertController
+        let alertController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! APMAlertController
 
         UIView.animate(withDuration: 0.33,
                 animations: {

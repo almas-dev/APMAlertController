@@ -22,7 +22,7 @@ class ViewController: UIViewController {
             ],
             ["In progress"]
     ]
-    var actions: Array<Array<(indexPath:IndexPath) -> Void>> {
+    var actions: Array<Array<(_ indexPath:IndexPath) -> Void>> {
         return [
                 [systemAlert, systemActionSheet],
                 [
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         tableView.rowHeight = 44.0
         tableView.tableFooterView = UIView()
         view.addSubview(tableView)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         view.addConstraints([
                 NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: tableView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
@@ -124,69 +124,69 @@ class ViewController: UIViewController {
         let title = titlesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         let message = "This is message. One, Two. Message."
 
-        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     func alertTextTitleColoredButtons(_ indexPath: IndexPath) {
         let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
         let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
 
-        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+        let testAction = APMAlertAction(title: "Test", style: .cancel) {
             action in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
-        let desctructAction = APMAlertAction(title: "Destruct", style: .Destructive) {
+        let desctructAction = APMAlertAction(title: "Destruct", style: .destructive) {
             action in
             print("The simple alert destruct action.")
         }
         alertController.addAction(desctructAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     func alertImageTitleWithTint(_ indexPath: IndexPath) {
         let message = "This is message. One, Two. Message. Long message. Test."
 
-        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
-        alertController.tintColor = UIColor.brownColor()
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .alert)
+        alertController.tintColor = UIColor.brown
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+        let testAction = APMAlertAction(title: "Test", style: .cancel) {
             action in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     func alertTextTitleSeparatorWithTint(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
         let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
 
-        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        alertController.tintColor = UIColor.purpleColor()
-        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+        alertController.tintColor = UIColor.purple
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     func alertTextTitleAttributedMessage(_ indexPath: IndexPath) {
@@ -201,28 +201,28 @@ class ViewController: UIViewController {
         attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.488, green:0.593, blue:0.424, alpha:1.0), range:NSMakeRange(57,22))
         attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.0, green:0.656, blue:0.571, alpha:1.0), range:NSMakeRange(79,44))
 
-        let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .Alert)
+        let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        alertController.tintColor = UIColor.purpleColor()
-        let defaultAction = APMAlertAction(title: "Default", style: .Default) {
+        alertController.tintColor = UIColor.purple
+        let defaultAction = APMAlertAction(title: "Default", style: .default) {
             action in
             print("The simple alert default action.")
         }
         alertController.addAction(defaultAction)
-        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     func alertTextTitleViewMessage(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
 
-        let alertController = APMAlertController(title: title, preferredStyle: .Alert)
+        let alertController = APMAlertController(title: title, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
@@ -235,11 +235,11 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         contentView.addSubview(view)
         contentView.addConstraints([
-                NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 50)
+                NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
         ])
 
         let view1 = UIView()
@@ -264,31 +264,31 @@ class ViewController: UIViewController {
                 NSLayoutConstraint(item: view2, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 2)
         ])
 
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     func alertImageTitleColoredButton(_ indexPath: IndexPath) {
         let message = "This is message. One, Two. Message. Long message. Test."
 
-        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
-        alertController.separatorColor = UIColor.whiteColor()
-        alertController.buttonTitleColor = UIColor.whiteColor()
-        alertController.customButtonFont = UIFont.systemFontOfSize(30)
-        alertController.customDescriptionFont = UIFont.systemFontOfSize(25)
+        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .alert)
+        alertController.separatorColor = UIColor.white
+        alertController.buttonTitleColor = UIColor.white
+        alertController.customButtonFont = UIFont.systemFont(ofSize: 30)
+        alertController.customDescriptionFont = UIFont.systemFont(ofSize: 25)
         alertController.buttonBackgroundColor = UIColor(red: 48 / 255, green: 176 / 255, blue: 214 / 255, alpha: 1)
         alertController.disableImageIconTemplate = true
-        alertController.tintColor = UIColor.magentaColor()
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        alertController.tintColor = UIColor.magenta
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+        let testAction = APMAlertAction(title: "Test", style: .cancel) {
             action in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
 }
@@ -296,7 +296,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let showAlert = actions[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
-        showAlert(indexPath: indexPath)
+        showAlert(indexPath)
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -316,7 +316,7 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(UITableViewCell), for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
         cell.textLabel?.text = titlesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         return cell
     }
