@@ -25,16 +25,16 @@ class UITests: XCTestCase {
     }
 
     func testMakeScreenshotsPortrait() {
-        makeScreenShots(.Portrait, orientationString: "Portrait")
+        makeScreenShots(.portrait, orientationString: "Portrait")
     }
 
     func testMakeScreenshotsLandscapeLeft() {
-        makeScreenShots(.LandscapeLeft, orientationString: "LandscapeLeft")
+        makeScreenShots(.landscapeLeft, orientationString: "LandscapeLeft")
     }
 
-    private func makeScreenShots(orientation: UIDeviceOrientation, orientationString: String) {
+    private func makeScreenShots(_ orientation: UIDeviceOrientation, orientationString: String) {
         let app = XCUIApplication()
-        XCUIDevice.sharedDevice().orientation = orientation
+        XCUIDevice.shared().orientation = orientation
         let tablesQuery = app.tables
         tablesQuery.staticTexts["Alert Text Title"].tap()
         snapshot("AlertTextTitle" + orientationString)

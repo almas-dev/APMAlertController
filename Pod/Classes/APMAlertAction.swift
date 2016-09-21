@@ -5,9 +5,9 @@
 import Foundation
 
 @objc public enum APMAlertActionStyle: Int {
-    case Default
-    case Cancel
-    case Destructive
+    case `default`
+    case cancel
+    case destructive
 }
 
 @objc public protocol APMAlertActionProtocol {
@@ -16,10 +16,10 @@ import Foundation
     var handler: ((APMAlertActionProtocol) -> Void)? { get }
 }
 
-@objc public class APMAlertAction: NSObject, APMAlertActionProtocol {
-    public let title: String
-    public let style: APMAlertActionStyle
-    public let handler: ((APMAlertActionProtocol) -> Void)?
+@objc open class APMAlertAction: NSObject, APMAlertActionProtocol {
+    open let title: String
+    open let style: APMAlertActionStyle
+    open let handler: ((APMAlertActionProtocol) -> Void)?
 
     public init(title: String, style: APMAlertActionStyle, handler: ((APMAlertActionProtocol) -> Void)?) {
         self.title = title
