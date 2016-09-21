@@ -11,9 +11,7 @@ xcode_scheme: APMAlertController-Example
 xcode_sdk: iphonesimulator10
 podfile: Example/Podfile
 before_install:
-  - brew update
-  - brew install xctool
   - gem install cocoapods --pre # Since Travis is not always on latest version
-  - pod install --repo-update --project-directory=Example 
+  - pod install --repo-update --project-directory=Example
 script:
-  - xctool -workspace Example/APMAlertController.xcworkspace -scheme APMAlertController-Example ONLY_ACTIVE_ARCH=NO clean build
+  - xcodebuild -workspace Example/APMAlertController.xcworkspace -scheme APMAlertController-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO clean build
