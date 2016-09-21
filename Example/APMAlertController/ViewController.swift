@@ -22,7 +22,7 @@ class ViewController: UIViewController {
             ],
             ["In progress"]
     ]
-    var actions: Array<Array<(indexPath:NSIndexPath) -> Void>> {
+    var actions: Array<Array<(_ indexPath:IndexPath) -> Void>> {
         return [
                 [systemAlert, systemActionSheet],
                 [
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         title = "AlertController Example"
-        view.backgroundColor = UIColor.lightGrayColor()
+        view.backgroundColor = UIColor.lightGray
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
@@ -50,15 +50,15 @@ class ViewController: UIViewController {
         tableView.rowHeight = 44.0
         tableView.tableFooterView = UIView()
         view.addSubview(tableView)
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         view.addConstraints([
-                NSLayoutConstraint(item: tableView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: tableView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: tableView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: tableView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+                NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: tableView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
         ])
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.performTransitionToObjectiveCViewController))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.performTransitionToObjectiveCViewController))
     }
 
     func performTransitionToObjectiveCViewController() {
@@ -68,22 +68,22 @@ class ViewController: UIViewController {
 
     // MARK: - System Alert
 
-    func systemAlert(indexPath: NSIndexPath) {
+    func systemAlert(_ indexPath: IndexPath) {
         let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
         let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
 
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
             action in
             //Do some stuff
         }
         alertController.addAction(cancelAction)
-        let defaultAction = UIAlertAction(title: "Default", style: .Default) {
+        let defaultAction = UIAlertAction(title: "Default", style: .default) {
             action in
             //Do some stuff
         }
         alertController.addAction(defaultAction)
-        let desctructAction = UIAlertAction(title: "Destruct", style: .Destructive) {
+        let desctructAction = UIAlertAction(title: "Destruct", style: .destructive) {
             action in
             //Do some stuff
         }
@@ -93,103 +93,103 @@ class ViewController: UIViewController {
             textField.textColor = UIColor.whiteColor()
             textField.backgroundColor = UIColor.magentaColor()
         }*/
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func systemActionSheet(indexPath: NSIndexPath) {
-        let title = titlesArray[indexPath.section][indexPath.row]
+    func systemActionSheet(_ indexPath: IndexPath) {
+        let title = titlesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
 
-        let alertController = UIAlertController(title: title, message: "This is message", preferredStyle: .ActionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = UIAlertController(title: title, message: "This is message", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
             action in
             //Just dismiss the action sheet
         }
         alertController.addAction(cancelAction)
-        let takePictureAction = UIAlertAction(title: "Take Picture", style: .Default) {
+        let takePictureAction = UIAlertAction(title: "Take Picture", style: .default) {
             action in
             //Code for launching the camera goes here
         }
         alertController.addAction(takePictureAction)
-        let choosePictureAction = UIAlertAction(title: "Choose From Camera Roll", style: .Default) {
+        let choosePictureAction = UIAlertAction(title: "Choose From Camera Roll", style: .default) {
             action in
             //Code for picking from camera roll goes here
         }
         alertController.addAction(choosePictureAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Custom Alert
 
-    func alertTextTitle(indexPath: NSIndexPath) {
-        let title = titlesArray[indexPath.section][indexPath.row]
+    func alertTextTitle(_ indexPath: IndexPath) {
+        let title = titlesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         let message = "This is message. One, Two. Message."
 
-        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func alertTextTitleColoredButtons(indexPath: NSIndexPath) {
+    func alertTextTitleColoredButtons(_ indexPath: IndexPath) {
         let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
         let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
 
-        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+        let testAction = APMAlertAction(title: "Test", style: .cancel) {
             action in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
-        let desctructAction = APMAlertAction(title: "Destruct", style: .Destructive) {
+        let desctructAction = APMAlertAction(title: "Destruct", style: .destructive) {
             action in
             print("The simple alert destruct action.")
         }
         alertController.addAction(desctructAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func alertImageTitleWithTint(indexPath: NSIndexPath) {
+    func alertImageTitleWithTint(_ indexPath: IndexPath) {
         let message = "This is message. One, Two. Message. Long message. Test."
 
-        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
-        alertController.tintColor = UIColor.brownColor()
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .alert)
+        alertController.tintColor = UIColor.brown
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+        let testAction = APMAlertAction(title: "Test", style: .cancel) {
             action in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func alertTextTitleSeparatorWithTint(indexPath: NSIndexPath) {
+    func alertTextTitleSeparatorWithTint(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
         let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
 
-        let alertController = APMAlertController(title: title, message: message, preferredStyle: .Alert)
+        let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        alertController.tintColor = UIColor.purpleColor()
-        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+        alertController.tintColor = UIColor.purple
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func alertTextTitleAttributedMessage(indexPath: NSIndexPath) {
+    func alertTextTitleAttributedMessage(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
         let attributedMessage = NSMutableAttributedString(string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.")
         attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue", size:16.0)!, range:NSMakeRange(0,28))
@@ -201,28 +201,28 @@ class ViewController: UIViewController {
         attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.488, green:0.593, blue:0.424, alpha:1.0), range:NSMakeRange(57,22))
         attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.0, green:0.656, blue:0.571, alpha:1.0), range:NSMakeRange(79,44))
 
-        let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .Alert)
+        let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        alertController.tintColor = UIColor.purpleColor()
-        let defaultAction = APMAlertAction(title: "Default", style: .Default) {
+        alertController.tintColor = UIColor.purple
+        let defaultAction = APMAlertAction(title: "Default", style: .default) {
             action in
             print("The simple alert default action.")
         }
         alertController.addAction(defaultAction)
-        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func alertTextTitleViewMessage(indexPath: NSIndexPath) {
+    func alertTextTitleViewMessage(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
 
-        let alertController = APMAlertController(title: title, preferredStyle: .Alert)
+        let alertController = APMAlertController(title: title, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        let cancelAction = APMAlertAction(title: "Ok", style: .Cancel) {
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
@@ -232,25 +232,25 @@ class ViewController: UIViewController {
 
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.1)
+        view.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         contentView.addSubview(view)
         contentView.addConstraints([
-                NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: contentView, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 50)
+                NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
         ])
 
         let view1 = UIView()
         view1.translatesAutoresizingMaskIntoConstraints = false
-        view1.backgroundColor = UIColor.purpleColor().colorWithAlphaComponent(0.2)
+        view1.backgroundColor = UIColor.purple.withAlphaComponent(0.2)
         view.addSubview(view1)
         view.addConstraints([
-                NSLayoutConstraint(item: view1, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 10),
-                NSLayoutConstraint(item: view1, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 5),
-                NSLayoutConstraint(item: view1, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: -5),
-                NSLayoutConstraint(item: view1, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: -10)
+                NSLayoutConstraint(item: view1, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 10),
+                NSLayoutConstraint(item: view1, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 5),
+                NSLayoutConstraint(item: view1, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -5),
+                NSLayoutConstraint(item: view1, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -10)
         ])
 
         let view2 = UIView()
@@ -258,66 +258,66 @@ class ViewController: UIViewController {
         view2.backgroundColor = alertController.separatorColor
         view.addSubview(view2)
         view.addConstraints([
-                NSLayoutConstraint(item: view2, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view2, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view2, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view2, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 2)
+                NSLayoutConstraint(item: view2, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view2, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view2, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: view2, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 2)
         ])
 
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
-    func alertImageTitleColoredButton(indexPath: NSIndexPath) {
+    func alertImageTitleColoredButton(_ indexPath: IndexPath) {
         let message = "This is message. One, Two. Message. Long message. Test."
 
-        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .Alert)
-        alertController.separatorColor = UIColor.whiteColor()
-        alertController.buttonTitleColor = UIColor.whiteColor()
-        alertController.customButtonFont = UIFont.systemFontOfSize(30)
-        alertController.customDescriptionFont = UIFont.systemFontOfSize(25)
+        let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .alert)
+        alertController.separatorColor = UIColor.white
+        alertController.buttonTitleColor = UIColor.white
+        alertController.customButtonFont = UIFont.systemFont(ofSize: 30)
+        alertController.customDescriptionFont = UIFont.systemFont(ofSize: 25)
         alertController.buttonBackgroundColor = UIColor(red: 48 / 255, green: 176 / 255, blue: 214 / 255, alpha: 1)
         alertController.disableImageIconTemplate = true
-        alertController.tintColor = UIColor.magentaColor()
-        let cancelAction = APMAlertAction(title: "Cancel", style: .Cancel) {
+        alertController.tintColor = UIColor.magenta
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
             action in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .Cancel) {
+        let testAction = APMAlertAction(title: "Test", style: .cancel) {
             action in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
 }
 
 extension ViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let showAlert = actions[indexPath.section][indexPath.row]
-        showAlert(indexPath: indexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let showAlert = actions[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        showAlert(indexPath)
 
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 extension ViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return actions.count
     }
 
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionsArray[section]
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actions[section].count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
-        cell.textLabel?.text = titlesArray[indexPath.section][indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
+        cell.textLabel?.text = titlesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         return cell
     }
 }

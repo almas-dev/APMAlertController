@@ -1,6 +1,6 @@
 # APMAlertController
 
-[![Swift 2.2](https://img.shields.io/badge/Swift%20Version-2.2-orange.svg)](https://developer.apple.com/swift/)
+[![Swift 3.0](https://img.shields.io/badge/Swift%20Version-3.0-orange.svg)](https://developer.apple.com/swift/)
 [![iOS 8.0+](https://img.shields.io/badge/iOS%20Version-8.0+-blue.svg)](https://developer.apple.com/ios/)
 [![Release](https://img.shields.io/github/release/almas-dev/APMAlertController.svg)](https://github.com/almas-dev/APMAlertController/releases)
 [![Travis CI](https://travis-ci.org/almas-dev/APMAlertController.svg?branch=develop)](https://travis-ci.org/almas-dev/APMAlertController)

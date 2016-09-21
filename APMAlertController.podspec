@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "APMAlertController"
-  s.version          = "0.6.2"
-  s.summary          = "AlertController written in Swift"
+  s.version          = "0.7.0"
+  s.summary          = "AlertController written in Swift 3"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -42,7 +42,7 @@ Light and convenient replacement for UIAlertController with many customization o
 
   s.subspec "Core" do |ss|
       ss.source_files = 'Pod/Classes/**/*'
-      ss.dependency 'SnapKit'
+      ss.dependency 'SnapKit', '~>3.0.0'
   end
 
 end

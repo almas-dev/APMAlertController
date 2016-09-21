@@ -6,58 +6,58 @@ import UIKit
 import SnapKit
 
 @objc public enum APMAlertControllerStyle: Int {
-    case Alert
-    case ActionSheet
+    case alert
+    case actionSheet
 }
 
-@objc public class APMAlertController: UIViewController {
-    private let verticalAlertIndent: CGFloat = 25
+@objc open class APMAlertController: UIViewController {
+    fileprivate let verticalAlertIndent: CGFloat = 25
 
-    public var buttonTitleColor: UIColor?
-    public var customButtonFont: UIFont?
-    public var buttonBackgroundColor: UIColor?
-    public var customDescriptionFont: UIFont?
-    public var disableImageIconTemplate: Bool = false
-    public var separatorColor = UIColor(white: 0.75, alpha: 0.6)
-    public var showTitleMessageSeparator: Bool = false
-    public var tintColor: UIColor = UIColor.blackColor()
-    public let messageContentView: UIView = UIView()
+    open var buttonTitleColor: UIColor?
+    open var customButtonFont: UIFont?
+    open var buttonBackgroundColor: UIColor?
+    open var customDescriptionFont: UIFont?
+    open var disableImageIconTemplate: Bool = false
+    open var separatorColor = UIColor(white: 0.75, alpha: 0.6)
+    open var showTitleMessageSeparator: Bool = false
+    open var tintColor: UIColor = UIColor.black
+    open let messageContentView: UIView = UIView()
 
     let alertView = UIView()
-    private let topScrollView = UIScrollView()
-    private var topScrollViewHeightConstraint: Constraint?
-    private let contentView = UIView()
-    private var anyTitleObject: AnyObject
-    private var topTitleMessageSeparatorConstraint: Constraint?
-    private let titleMessageSeparator = UIView()
-    private var messageLabel: UILabel?
-    private let buttonsView = UIView()
-    private let button = UIButton()
-    private var alertTitle: String?
-    private var alertTitleImage: UIImage?
-    private var alertMessage: String?
-    private var alertAttributedMessage: NSAttributedString?
-    private var actions = [APMAlertActionProtocol]()
-    private var buttons: [UIButton] = [] {
+    fileprivate let topScrollView = UIScrollView()
+    fileprivate var topScrollViewHeightConstraint: Constraint?
+    fileprivate let contentView = UIView()
+    fileprivate var anyTitleObject: AnyObject
+    fileprivate var topTitleMessageSeparatorConstraint: Constraint?
+    fileprivate let titleMessageSeparator = UIView()
+    fileprivate var messageLabel: UILabel?
+    fileprivate let buttonsView = UIView()
+    fileprivate let button = UIButton()
+    fileprivate var alertTitle: String?
+    fileprivate var alertTitleImage: UIImage?
+    fileprivate var alertMessage: String?
+    fileprivate var alertAttributedMessage: NSAttributedString?
+    fileprivate var actions = [APMAlertActionProtocol]()
+    fileprivate var buttons: [UIButton] = [] {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
-            for (index, value) in buttons.enumerate() {
-                value.setTitleColor(buttonTitleColor ?? tintColor, forState: .Normal)
-                value.setTitleColor(buttonTitleColor ?? tintColor.colorWithAlphaComponent(0.33), forState: .Highlighted)
-                value.setTitleColor(buttonTitleColor ?? tintColor.colorWithAlphaComponent(0.33), forState: .Selected)
+            for (index, value) in buttons.enumerated() {
+                value.setTitleColor(buttonTitleColor ?? tintColor, for: UIControlState())
+                value.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .highlighted)
+                value.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .selected)
 
                 if let backgroundColor = buttonBackgroundColor {
                     value.backgroundColor = backgroundColor
                 }
 
 
-                let top = NSLayoutConstraint(item: value, attribute: .Top, relatedBy: .Equal, toItem: buttonsView, attribute: .Top, multiplier: 1.0, constant: 1)
-                let bottom = NSLayoutConstraint(item: value, attribute: .Bottom, relatedBy: .Equal, toItem: buttonsView, attribute: .Bottom, multiplier: 1.0, constant: 0)
+                let top = NSLayoutConstraint(item: value, attribute: .top, relatedBy: .equal, toItem: buttonsView, attribute: .top, multiplier: 1.0, constant: 1)
+                let bottom = NSLayoutConstraint(item: value, attribute: .bottom, relatedBy: .equal, toItem: buttonsView, attribute: .bottom, multiplier: 1.0, constant: 0)
 
                 let left: NSLayoutConstraint
-                let right = NSLayoutConstraint(item: value, attribute: .Right, relatedBy: .Equal, toItem: buttonsView, attribute: .Right, multiplier: 1.0, constant: 0)
+                let right = NSLayoutConstraint(item: value, attribute: .right, relatedBy: .equal, toItem: buttonsView, attribute: .right, multiplier: 1.0, constant: 0)
                 if index == 0 {
-                    left = NSLayoutConstraint(item: value, attribute: .Left, relatedBy: .Equal, toItem: buttonsView, attribute: .Left, multiplier: 1.0, constant: 0)
+                    left = NSLayoutConstraint(item: value, attribute: .left, relatedBy: .equal, toItem: buttonsView, attribute: .left, multiplier: 1.0, constant: 0)
                     if buttons.count == 1 {
                         buttonsView.addConstraints([top, left, right, bottom])
                     } else {
@@ -65,8 +65,8 @@ import SnapKit
                     }
                 } else {
                     let previousButton = buttons[index - 1]
-                    left = NSLayoutConstraint(item: value, attribute: .Left, relatedBy: .Equal, toItem: previousButton, attribute: .Right, multiplier: 1.0, constant: 1)
-                    let width = NSLayoutConstraint(item: value, attribute: .Width, relatedBy: .Equal, toItem: previousButton, attribute: .Width, multiplier: 1.0, constant: 0)
+                    left = NSLayoutConstraint(item: value, attribute: .left, relatedBy: .equal, toItem: previousButton, attribute: .right, multiplier: 1.0, constant: 1)
+                    let width = NSLayoutConstraint(item: value, attribute: .width, relatedBy: .equal, toItem: previousButton, attribute: .width, multiplier: 1.0, constant: 0)
                     if index == buttons.count - 1 {
                         buttonsView.addConstraints([top, left, right, bottom, width])
                     } else {
@@ -85,7 +85,7 @@ import SnapKit
         self.anyTitleObject = titleObject
         super.init(nibName: nil, bundle: nil)
 
-        self.modalPresentationStyle = UIModalPresentationStyle.Custom
+        self.modalPresentationStyle = UIModalPresentationStyle.custom
         self.transitioningDelegate = self
     }
 
@@ -112,7 +112,7 @@ import SnapKit
         self.alertTitle = title
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         configureView()
@@ -138,13 +138,13 @@ import SnapKit
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
-            titleImageView.contentMode = .ScaleAspectFit
-            titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.imageWithRenderingMode(.AlwaysTemplate)
+            titleImageView.contentMode = .scaleAspectFit
+            titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.withRenderingMode(.alwaysTemplate)
             titleImageView.alpha = 0.8
             contentView.addSubview(titleImageView)
         case let titleLabel as UILabel:
-            titleLabel.font = UIFont.boldSystemFontOfSize(16)
-            titleLabel.textAlignment = .Center
+            titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+            titleLabel.textAlignment = .center
             titleLabel.numberOfLines = 0
             titleLabel.text = alertTitle
             contentView.addSubview(titleLabel)
@@ -153,7 +153,7 @@ import SnapKit
         }
 
         titleMessageSeparator.backgroundColor = separatorColor
-        titleMessageSeparator.hidden = true
+        titleMessageSeparator.isHidden = true
         contentView.addSubview(titleMessageSeparator)
 
         contentView.addSubview(messageContentView)
@@ -161,8 +161,8 @@ import SnapKit
         if alertMessage != nil || alertAttributedMessage != nil {
             let messageLabel = UILabel()
 
-            messageLabel.font = self.customDescriptionFont ?? UIFont.systemFontOfSize(16)
-            messageLabel.textAlignment = .Center
+            messageLabel.font = self.customDescriptionFont ?? UIFont.systemFont(ofSize: 16)
+            messageLabel.textAlignment = .center
             if let alertMessage = self.alertMessage {
                 messageLabel.text = alertMessage
             } else if let alertAttributedMessage = self.alertAttributedMessage {
@@ -176,13 +176,13 @@ import SnapKit
     }
 
     func configureLayout() {
-        alertView.snp_makeConstraints {
+        alertView.snp.makeConstraints {
             $0.center.equalTo(view)
             $0.width.equalTo(270)
             $0.height.lessThanOrEqualTo(view).offset(-(verticalAlertIndent * 2))
         }
 
-        topScrollView.snp_makeConstraints {
+        topScrollView.snp.makeConstraints {
             $0.top.equalTo(alertView)
             $0.left.equalTo(alertView)
             $0.right.equalTo(alertView)
@@ -191,8 +191,8 @@ import SnapKit
 
         configureTopScrollViewLayout()
 
-        buttonsView.snp_makeConstraints {
-            $0.top.equalTo(topScrollView.snp_bottom)
+        buttonsView.snp.makeConstraints {
+            $0.top.equalTo(topScrollView.snp.bottom)
             $0.left.equalTo(alertView)
             $0.right.equalTo(alertView)
             $0.bottom.equalTo(alertView)
@@ -201,51 +201,54 @@ import SnapKit
     }
 
     func configureTopScrollViewLayout() {
-        contentView.snp_makeConstraints {
+        contentView.snp.makeConstraints {
             $0.edges.equalTo(topScrollView)
             $0.width.equalTo(topScrollView)
         }
 
-        (anyTitleObject as! UIView).snp_makeConstraints {
+        (anyTitleObject as! UIView).snp.makeConstraints {
             $0.top.equalTo(contentView).offset(20)
             $0.left.equalTo(contentView).offset(30)
             $0.right.equalTo(contentView).offset(-30)
         }
 
-        titleMessageSeparator.snp_makeConstraints {
-            topTitleMessageSeparatorConstraint = $0.top.equalTo((anyTitleObject as! UIView).snp_bottom).constraint
+        titleMessageSeparator.snp.makeConstraints {
+            topTitleMessageSeparatorConstraint = $0.top.equalTo((anyTitleObject as! UIView).snp.bottom).constraint
             $0.left.equalTo(contentView)
             $0.right.equalTo(contentView)
             $0.height.equalTo(1)
         }
 
-        messageContentView.snp_makeConstraints {
-            $0.top.equalTo(titleMessageSeparator.snp_bottom)
+        messageContentView.snp.makeConstraints {
+            $0.top.equalTo(titleMessageSeparator.snp.bottom)
             $0.left.equalTo(contentView)
             $0.right.equalTo(contentView)
             $0.bottom.equalTo(contentView)
         }
 
         if let messageLabel = self.messageLabel {
-            messageLabel.snp_makeConstraints {
-                $0.edges.equalTo(messageContentView).offset(UIEdgeInsetsMake(12, 30, -16, -30))
+            messageLabel.snp.makeConstraints {
+                $0.top.equalTo(messageContentView).offset(12)
+                $0.left.equalTo(messageContentView).offset(30)
+                $0.bottom.equalTo(messageContentView).offset(-16)
+                $0.right.equalTo(messageContentView).offset(-30)
             }
         }
     }
 
-    public override func viewWillLayoutSubviews() {
+    open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
         topScrollView.updateConstraintsIfNeeded()
         topScrollView.contentSize = contentView.frame.size
         if view.frame.size.height - verticalAlertIndent * 2 - 45 >= contentView.frame.size.height {
-            topScrollViewHeightConstraint?.updateOffset(contentView.frame.size.height)
+            topScrollViewHeightConstraint?.update(offset: contentView.frame.size.height)
         } else {
-            topScrollViewHeightConstraint?.updateOffset(view.frame.size.height - verticalAlertIndent * 2 - 45)
+            topScrollViewHeightConstraint?.update(offset: view.frame.size.height - verticalAlertIndent * 2 - 45)
         }
 
-        titleMessageSeparator.hidden = !showTitleMessageSeparator
-        topTitleMessageSeparatorConstraint?.updateOffset(showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
+        titleMessageSeparator.isHidden = !showTitleMessageSeparator
+        topTitleMessageSeparatorConstraint?.update(offset: showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
@@ -255,12 +258,12 @@ import SnapKit
         default:
             break
         }
-        if let messageLabel = self.messageLabel where alertAttributedMessage == nil {
+        if let messageLabel = self.messageLabel , alertAttributedMessage == nil {
             messageLabel.textColor = tintColor
         }
     }
 
-    public func addAction(action: APMAlertActionProtocol) {
+    open func addAction(_ action: APMAlertActionProtocol) {
         actions.append(action)
 
         let button = UIButton()
@@ -268,20 +271,20 @@ import SnapKit
             button.titleLabel?.font = buttonFont
         }
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.setTitle(action.title, forState: .Normal)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Selected)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-        button.addTarget(self, action: #selector(btnPressed(_:)), forControlEvents: .TouchUpInside)
+        button.setTitleColor(UIColor.black, for: UIControlState())
+        button.setTitle(action.title, for: UIControlState())
+        button.setTitleColor(UIColor.lightGray, for: .selected)
+        button.setTitleColor(UIColor.lightGray, for: .highlighted)
+        button.addTarget(self, action: #selector(btnPressed(_:)), for: .touchUpInside)
         button.tag = buttons.count + 1
-        button.backgroundColor = UIColor.whiteColor()
+        button.backgroundColor = UIColor.white
         buttonsView.addSubview(button)
         buttons.append(button)
     }
 
-    func btnPressed(button: UIButton) {
-        button.selected = true
-        self.dismissViewControllerAnimated(true, completion: {
+    func btnPressed(_ button: UIButton) {
+        button.isSelected = true
+        self.dismiss(animated: true, completion: {
             let action = self.actions[button.tag - 1]
             action.handler?(action)
         })
@@ -289,11 +292,11 @@ import SnapKit
 }
 
 extension APMAlertController: UIViewControllerTransitioningDelegate {
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: true)
     }
 
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
     }
 }
