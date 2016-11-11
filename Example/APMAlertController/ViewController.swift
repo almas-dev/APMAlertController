@@ -18,11 +18,12 @@ class ViewController: UIViewController {
                     "Alert Text Title Separator With Tint",
                     "Alert Text Title Attributed Message",
                     "Alert Text Title View Message",
+                    "Alert Text Field View Message",
                     "Alert Image Title Colored Button"
             ],
             ["In progress"]
     ]
-    var actions: Array<Array<(_ indexPath:IndexPath) -> Void>> {
+    var actions: Array<Array<(_ indexPath: IndexPath) -> Void>> {
         return [
                 [systemAlert, systemActionSheet],
                 [
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
                         alertTextTitleSeparatorWithTint,
                         alertTextTitleAttributedMessage,
                         alertTextTitleViewMessage,
+                        alertTextFieldView,
                         alertImageTitleColoredButton
                 ],
                 [systemActionSheet]
@@ -192,14 +194,14 @@ class ViewController: UIViewController {
     func alertTextTitleAttributedMessage(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
         let attributedMessage = NSMutableAttributedString(string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.")
-        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue", size:16.0)!, range:NSMakeRange(0,28))
-        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-Bold", size:14.0)!, range:NSMakeRange(28,29))
-        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-MediumItalic", size:16.0)!, range:NSMakeRange(57,22))
-        attributedMessage.addAttribute(NSFontAttributeName, value:UIFont(name:"HelveticaNeue-Medium", size:10.0)!, range:NSMakeRange(79,44))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.581, green:0.129, blue:0.575, alpha:1.0), range:NSMakeRange(0,28))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.276, green:0.32, blue:0.6, alpha:1.0), range:NSMakeRange(28,29))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.488, green:0.593, blue:0.424, alpha:1.0), range:NSMakeRange(57,22))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value:UIColor(red:0.0, green:0.656, blue:0.571, alpha:1.0), range:NSMakeRange(79,44))
+        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue", size: 16.0)!, range: NSMakeRange(0, 28))
+        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-Bold", size: 14.0)!, range: NSMakeRange(28, 29))
+        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-MediumItalic", size: 16.0)!, range: NSMakeRange(57, 22))
+        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, range: NSMakeRange(79, 44))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.581, green: 0.129, blue: 0.575, alpha: 1.0), range: NSMakeRange(0, 28))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.276, green: 0.32, blue: 0.6, alpha: 1.0), range: NSMakeRange(28, 29))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.488, green: 0.593, blue: 0.424, alpha: 1.0), range: NSMakeRange(57, 22))
+        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.0, green: 0.656, blue: 0.571, alpha: 1.0), range: NSMakeRange(79, 44))
 
         let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
@@ -214,6 +216,34 @@ class ViewController: UIViewController {
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func alertTextFieldView(_ indexPath: IndexPath) {
+        let alertController = APMAlertController(title: title, preferredStyle: .alert)
+        alertController.showTitleMessageSeparator = true
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
+            action in
+            print("The simple alert cancel action.")
+        }
+        alertController.addAction(cancelAction)
+
+        let contentView = alertController.messageContentView
+
+        let textField = UITextField()
+        textField.placeholder = "Text field"
+        textField.delegate = self
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
+        contentView.addSubview(textField)
+        contentView.addConstraints([
+                NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: textField, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 15),
+                NSLayoutConstraint(item: textField, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: -15),
+                NSLayoutConstraint(item: textField, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: textField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
+        ])
+
         present(alertController, animated: true, completion: nil)
     }
 
@@ -320,4 +350,12 @@ extension ViewController: UITableViewDataSource {
         cell.textLabel?.text = titlesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         return cell
     }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+
 }
