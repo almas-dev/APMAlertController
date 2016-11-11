@@ -77,6 +77,11 @@ import SnapKit
         }
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardDidHide, object: nil)
+    }
+
     public required init(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -117,6 +122,9 @@ import SnapKit
 
         configureView()
         configureLayout()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(with:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(with:)), name: Notification.Name.UIKeyboardDidHide, object: nil)
     }
 
     func configureView() {
@@ -175,9 +183,12 @@ import SnapKit
         }
     }
 
+    private var centerYConstraint: Constraint?
+
     func configureLayout() {
         alertView.snp.makeConstraints {
-            $0.center.equalTo(view)
+            $0.centerX.equalTo(view)
+            self.centerYConstraint = $0.centerY.equalTo(view).constraint
             $0.width.equalTo(270)
             $0.height.lessThanOrEqualTo(view).offset(-(verticalAlertIndent * 2))
         }
@@ -258,7 +269,7 @@ import SnapKit
         default:
             break
         }
-        if let messageLabel = self.messageLabel , alertAttributedMessage == nil {
+        if let messageLabel = self.messageLabel, alertAttributedMessage == nil {
             messageLabel.textColor = tintColor
         }
     }
@@ -288,6 +299,36 @@ import SnapKit
             let action = self.actions[button.tag - 1]
             action.handler?(action)
         })
+    }
+
+    func keyboardWillShow(with notification: Notification) {
+        guard let centerXConstraint = self.centerYConstraint,
+                let userInfo = notification.userInfo,
+                let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+                let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+            return
+        }
+
+        let frame = keyboardFrame.cgRectValue
+        centerXConstraint.update(offset: -frame.size.height / 2)
+
+        UIView.animate(withDuration: animationDuration.doubleValue) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    func keyboardDidHide(with notification: Notification) {
+        guard let centerXConstraint = self.centerYConstraint,
+                let userInfo = notification.userInfo,
+                let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+            return
+        }
+
+        centerXConstraint.update(offset: 0)
+
+        UIView.animate(withDuration: animationDuration.doubleValue) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
