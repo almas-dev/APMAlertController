@@ -8,15 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D4B7FCE01EA0E5DE005852CF /* Pod in Resources */ = {isa = PBXBuildFile; fileRef = D4B7FCDF1EA0E5DE005852CF /* Pod */; };
-		D4B7FCE21EA0E642005852CF /* APMAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B7FCE11EA0E642005852CF /* APMAlertController.h */; };
-		D4B7FCE41EA0EB20005852CF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4B7FCE31EA0EB20005852CF /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D4B7FCD21EA0E525005852CF /* APMAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APMAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B7FCDF1EA0E5DE005852CF /* Pod */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pod; sourceTree = SOURCE_ROOT; };
-		D4B7FCE11EA0E642005852CF /* APMAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APMAlertController.h; path = Pod/APMAlertController.h; sourceTree = "<group>"; };
-		D4B7FCE31EA0EB20005852CF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Pod/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +45,6 @@
 		D4B7FCD41EA0E525005852CF /* APMAlertController */ = {
 			isa = PBXGroup;
 			children = (
-				D4B7FCE31EA0EB20005852CF /* Info.plist */,
-				D4B7FCE11EA0E642005852CF /* APMAlertController.h */,
 				D4B7FCDF1EA0E5DE005852CF /* Pod */,
 			);
 			path = APMAlertController;
@@ -63,7 +57,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B7FCE21EA0E642005852CF /* APMAlertController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +117,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B7FCE41EA0EB20005852CF /* Info.plist in Resources */,
 				D4B7FCE01EA0E5DE005852CF /* Pod in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
