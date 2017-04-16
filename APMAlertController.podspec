@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "APMAlertController"
-  s.version          = "0.8.0"
+  s.version          = "0.9"
   s.summary          = "AlertController written in Swift 3"
 
   # This description is used to generate tags and improve search results.
