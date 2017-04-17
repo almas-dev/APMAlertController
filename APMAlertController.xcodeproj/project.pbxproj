@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D4B7FCE01EA0E5DE005852CF /* Pod in Resources */ = {isa = PBXBuildFile; fileRef = D4B7FCDF1EA0E5DE005852CF /* Pod */; };
 		D4FD85531EA4F3B500128075 /* APMAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4FD85521EA4F3B500128075 /* APMAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4FD85571EA4F67800128075 /* APMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85541EA4F67800128075 /* APMAlertAction.swift */; };
+		D4FD85581EA4F67800128075 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85551EA4F67800128075 /* APMAlertAnimation.swift */; };
+		D4FD85591EA4F67800128075 /* APMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85561EA4F67800128075 /* APMAlertController.swift */; };
+		D4FD855C1EA4F70300128075 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD855B1EA4F70300128075 /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D4B7FCD21EA0E525005852CF /* APMAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APMAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4B7FCDF1EA0E5DE005852CF /* Pod */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pod; sourceTree = SOURCE_ROOT; };
 		D4FD85521EA4F3B500128075 /* APMAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APMAlertController.h; sourceTree = SOURCE_ROOT; };
+		D4FD85541EA4F67800128075 /* APMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APMAlertAction.swift; path = Pod/Classes/APMAlertAction.swift; sourceTree = SOURCE_ROOT; };
+		D4FD85551EA4F67800128075 /* APMAlertAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APMAlertAnimation.swift; path = Pod/Classes/APMAlertAnimation.swift; sourceTree = SOURCE_ROOT; };
+		D4FD85561EA4F67800128075 /* APMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APMAlertController.swift; path = Pod/Classes/APMAlertController.swift; sourceTree = SOURCE_ROOT; };
+		D4FD855B1EA4F70300128075 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FD855C1EA4F70300128075 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31,6 +38,7 @@
 		D4B7FCC81EA0E525005852CF = {
 			isa = PBXGroup;
 			children = (
+				D4FD855B1EA4F70300128075 /* SnapKit.framework */,
 				D4B7FCD41EA0E525005852CF /* APMAlertController */,
 				D4B7FCD31EA0E525005852CF /* Products */,
 			);
@@ -48,9 +56,19 @@
 			isa = PBXGroup;
 			children = (
 				D4FD85521EA4F3B500128075 /* APMAlertController.h */,
-				D4B7FCDF1EA0E5DE005852CF /* Pod */,
+				D4FD855A1EA4F68B00128075 /* Classes */,
 			);
 			path = APMAlertController;
+			sourceTree = "<group>";
+		};
+		D4FD855A1EA4F68B00128075 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D4FD85541EA4F67800128075 /* APMAlertAction.swift */,
+				D4FD85551EA4F67800128075 /* APMAlertAnimation.swift */,
+				D4FD85561EA4F67800128075 /* APMAlertController.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +113,7 @@
 				TargetAttributes = {
 					D4B7FCD11EA0E525005852CF = {
 						CreatedOnToolsVersion = 8.3.1;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -121,7 +140,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B7FCE01EA0E5DE005852CF /* Pod in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FD85591EA4F67800128075 /* APMAlertController.swift in Sources */,
+				D4FD85581EA4F67800128075 /* APMAlertAnimation.swift in Sources */,
+				D4FD85571EA4F67800128075 /* APMAlertAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,17 +263,23 @@
 		D4B7FCDB1EA0E525005852CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pod/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.almas-dev.APMAlertController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -260,11 +287,16 @@
 		D4B7FCDC1EA0E525005852CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pod/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
