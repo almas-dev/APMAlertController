@@ -12,6 +12,7 @@
 		D4FD85581EA4F67800128075 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85551EA4F67800128075 /* APMAlertAnimation.swift */; };
 		D4FD85591EA4F67800128075 /* APMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85561EA4F67800128075 /* APMAlertController.swift */; };
 		D4FD855C1EA4F70300128075 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FD855B1EA4F70300128075 /* SnapKit.framework */; };
+		D4FD85621EA4F8A600128075 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4FD85611EA4F8A600128075 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		D4FD85551EA4F67800128075 /* APMAlertAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APMAlertAnimation.swift; path = Pod/Classes/APMAlertAnimation.swift; sourceTree = SOURCE_ROOT; };
 		D4FD85561EA4F67800128075 /* APMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APMAlertController.swift; path = Pod/Classes/APMAlertController.swift; sourceTree = SOURCE_ROOT; };
 		D4FD855B1EA4F70300128075 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		D4FD85611EA4F8A600128075 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Pod/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				D4FD85521EA4F3B500128075 /* APMAlertController.h */,
+				D4FD85611EA4F8A600128075 /* Info.plist */,
 				D4FD855A1EA4F68B00128075 /* Classes */,
 			);
 			path = APMAlertController;
@@ -140,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FD85621EA4F8A600128075 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
