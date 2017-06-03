@@ -1,0 +1,25 @@
+#!usr/bin/ruby
+
+fastlane_version "2.0"
+
+default_platform :ios
+
+platform :ios do
+    before_all do
+        ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "120"
+    end
+
+    desc "Run tests"
+    lane :test do 
+        cocoapods(
+            podfile: "Example/Podfile"
+        )
+        scan(
+            workspace: "Example/APMAlertController.xcworkspace",
+            scheme: "APMAlertController-Example",
+            sdk: "iphonesimulator",
+            device: "iPhone 5s (10.2)",
+            clean: true,
+        )  
+    end
+end

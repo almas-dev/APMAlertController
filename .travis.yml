@@ -1,17 +1,6 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
 language: objective-c
-rvm:
-  - 2.3.1
-osx_image: xcode8
-xcode_workspace: Example/APMAlertController.xcworkspace
-xcode_scheme: APMAlertController-Example
-xcode_sdk: iphonesimulator10
-podfile: Example/Podfile
-before_install:
-  - gem install cocoapods --pre # Since Travis is not always on latest version
-  - pod install --repo-update --project-directory=Example
+osx_image: xcode8.2
+xcode_sdk: iphoneos10.2
 script:
-  - xcodebuild -workspace Example/APMAlertController.xcworkspace -scheme APMAlertController-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO clean build
+    - bundle install
+    - bundle exec fastlane test
