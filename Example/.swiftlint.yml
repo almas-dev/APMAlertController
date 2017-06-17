@@ -1,0 +1,40 @@
+included:
+  - ../Pod/Classes
+  - APMAlertController
+  - Tests
+
+excluded:
+  - Pods
+
+opt_in_rules:
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - conditional_returns_on_newline
+  - empty_count
+  - explicit_init
+#  - file_header
+  - first_where
+  - force_unwrapping
+  - missing_docs
+  - nimble_operator
+  - number_separator
+  - operator_usage_whitespace
+  - overridden_super_call
+  - private_outlet
+  - prohibited_super_call
+  - redundant_nil_coalesing
+  - switch_case_on_newline
+
+line_length: 150
+identifier_name:
+  min_length:
+    warning: 2
+    error: 1
+  max_length:
+    warning: 24
+    error: 32
+  excluded:
+    - initialViewControllersTypes
+cyclomatic_complexity:
+  error: 30
