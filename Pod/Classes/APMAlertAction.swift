@@ -4,19 +4,22 @@
 
 import Foundation
 
-@objc public enum APMAlertActionStyle: Int {
+@objc
+public enum APMAlertActionStyle: Int {
     case `default`
     case cancel
     case destructive
 }
 
-@objc public protocol APMAlertActionProtocol {
+@objc
+public protocol APMAlertActionProtocol {
     var title: String { get }
     var style: APMAlertActionStyle { get }
     var handler: ((APMAlertActionProtocol) -> Void)? { get }
 }
 
-@objc open class APMAlertAction: NSObject, APMAlertActionProtocol {
+@objc
+open class APMAlertAction: NSObject, APMAlertActionProtocol {
     open let title: String
     open let style: APMAlertActionStyle
     open let handler: ((APMAlertActionProtocol) -> Void)?

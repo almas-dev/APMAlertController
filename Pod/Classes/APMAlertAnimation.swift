@@ -12,19 +12,11 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        if (presenting) {
-            return 0.5
-        } else {
-            return 0.3
-        }
+        return presenting ? 0.5 : 0.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        if (presenting) {
-            presentAnimateTransition(transitionContext)
-        } else {
-            dismissAnimateTransition(transitionContext)
-        }
+        presenting ? presentAnimateTransition(transitionContext) : dismissAnimateTransition(transitionContext)
     }
 
     func presentAnimateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
@@ -42,15 +34,13 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
                     alertController.alertView.alpha = 1.0
                     alertController.alertView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
                 },
-                completion: {
-                    finished in
+                completion: { finished in
                     UIView.animate(withDuration: 0.2,
                         animations: {
                             alertController.alertView.transform = CGAffineTransform.identity
                         },
-                        completion: {
-                            finished in
-                            if (finished) {
+                        completion: { finished in
+                            if finished {
                                 transitionContext.completeTransition(true)
                             }
                         })
@@ -67,8 +57,7 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
                     alertController.alertView.alpha = 0.0
                     alertController.alertView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 },
-                completion: {
-                    finished in
+                completion: { _ in
                     transitionContext.completeTransition(true)
                 })
         }

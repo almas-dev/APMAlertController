@@ -5,12 +5,14 @@
 import UIKit
 import SnapKit
 
-@objc public enum APMAlertControllerStyle: Int {
+@objc
+public enum APMAlertControllerStyle: Int {
     case alert
     case actionSheet
 }
 
-@objc open class APMAlertController: UIViewController {
+@objc
+open class APMAlertController: UIViewController {
     fileprivate let verticalAlertIndent: CGFloat = 25
 
     open var buttonTitleColor: UIColor?
@@ -114,8 +116,18 @@ import SnapKit
         configureView()
         configureLayout()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(with:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(with:)), name: Notification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(with:)),
+            name: Notification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDidHide(with:)),
+            name: Notification.Name.UIKeyboardDidHide,
+            object: nil
+        )
     }
 
     func configureView() {
@@ -328,11 +340,17 @@ import SnapKit
 }
 
 extension APMAlertController: UIViewControllerTransitioningDelegate {
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: true)
     }
 
-    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
     }
 }
