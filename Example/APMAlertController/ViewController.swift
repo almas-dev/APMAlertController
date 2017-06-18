@@ -353,7 +353,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }

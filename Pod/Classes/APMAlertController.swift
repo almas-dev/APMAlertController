@@ -28,7 +28,7 @@ import SnapKit
     fileprivate var topScrollViewHeightConstraint: Constraint?
     fileprivate let contentView = UIView()
     fileprivate var anyTitleObject: AnyObject
-    fileprivate var topTitleMessageSeparatorConstraint: Constraint?
+    fileprivate var titleMessageSeparatorConstraint: Constraint?
     fileprivate let titleMessageSeparator = UIView()
     fileprivate var messageLabel: UILabel?
     fileprivate let buttonsView = UIView()
@@ -212,19 +212,23 @@ import SnapKit
     }
 
     func configureTopScrollViewLayout() {
+        guard let titleObject = anyTitleObject as? UIView else {
+            fatalError("anyTitleObject not UIView")
+        }
+
         contentView.snp.makeConstraints {
             $0.edges.equalTo(topScrollView)
             $0.width.equalTo(topScrollView)
         }
 
-        (anyTitleObject as! UIView).snp.makeConstraints {
+        titleObject.snp.makeConstraints {
             $0.top.equalTo(contentView).offset(20)
             $0.left.equalTo(contentView).offset(30)
             $0.right.equalTo(contentView).offset(-30)
         }
 
         titleMessageSeparator.snp.makeConstraints {
-            topTitleMessageSeparatorConstraint = $0.top.equalTo((anyTitleObject as! UIView).snp.bottom).constraint
+            titleMessageSeparatorConstraint = $0.top.equalTo(titleObject.snp.bottom).constraint
             $0.left.equalTo(contentView)
             $0.right.equalTo(contentView)
             $0.height.equalTo(1)
@@ -259,7 +263,7 @@ import SnapKit
         }
 
         titleMessageSeparator.isHidden = !showTitleMessageSeparator
-        topTitleMessageSeparatorConstraint?.update(offset: showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
+        titleMessageSeparatorConstraint?.update(offset: showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
