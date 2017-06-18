@@ -41,37 +41,28 @@ import SnapKit
     fileprivate var buttons: [UIButton] = [] {
         didSet {
             buttonsView.removeConstraints(buttonsView.constraints)
-            for (index, value) in buttons.enumerated() {
-                value.setTitleColor(buttonTitleColor ?? tintColor, for: UIControlState())
-                value.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .highlighted)
-                value.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .selected)
+            for (index, button) in buttons.enumerated() {
+                button.setTitleColor(buttonTitleColor ?? tintColor, for: UIControlState())
+                button.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .highlighted)
+                button.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .selected)
 
                 if let backgroundColor = buttonBackgroundColor {
-                    value.backgroundColor = backgroundColor
+                    button.backgroundColor = backgroundColor
                 }
 
+                button.topAnchor.constraint(equalTo: buttonsView.topAnchor, constant: 1).isActive = true
+                button.bottomAnchor.constraint(equalTo: buttonsView.bottomAnchor).isActive = true
 
-                let top = NSLayoutConstraint(item: value, attribute: .top, relatedBy: .equal, toItem: buttonsView, attribute: .top, multiplier: 1.0, constant: 1)
-                let bottom = NSLayoutConstraint(item: value, attribute: .bottom, relatedBy: .equal, toItem: buttonsView, attribute: .bottom, multiplier: 1.0, constant: 0)
-
-                let left: NSLayoutConstraint
-                let right = NSLayoutConstraint(item: value, attribute: .right, relatedBy: .equal, toItem: buttonsView, attribute: .right, multiplier: 1.0, constant: 0)
                 if index == 0 {
-                    left = NSLayoutConstraint(item: value, attribute: .left, relatedBy: .equal, toItem: buttonsView, attribute: .left, multiplier: 1.0, constant: 0)
-                    if buttons.count == 1 {
-                        buttonsView.addConstraints([top, left, right, bottom])
-                    } else {
-                        buttonsView.addConstraints([top, left, bottom])
-                    }
+                    button.leadingAnchor.constraint(equalTo: buttonsView.leadingAnchor).isActive = true
                 } else {
                     let previousButton = buttons[index - 1]
-                    left = NSLayoutConstraint(item: value, attribute: .left, relatedBy: .equal, toItem: previousButton, attribute: .right, multiplier: 1.0, constant: 1)
-                    let width = NSLayoutConstraint(item: value, attribute: .width, relatedBy: .equal, toItem: previousButton, attribute: .width, multiplier: 1.0, constant: 0)
-                    if index == buttons.count - 1 {
-                        buttonsView.addConstraints([top, left, right, bottom, width])
-                    } else {
-                        buttonsView.addConstraints([top, left, bottom, width])
-                    }
+                    button.leadingAnchor.constraint(equalTo: previousButton.trailingAnchor, constant: 1).isActive = true
+                    button.widthAnchor.constraint(equalTo: previousButton.widthAnchor).isActive = true
+                }
+
+                if index == buttons.count - 1 {
+                    button.trailingAnchor.constraint(equalTo: buttonsView.trailingAnchor).isActive = true
                 }
             }
         }
@@ -307,9 +298,9 @@ import SnapKit
 
     func keyboardWillShow(with notification: Notification) {
         guard let centerXConstraint = self.centerYConstraint,
-                let userInfo = notification.userInfo,
-                let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-                let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+              let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+              let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
             return
         }
 
@@ -323,8 +314,8 @@ import SnapKit
 
     func keyboardDidHide(with notification: Notification) {
         guard let centerXConstraint = self.centerYConstraint,
-                let userInfo = notification.userInfo,
-                let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+              let userInfo = notification.userInfo,
+              let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
             return
         }
 
