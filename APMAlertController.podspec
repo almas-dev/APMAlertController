@@ -42,7 +42,6 @@ Light and convenient replacement for UIAlertController with many customization o
 
   s.subspec "Core" do |ss|
       ss.source_files = 'Pod/Classes/**/*'
-      ss.dependency 'SnapKit', '~>3.0.0'
   end
 
 end

@@ -3,7 +3,6 @@
 //
 
 import UIKit
-import SnapKit
 
 @objc
 public enum APMAlertControllerStyle: Int {
@@ -27,10 +26,10 @@ open class APMAlertController: UIViewController {
 
     let alertView = UIView()
     fileprivate let topScrollView = UIScrollView()
-    fileprivate var topScrollViewHeightConstraint: Constraint?
+    fileprivate var topScrollViewHeightConstraint: NSLayoutConstraint?
     fileprivate let contentView = UIView()
     fileprivate var anyTitleObject: AnyObject
-    fileprivate var titleMessageSeparatorConstraint: Constraint?
+    fileprivate var titleMessageSeparatorConstraint: NSLayoutConstraint?
     fileprivate let titleMessageSeparator = UIView()
     fileprivate var messageLabel: UILabel?
     fileprivate let buttonsView = UIView()
@@ -131,29 +130,35 @@ open class APMAlertController: UIViewController {
     }
 
     func configureView() {
+        alertView.translatesAutoresizingMaskIntoConstraints = false
         alertView.backgroundColor = UIColor(white: 1, alpha: 0.95)
         alertView.layer.cornerRadius = 12
         alertView.clipsToBounds = true
         view.addSubview(alertView)
 
+        topScrollView.translatesAutoresizingMaskIntoConstraints = false
         alertView.addSubview(topScrollView)
 
         configureTopScrollView()
 
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
         buttonsView.backgroundColor = separatorColor
         alertView.addSubview(buttonsView)
     }
 
     func configureTopScrollView() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         topScrollView.addSubview(contentView)
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
+            titleImageView.translatesAutoresizingMaskIntoConstraints = false
             titleImageView.contentMode = .scaleAspectFit
             titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.withRenderingMode(.alwaysTemplate)
             titleImageView.alpha = 0.8
             contentView.addSubview(titleImageView)
         case let titleLabel as UILabel:
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
             titleLabel.textAlignment = .center
             titleLabel.numberOfLines = 0
@@ -163,15 +168,17 @@ open class APMAlertController: UIViewController {
             break
         }
 
+        titleMessageSeparator.translatesAutoresizingMaskIntoConstraints = false
         titleMessageSeparator.backgroundColor = separatorColor
         titleMessageSeparator.isHidden = true
         contentView.addSubview(titleMessageSeparator)
 
+        messageContentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(messageContentView)
 
         if alertMessage != nil || alertAttributedMessage != nil {
             let messageLabel = UILabel()
-
+            messageLabel.translatesAutoresizingMaskIntoConstraints = false
             messageLabel.font = self.customDescriptionFont ?? UIFont.systemFont(ofSize: 16)
             messageLabel.textAlignment = .center
             if let alertMessage = self.alertMessage {
@@ -186,32 +193,28 @@ open class APMAlertController: UIViewController {
         }
     }
 
-    private var centerYConstraint: Constraint?
+    private var centerYConstraint: NSLayoutConstraint?
 
     func configureLayout() {
-        alertView.snp.makeConstraints {
-            $0.centerX.equalTo(view)
-            self.centerYConstraint = $0.centerY.equalTo(view).constraint
-            $0.width.equalTo(270)
-            $0.height.lessThanOrEqualTo(view).offset(-(verticalAlertIndent * 2))
-        }
+        centerYConstraint = alertView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        centerYConstraint?.isActive = true
+        alertView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        alertView.widthAnchor.constraint(equalToConstant: 270).isActive = true
+        alertView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, constant: -(verticalAlertIndent * 2)).isActive = true
 
-        topScrollView.snp.makeConstraints {
-            $0.top.equalTo(alertView)
-            $0.left.equalTo(alertView)
-            $0.right.equalTo(alertView)
-            topScrollViewHeightConstraint = $0.height.equalTo(0).constraint
-        }
+        topScrollView.topAnchor.constraint(equalTo: alertView.topAnchor).isActive = true
+        topScrollView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor).isActive = true
+        topScrollView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor).isActive = true
+        topScrollViewHeightConstraint = topScrollView.heightAnchor.constraint(equalToConstant: 0)
+        topScrollViewHeightConstraint?.isActive = true
 
         configureTopScrollViewLayout()
 
-        buttonsView.snp.makeConstraints {
-            $0.top.equalTo(topScrollView.snp.bottom)
-            $0.left.equalTo(alertView)
-            $0.right.equalTo(alertView)
-            $0.bottom.equalTo(alertView)
-            $0.height.equalTo(45)
-        }
+        buttonsView.topAnchor.constraint(equalTo: topScrollView.bottomAnchor).isActive = true
+        buttonsView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor).isActive = true
+        buttonsView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor).isActive = true
+        buttonsView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor).isActive = true
+        buttonsView.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
 
     func configureTopScrollViewLayout() {
@@ -219,38 +222,32 @@ open class APMAlertController: UIViewController {
             fatalError("anyTitleObject not UIView")
         }
 
-        contentView.snp.makeConstraints {
-            $0.edges.equalTo(topScrollView)
-            $0.width.equalTo(topScrollView)
-        }
+        contentView.topAnchor.constraint(equalTo: topScrollView.topAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: topScrollView.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: topScrollView.trailingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: topScrollView.bottomAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: topScrollView.widthAnchor).isActive = true
 
-        titleObject.snp.makeConstraints {
-            $0.top.equalTo(contentView).offset(20)
-            $0.left.equalTo(contentView).offset(30)
-            $0.right.equalTo(contentView).offset(-30)
-        }
+        titleObject.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        titleObject.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
+        titleObject.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30).isActive = true
 
-        titleMessageSeparator.snp.makeConstraints {
-            titleMessageSeparatorConstraint = $0.top.equalTo(titleObject.snp.bottom).constraint
-            $0.left.equalTo(contentView)
-            $0.right.equalTo(contentView)
-            $0.height.equalTo(1)
-        }
+        titleMessageSeparatorConstraint = titleMessageSeparator.topAnchor.constraint(equalTo: titleObject.bottomAnchor)
+        titleMessageSeparatorConstraint?.isActive = true
+        titleMessageSeparator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        titleMessageSeparator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        titleMessageSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
 
-        messageContentView.snp.makeConstraints {
-            $0.top.equalTo(titleMessageSeparator.snp.bottom)
-            $0.left.equalTo(contentView)
-            $0.right.equalTo(contentView)
-            $0.bottom.equalTo(contentView)
-        }
+        messageContentView.topAnchor.constraint(equalTo: titleMessageSeparator.bottomAnchor).isActive = true
+        messageContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        messageContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        messageContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
         if let messageLabel = self.messageLabel {
-            messageLabel.snp.makeConstraints {
-                $0.top.equalTo(messageContentView).offset(12)
-                $0.left.equalTo(messageContentView).offset(30)
-                $0.bottom.equalTo(messageContentView).offset(-16)
-                $0.right.equalTo(messageContentView).offset(-30)
-            }
+            messageLabel.topAnchor.constraint(equalTo: messageContentView.topAnchor, constant: 12).isActive = true
+            messageLabel.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 30).isActive = true
+            messageLabel.rightAnchor.constraint(equalTo: messageContentView.rightAnchor, constant: -30).isActive = true
+            messageLabel.bottomAnchor.constraint(equalTo: messageContentView.bottomAnchor, constant: -16).isActive = true
         }
     }
 
@@ -260,13 +257,13 @@ open class APMAlertController: UIViewController {
         topScrollView.updateConstraintsIfNeeded()
         topScrollView.contentSize = contentView.frame.size
         if view.frame.size.height - verticalAlertIndent * 2 - 45 >= contentView.frame.size.height {
-            topScrollViewHeightConstraint?.update(offset: contentView.frame.size.height)
+            topScrollViewHeightConstraint?.constant = contentView.frame.size.height
         } else {
-            topScrollViewHeightConstraint?.update(offset: view.frame.size.height - verticalAlertIndent * 2 - 45)
+            topScrollViewHeightConstraint?.constant = view.frame.size.height - verticalAlertIndent * 2 - 45
         }
 
         titleMessageSeparator.isHidden = !showTitleMessageSeparator
-        titleMessageSeparatorConstraint?.update(offset: showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0)
+        titleMessageSeparatorConstraint?.constant = showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0
 
         switch anyTitleObject {
         case let titleImageView as UIImageView:
@@ -309,7 +306,7 @@ open class APMAlertController: UIViewController {
     }
 
     func keyboardWillShow(with notification: Notification) {
-        guard let centerXConstraint = self.centerYConstraint,
+        guard let centerYConstraint = self.centerYConstraint,
               let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
               let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
@@ -317,7 +314,7 @@ open class APMAlertController: UIViewController {
         }
 
         let frame = keyboardFrame.cgRectValue
-        centerXConstraint.update(offset: -frame.size.height / 2)
+        centerYConstraint.constant = -frame.size.height / 2
 
         UIView.animate(withDuration: animationDuration.doubleValue) {
             self.view.layoutIfNeeded()
@@ -325,13 +322,13 @@ open class APMAlertController: UIViewController {
     }
 
     func keyboardDidHide(with notification: Notification) {
-        guard let centerXConstraint = self.centerYConstraint,
+        guard let centerYConstraint = self.centerYConstraint,
               let userInfo = notification.userInfo,
               let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
             return
         }
 
-        centerXConstraint.update(offset: 0)
+        centerYConstraint.constant = 0
 
         UIView.animate(withDuration: animationDuration.doubleValue) {
             self.view.layoutIfNeeded()
