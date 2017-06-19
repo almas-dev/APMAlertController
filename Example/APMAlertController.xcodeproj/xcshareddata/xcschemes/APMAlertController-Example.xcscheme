@@ -37,7 +37,7 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
@@ -49,16 +49,6 @@
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
                BuildableName = "APMAlertController_Tests.xctest"
                BlueprintName = "APMAlertController_Tests"
-               ReferencedContainer = "container:APMAlertController.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D4DA3FDA1C565B1900ECB8EA"
-               BuildableName = "UITests.xctest"
-               BlueprintName = "UITests"
                ReferencedContainer = "container:APMAlertController.xcodeproj">
             </BuildableReference>
          </TestableReference>
