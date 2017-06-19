@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "APMAlertController"
-  s.version          = "0.9.1"
+  s.version          = "0.10"
   s.summary          = "AlertController written in Swift 3"
 
   # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Light and convenient replacement for UIAlertController with many customization o
   s.source           = { :git => "https://github.com/almas-dev/APMAlertController.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '9.0'
   s.requires_arc = true
 
   # s.resource_bundles = {
@@ -42,7 +42,6 @@ Light and convenient replacement for UIAlertController with many customization o
 
   s.subspec "Core" do |ss|
       ss.source_files = 'Pod/Classes/**/*'
-      ss.dependency 'SnapKit', '~>3.0.0'
   end
 
 end

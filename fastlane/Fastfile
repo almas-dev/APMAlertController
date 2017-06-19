@@ -10,7 +10,7 @@ platform :ios do
     end
 
     desc "Run tests"
-    lane :test do 
+    lane :test do
         cocoapods(
             podfile: "Example/Podfile"
         )
@@ -20,6 +20,9 @@ platform :ios do
             sdk: "iphonesimulator",
             device: "iPhone 5s (10.2)",
             clean: true,
-        )  
+            formatter: "xcpretty-json-formatter",
+            fail_build: false
+        )
+        danger()
     end
 end

@@ -10,33 +10,33 @@ class ViewController: UIViewController {
     let tableView = UITableView()
     let sectionsArray = ["System", "Custom Alert", "Custom ActionSheet"]
     let titlesArray = [
-            ["System Alert", "System ActionSheet"],
-            [
-                    "Alert Text Title",
-                    "Alert Text Title Long",
-                    "Alert Image Title With Tint",
-                    "Alert Text Title Separator With Tint",
-                    "Alert Text Title Attributed Message",
-                    "Alert Text Title View Message",
-                    "Alert Text Field View Message",
-                    "Alert Image Title Colored Button"
-            ],
-            ["In progress"]
+        ["System Alert", "System ActionSheet"],
+        [
+            "Alert Text Title",
+            "Alert Text Title Long",
+            "Alert Image Title With Tint",
+            "Alert Text Title Separator With Tint",
+            "Alert Text Title Attributed Message",
+            "Alert Text Title View Message",
+            "Alert Text Field View Message",
+            "Alert Image Title Colored Button"
+        ],
+        ["In progress"]
     ]
-    var actions: Array<Array<(_ indexPath: IndexPath) -> Void>> {
+    var actions: [[(_ indexPath: IndexPath) -> Void]] {
         return [
-                [systemAlert, systemActionSheet],
-                [
-                        alertTextTitle,
-                        alertTextTitleColoredButtons,
-                        alertImageTitleWithTint,
-                        alertTextTitleSeparatorWithTint,
-                        alertTextTitleAttributedMessage,
-                        alertTextTitleViewMessage,
-                        alertTextFieldView,
-                        alertImageTitleColoredButton
-                ],
-                [systemActionSheet]
+            [systemAlert, systemActionSheet],
+            [
+                alertTextTitle,
+                alertTextTitleColoredButtons,
+                alertImageTitleWithTint,
+                alertTextTitleSeparatorWithTint,
+                alertTextTitleAttributedMessage,
+                alertTextTitleViewMessage,
+                alertTextFieldView,
+                alertImageTitleColoredButton
+            ],
+            [systemActionSheet]
         ]
     }
 
@@ -54,13 +54,17 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         view.addConstraints([
-                NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: tableView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: tableView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
         ])
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.performTransitionToObjectiveCViewController))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(self.performTransitionToObjectiveCViewController)
+        )
     }
 
     func performTransitionToObjectiveCViewController() {
@@ -75,18 +79,15 @@ class ViewController: UIViewController {
         let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
-            action in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             //Do some stuff
         }
         alertController.addAction(cancelAction)
-        let defaultAction = UIAlertAction(title: "Default", style: .default) {
-            action in
+        let defaultAction = UIAlertAction(title: "Default", style: .default) { _ in
             //Do some stuff
         }
         alertController.addAction(defaultAction)
-        let desctructAction = UIAlertAction(title: "Destruct", style: .destructive) {
-            action in
+        let desctructAction = UIAlertAction(title: "Destruct", style: .destructive) { _ in
             //Do some stuff
         }
         alertController.addAction(desctructAction)
@@ -102,18 +103,15 @@ class ViewController: UIViewController {
         let title = titlesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
 
         let alertController = UIAlertController(title: title, message: "This is message", preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
-            action in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             //Just dismiss the action sheet
         }
         alertController.addAction(cancelAction)
-        let takePictureAction = UIAlertAction(title: "Take Picture", style: .default) {
-            action in
+        let takePictureAction = UIAlertAction(title: "Take Picture", style: .default) { _ in
             //Code for launching the camera goes here
         }
         alertController.addAction(takePictureAction)
-        let choosePictureAction = UIAlertAction(title: "Choose From Camera Roll", style: .default) {
-            action in
+        let choosePictureAction = UIAlertAction(title: "Choose From Camera Roll", style: .default) { _ in
             //Code for picking from camera roll goes here
         }
         alertController.addAction(choosePictureAction)
@@ -127,8 +125,7 @@ class ViewController: UIViewController {
         let message = "This is message. One, Two. Message."
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
@@ -140,18 +137,15 @@ class ViewController: UIViewController {
         let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .cancel) {
-            action in
+        let testAction = APMAlertAction(title: "Test", style: .cancel) { _ in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
-        let desctructAction = APMAlertAction(title: "Destruct", style: .destructive) {
-            action in
+        let desctructAction = APMAlertAction(title: "Destruct", style: .destructive) { _ in
             print("The simple alert destruct action.")
         }
         alertController.addAction(desctructAction)
@@ -163,13 +157,11 @@ class ViewController: UIViewController {
 
         let alertController = APMAlertController(titleImage: UIImage(named: "alert-controller-error"), message: message, preferredStyle: .alert)
         alertController.tintColor = UIColor.brown
-        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .cancel) {
-            action in
+        let testAction = APMAlertAction(title: "Test", style: .cancel) { _ in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
@@ -183,8 +175,7 @@ class ViewController: UIViewController {
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
         alertController.tintColor = UIColor.purple
-        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
@@ -194,25 +185,55 @@ class ViewController: UIViewController {
     func alertTextTitleAttributedMessage(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
         let attributedMessage = NSMutableAttributedString(string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.")
-        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue", size: 16.0)!, range: NSMakeRange(0, 28))
-        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-Bold", size: 14.0)!, range: NSMakeRange(28, 29))
-        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-MediumItalic", size: 16.0)!, range: NSMakeRange(57, 22))
-        attributedMessage.addAttribute(NSFontAttributeName, value: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!, range: NSMakeRange(79, 44))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.581, green: 0.129, blue: 0.575, alpha: 1.0), range: NSMakeRange(0, 28))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.276, green: 0.32, blue: 0.6, alpha: 1.0), range: NSMakeRange(28, 29))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.488, green: 0.593, blue: 0.424, alpha: 1.0), range: NSMakeRange(57, 22))
-        attributedMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0.0, green: 0.656, blue: 0.571, alpha: 1.0), range: NSMakeRange(79, 44))
+        attributedMessage.addAttribute(
+            NSFontAttributeName,
+            value: UIFont.systemFont(ofSize: 16),
+            range: NSRange(location: 0, length: 28)
+        )
+        attributedMessage.addAttribute(
+            NSFontAttributeName,
+            value: UIFont.boldSystemFont(ofSize: 14),
+            range: NSRange(location: 28, length: 29)
+        )
+        attributedMessage.addAttribute(
+            NSFontAttributeName,
+            value: UIFont.italicSystemFont(ofSize: 16),
+            range: NSRange(location: 57, length: 22)
+        )
+        attributedMessage.addAttribute(
+            NSFontAttributeName,
+            value: UIFont.boldSystemFont(ofSize: 10),
+            range: NSRange(location: 79, length: 44)
+        )
+        attributedMessage.addAttribute(
+            NSForegroundColorAttributeName,
+            value: UIColor(red: 0.581, green: 0.129, blue: 0.575, alpha: 1.0),
+            range: NSRange(location: 0, length: 28)
+        )
+        attributedMessage.addAttribute(
+            NSForegroundColorAttributeName,
+            value: UIColor(red: 0.276, green: 0.32, blue: 0.6, alpha: 1.0),
+            range: NSRange(location: 28, length: 29)
+        )
+        attributedMessage.addAttribute(
+            NSForegroundColorAttributeName,
+            value: UIColor(red: 0.488, green: 0.593, blue: 0.424, alpha: 1.0),
+            range: NSRange(location: 57, length: 22)
+        )
+        attributedMessage.addAttribute(
+            NSForegroundColorAttributeName,
+            value: UIColor(red: 0.0, green: 0.656, blue: 0.571, alpha: 1.0),
+            range: NSRange(location: 79, length: 44)
+        )
 
         let alertController = APMAlertController(title: title, attributedMessage: attributedMessage, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
         alertController.tintColor = UIColor.purple
-        let defaultAction = APMAlertAction(title: "Default", style: .default) {
-            action in
+        let defaultAction = APMAlertAction(title: "Default", style: .default) { _ in
             print("The simple alert default action.")
         }
         alertController.addAction(defaultAction)
-        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
@@ -222,8 +243,7 @@ class ViewController: UIViewController {
     func alertTextFieldView(_ indexPath: IndexPath) {
         let alertController = APMAlertController(title: title, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
@@ -237,11 +257,11 @@ class ViewController: UIViewController {
         textField.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         contentView.addSubview(textField)
         contentView.addConstraints([
-                NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: textField, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 15),
-                NSLayoutConstraint(item: textField, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: -15),
-                NSLayoutConstraint(item: textField, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: textField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
+            NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: textField, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 15),
+            NSLayoutConstraint(item: textField, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: -15),
+            NSLayoutConstraint(item: textField, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: textField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
         ])
 
         present(alertController, animated: true, completion: nil)
@@ -252,8 +272,7 @@ class ViewController: UIViewController {
 
         let alertController = APMAlertController(title: title, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
-        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Ok", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
@@ -265,11 +284,11 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         contentView.addSubview(view)
         contentView.addConstraints([
-                NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
+            NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
         ])
 
         let view1 = UIView()
@@ -277,10 +296,10 @@ class ViewController: UIViewController {
         view1.backgroundColor = UIColor.purple.withAlphaComponent(0.2)
         view.addSubview(view1)
         view.addConstraints([
-                NSLayoutConstraint(item: view1, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 10),
-                NSLayoutConstraint(item: view1, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 5),
-                NSLayoutConstraint(item: view1, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -5),
-                NSLayoutConstraint(item: view1, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -10)
+            NSLayoutConstraint(item: view1, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 10),
+            NSLayoutConstraint(item: view1, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 5),
+            NSLayoutConstraint(item: view1, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -5),
+            NSLayoutConstraint(item: view1, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -10)
         ])
 
         let view2 = UIView()
@@ -288,10 +307,10 @@ class ViewController: UIViewController {
         view2.backgroundColor = alertController.separatorColor
         view.addSubview(view2)
         view.addConstraints([
-                NSLayoutConstraint(item: view2, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view2, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view2, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: view2, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 2)
+            NSLayoutConstraint(item: view2, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: view2, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: view2, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: view2, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 2)
         ])
 
         present(alertController, animated: true, completion: nil)
@@ -308,13 +327,11 @@ class ViewController: UIViewController {
         alertController.buttonBackgroundColor = UIColor(red: 48 / 255, green: 176 / 255, blue: 214 / 255, alpha: 1)
         alertController.disableImageIconTemplate = true
         alertController.tintColor = UIColor.magenta
-        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) {
-            action in
+        let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) { _ in
             print("The simple alert cancel action.")
         }
         alertController.addAction(cancelAction)
-        let testAction = APMAlertAction(title: "Test", style: .cancel) {
-            action in
+        let testAction = APMAlertAction(title: "Test", style: .cancel) { _ in
             print("The simple alert test action.")
         }
         alertController.addAction(testAction)
@@ -353,9 +370,9 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField!) -> Bool {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
-
 }
