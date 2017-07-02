@@ -15,8 +15,22 @@ open class APMAlertController: UIViewController {
     fileprivate let verticalAlertIndent: CGFloat = 25
 
     open var buttonTitleColor: UIColor?
-    open var customButtonFont: UIFont?
-    open var buttonBackgroundColor: UIColor?
+
+    open var customButtonFont: UIFont? {
+        didSet {
+            buttonsContainerView.arrangedSubviews
+                .flatMap { $0 as? UIButton }
+                .forEach { $0.titleLabel?.font = customButtonFont }
+        }
+    }
+
+    open var buttonBackgroundColor: UIColor? {
+        didSet {
+            buttonsContainerView.arrangedSubviews
+                .flatMap { $0 as? UIButton }
+                .forEach { $0.backgroundColor = buttonBackgroundColor ?? .white }
+        }
+    }
     open var customDescriptionFont: UIFont?
     open var disableImageIconTemplate: Bool = false
     open var separatorColor = UIColor(white: 0.75, alpha: 0.6)
@@ -32,42 +46,18 @@ open class APMAlertController: UIViewController {
     fileprivate var titleMessageSeparatorConstraint: NSLayoutConstraint?
     fileprivate let titleMessageSeparator = UIView()
     fileprivate var messageLabel: UILabel?
-    fileprivate let buttonsView = UIView()
+    fileprivate lazy var buttonsContainerView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        return stackView
+    }()
     fileprivate let button = UIButton()
     fileprivate var alertTitle: String?
     fileprivate var alertTitleImage: UIImage?
     fileprivate var alertMessage: String?
     fileprivate var alertAttributedMessage: NSAttributedString?
     fileprivate var actions = [APMAlertActionProtocol]()
-    fileprivate var buttons: [UIButton] = [] {
-        didSet {
-            buttonsView.removeConstraints(buttonsView.constraints)
-            for (index, button) in buttons.enumerated() {
-                button.setTitleColor(buttonTitleColor ?? tintColor, for: UIControlState())
-                button.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .highlighted)
-                button.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .selected)
-
-                if let backgroundColor = buttonBackgroundColor {
-                    button.backgroundColor = backgroundColor
-                }
-
-                button.topAnchor.constraint(equalTo: buttonsView.topAnchor, constant: 1).isActive = true
-                button.bottomAnchor.constraint(equalTo: buttonsView.bottomAnchor).isActive = true
-
-                if index == 0 {
-                    button.leadingAnchor.constraint(equalTo: buttonsView.leadingAnchor).isActive = true
-                } else {
-                    let previousButton = buttons[index - 1]
-                    button.leadingAnchor.constraint(equalTo: previousButton.trailingAnchor, constant: 1).isActive = true
-                    button.widthAnchor.constraint(equalTo: previousButton.widthAnchor).isActive = true
-                }
-
-                if index == buttons.count - 1 {
-                    button.trailingAnchor.constraint(equalTo: buttonsView.trailingAnchor).isActive = true
-                }
-            }
-        }
-    }
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -141,9 +131,11 @@ open class APMAlertController: UIViewController {
 
         configureTopScrollView()
 
-        buttonsView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsView.backgroundColor = separatorColor
-        alertView.addSubview(buttonsView)
+        buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.addSubview(buttonsContainerView)
+        let lineView = LineView(axis: .horizontal)
+        lineView.backgroundColor = separatorColor
+        lineView.placeAboveView(buttonsContainerView)
     }
 
     func configureTopScrollView() {
@@ -210,11 +202,11 @@ open class APMAlertController: UIViewController {
 
         configureTopScrollViewLayout()
 
-        buttonsView.topAnchor.constraint(equalTo: topScrollView.bottomAnchor).isActive = true
-        buttonsView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor).isActive = true
-        buttonsView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor).isActive = true
-        buttonsView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor).isActive = true
-        buttonsView.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        buttonsContainerView.topAnchor.constraint(equalTo: topScrollView.bottomAnchor).isActive = true
+        buttonsContainerView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor).isActive = true
+        buttonsContainerView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor).isActive = true
+        buttonsContainerView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor).isActive = true
+        buttonsContainerView.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
 
     func configureTopScrollViewLayout() {
@@ -286,15 +278,22 @@ open class APMAlertController: UIViewController {
             button.titleLabel?.font = buttonFont
         }
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.black, for: UIControlState())
-        button.setTitle(action.title, for: UIControlState())
-        button.setTitleColor(UIColor.lightGray, for: .selected)
-        button.setTitleColor(UIColor.lightGray, for: .highlighted)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitle(action.title, for: .normal)
+        button.setTitleColor(buttonTitleColor ?? tintColor, for: .normal)
+        button.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .highlighted)
+        button.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .selected)
+
+        button.backgroundColor = buttonBackgroundColor ?? .white
         button.addTarget(self, action: #selector(btnPressed(_:)), for: .touchUpInside)
-        button.tag = buttons.count + 1
-        button.backgroundColor = UIColor.white
-        buttonsView.addSubview(button)
-        buttons.append(button)
+        buttonsContainerView.addArrangedSubview(button)
+        button.tag = buttonsContainerView.arrangedSubviews.count
+
+        if buttonsContainerView.arrangedSubviews.count > 1 {
+            let lineView = LineView(axis: .vertical)
+            lineView.backgroundColor = separatorColor
+            lineView.placeAboveView(button)
+        }
     }
 
     func btnPressed(_ button: UIButton) {
@@ -349,5 +348,47 @@ extension APMAlertController: UIViewControllerTransitioningDelegate {
         forDismissed dismissed: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
+    }
+}
+
+private final class LineView: UIView {
+
+    required init(coder _: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+
+    enum LineAxis {
+        case horizontal, vertical
+    }
+
+    private let axis: LineAxis
+    init(axis: LineAxis) {
+        self.axis = axis
+        super.init(frame: CGRect.zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        switch axis {
+        case .horizontal:
+            heightAnchor.constraint(equalToConstant: 1).isActive = true
+        case .vertical:
+            widthAnchor.constraint(equalToConstant: 1).isActive = true
+        }
+    }
+
+    func placeAboveView(_ view: UIView) {
+        view.addSubview(self)
+        switch axis {
+        case .horizontal:
+            NSLayoutConstraint.activate([
+                view.leftAnchor.constraint(equalTo: leftAnchor),
+                view.topAnchor.constraint(equalTo: topAnchor),
+                view.rightAnchor.constraint(equalTo: rightAnchor)
+            ])
+        case .vertical:
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: topAnchor),
+                view.bottomAnchor.constraint(equalTo: bottomAnchor),
+                view.leftAnchor.constraint(equalTo: leftAnchor)
+            ])
+        }
     }
 }
