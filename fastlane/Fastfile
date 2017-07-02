@@ -19,10 +19,7 @@ platform :ios do
             scheme: "APMAlertController-Example",
             sdk: "iphonesimulator",
             device: "iPhone 5s (10.2)",
-            clean: true,
-            formatter: "xcpretty-json-formatter",
-            fail_build: false
+            clean: true
         )
-        danger()
     end
 end
