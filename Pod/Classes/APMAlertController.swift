@@ -29,6 +29,7 @@ open class APMAlertController: UIViewController {
                 .forEach { $0.backgroundColor = buttonBackgroundColor ?? .white }
         }
     }
+
     open var customDescriptionFont: UIFont?
     open var disableImageIconTemplate: Bool = false
     open var separatorColor = UIColor(white: 0.75, alpha: 0.6)
@@ -49,6 +50,7 @@ open class APMAlertController: UIViewController {
         stackView.alignment = .fill
         return stackView
     }()
+
     fileprivate var alertTitle: String?
     fileprivate var alertTitleImage: UIImage?
     fileprivate var alertMessage: String?
@@ -92,38 +94,38 @@ open class APMAlertController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardDidHide, object: nil)
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init(coder _: NSCoder) {
         fatalError("NSCoding not supported")
     }
 
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        self.modalPresentationStyle = UIModalPresentationStyle.custom
-        self.transitioningDelegate = self
+        modalPresentationStyle = UIModalPresentationStyle.custom
+        transitioningDelegate = self
     }
 
-    public convenience init(title: String?, message: String?, preferredStyle: APMAlertControllerStyle) {
+    public convenience init(title: String?, message: String?, preferredStyle _: APMAlertControllerStyle) {
         self.init()
-        self.alertTitle = title
-        self.alertMessage = message
+        alertTitle = title
+        alertMessage = message
     }
 
-    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle: APMAlertControllerStyle) {
+    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle _: APMAlertControllerStyle) {
         self.init()
-        self.alertTitle = title
-        self.alertAttributedMessage = attributedMessage
+        alertTitle = title
+        alertAttributedMessage = attributedMessage
     }
 
-    public convenience init(titleImage: UIImage?, message: String?, preferredStyle: APMAlertControllerStyle) {
+    public convenience init(titleImage: UIImage?, message: String?, preferredStyle _: APMAlertControllerStyle) {
         self.init()
-        self.alertTitleImage = titleImage
-        self.alertMessage = message
+        alertTitleImage = titleImage
+        alertMessage = message
     }
 
-    public convenience init(title: String?, preferredStyle: APMAlertControllerStyle) {
+    public convenience init(title: String?, preferredStyle _: APMAlertControllerStyle) {
         self.init()
-        self.alertTitle = title
+        alertTitle = title
     }
 
     // MARK: - View Controller lifecycle
@@ -200,9 +202,9 @@ open class APMAlertController: UIViewController {
 extension APMAlertController {
     func keyboardWillShow(with notification: Notification) {
         guard let centerYConstraint = self.centerYConstraint,
-              let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-              let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+            let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
             return
         }
 
@@ -216,8 +218,8 @@ extension APMAlertController {
 
     func keyboardDidHide(with notification: Notification) {
         guard let centerYConstraint = self.centerYConstraint,
-              let userInfo = notification.userInfo,
-              let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+            let userInfo = notification.userInfo,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
             return
         }
 
@@ -236,7 +238,7 @@ private extension APMAlertController {
     @objc
     func btnPressed(_ button: UIButton) {
         button.isSelected = true
-        self.dismiss(animated: true, completion: {
+        dismiss(animated: true, completion: {
             let action = self.actions[button.tag - 1]
             action.handler?(action)
         })
@@ -311,7 +313,7 @@ private extension APMAlertController {
         if alertMessage != nil || alertAttributedMessage != nil {
             let messageLabel = UILabel()
             messageLabel.translatesAutoresizingMaskIntoConstraints = false
-            messageLabel.font = self.customDescriptionFont ?? UIFont.systemFont(ofSize: 16)
+            messageLabel.font = customDescriptionFont ?? UIFont.systemFont(ofSize: 16)
             messageLabel.textAlignment = .center
             if let alertMessage = self.alertMessage {
                 messageLabel.text = alertMessage
@@ -347,15 +349,15 @@ private extension APMAlertController {
 
 extension APMAlertController: UIViewControllerTransitioningDelegate {
     public func animationController(
-        forPresented presented: UIViewController,
-        presenting: UIViewController,
-        source: UIViewController
+        forPresented _: UIViewController,
+        presenting _: UIViewController,
+        source _: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: true)
     }
 
     public func animationController(
-        forDismissed dismissed: UIViewController
+        forDismissed _: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
     }
@@ -391,13 +393,13 @@ private final class LineView: UIView {
             NSLayoutConstraint.activate([
                 view.leftAnchor.constraint(equalTo: leftAnchor),
                 view.topAnchor.constraint(equalTo: topAnchor),
-                view.rightAnchor.constraint(equalTo: rightAnchor)
+                view.rightAnchor.constraint(equalTo: rightAnchor),
             ])
         case .vertical:
             NSLayoutConstraint.activate([
                 view.topAnchor.constraint(equalTo: topAnchor),
                 view.bottomAnchor.constraint(equalTo: bottomAnchor),
-                view.leftAnchor.constraint(equalTo: leftAnchor)
+                view.leftAnchor.constraint(equalTo: leftAnchor),
             ])
         }
     }

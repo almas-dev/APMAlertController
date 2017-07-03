@@ -11,7 +11,7 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
         self.presenting = presenting
     }
 
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using _: UIViewControllerContextTransitioning?) -> TimeInterval {
         return presenting ? 0.5 : 0.3
     }
 
@@ -29,22 +29,22 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
             containerView.addSubview(alertController.view)
 
             UIView.animate(withDuration: 0.33,
-                animations: {
-                    alertController.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
-                    alertController.alertView.alpha = 1.0
-                    alertController.alertView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-                },
-                completion: { finished in
-                    UIView.animate(withDuration: 0.2,
-                        animations: {
-                            alertController.alertView.transform = CGAffineTransform.identity
-                        },
-                        completion: { finished in
-                            if finished {
-                                transitionContext.completeTransition(true)
-                            }
-                        })
-                })
+                           animations: {
+                               alertController.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
+                               alertController.alertView.alpha = 1.0
+                               alertController.alertView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                           },
+                           completion: { finished in
+                               UIView.animate(withDuration: 0.2,
+                                              animations: {
+                                                  alertController.alertView.transform = CGAffineTransform.identity
+                                              },
+                                              completion: { finished in
+                                                  if finished {
+                                                      transitionContext.completeTransition(true)
+                                                  }
+                               })
+            })
         }
     }
 
@@ -52,14 +52,14 @@ class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
         if let alertController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? APMAlertController {
 
             UIView.animate(withDuration: 0.33,
-                animations: {
-                    alertController.view.backgroundColor = UIColor.clear
-                    alertController.alertView.alpha = 0.0
-                    alertController.alertView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                },
-                completion: { _ in
-                    transitionContext.completeTransition(true)
-                })
+                           animations: {
+                               alertController.view.backgroundColor = UIColor.clear
+                               alertController.alertView.alpha = 0.0
+                               alertController.alertView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                           },
+                           completion: { _ in
+                               transitionContext.completeTransition(true)
+            })
         }
     }
 }
