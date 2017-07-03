@@ -40,7 +40,6 @@ open class APMAlertController: UIViewController {
     fileprivate let topScrollView = UIScrollView()
     fileprivate var topScrollViewHeightConstraint: NSLayoutConstraint?
     fileprivate let contentView = UIView()
-    fileprivate var anyTitleView: UIView
     fileprivate var titleMessageSeparatorConstraint: NSLayoutConstraint?
     fileprivate let titleMessageSeparator = UIView()
     fileprivate var messageLabel: UILabel?
@@ -57,6 +56,35 @@ open class APMAlertController: UIViewController {
     fileprivate var actions = [APMAlertActionProtocol]()
     fileprivate var centerYConstraint: NSLayoutConstraint?
 
+    fileprivate lazy var anyTitleView: UIView = {
+        if self.alertTitleImage != nil {
+            return self.titleImageView
+        } else {
+            return self.titleLabel
+        }
+    }()
+
+    fileprivate lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = self.tintColor
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0
+        titleLabel.text = self.alertTitle
+        return titleLabel
+    }()
+
+    fileprivate lazy var titleImageView: UIImageView = {
+        let titleImageView = UIImageView()
+        titleImageView.translatesAutoresizingMaskIntoConstraints = false
+        titleImageView.tintColor = self.tintColor
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.image = self.disableImageIconTemplate ? self.alertTitleImage : self.alertTitleImage?.withRenderingMode(.alwaysTemplate)
+        titleImageView.alpha = 0.8
+        return titleImageView
+    }()
+
     // MARK: - Constructors
 
     deinit {
@@ -68,8 +96,7 @@ open class APMAlertController: UIViewController {
         fatalError("NSCoding not supported")
     }
 
-    init(titleObject: UIView) {
-        self.anyTitleView = titleObject
+    init() {
         super.init(nibName: nil, bundle: nil)
 
         self.modalPresentationStyle = UIModalPresentationStyle.custom
@@ -77,25 +104,25 @@ open class APMAlertController: UIViewController {
     }
 
     public convenience init(title: String?, message: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UILabel())
+        self.init()
         self.alertTitle = title
         self.alertMessage = message
     }
 
     public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UILabel())
+        self.init()
         self.alertTitle = title
         self.alertAttributedMessage = attributedMessage
     }
 
     public convenience init(titleImage: UIImage?, message: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UIImageView())
+        self.init()
         self.alertTitleImage = titleImage
         self.alertMessage = message
     }
 
     public convenience init(title: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UILabel())
+        self.init()
         self.alertTitle = title
     }
 
@@ -135,14 +162,6 @@ open class APMAlertController: UIViewController {
         titleMessageSeparator.isHidden = !showTitleMessageSeparator
         titleMessageSeparatorConstraint?.constant = showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0
 
-        switch anyTitleView {
-        case let titleImageView as UIImageView:
-            titleImageView.tintColor = tintColor
-        case let titleLabel as UILabel:
-            titleLabel.textColor = tintColor
-        default:
-            break
-        }
         if let messageLabel = self.messageLabel, alertAttributedMessage == nil {
             messageLabel.textColor = tintColor
         }
@@ -279,20 +298,6 @@ private extension APMAlertController {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         topScrollView.addSubview(contentView)
 
-        anyTitleView.translatesAutoresizingMaskIntoConstraints = false
-        switch anyTitleView {
-        case let titleImageView as UIImageView:
-            titleImageView.contentMode = .scaleAspectFit
-            titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.withRenderingMode(.alwaysTemplate)
-            titleImageView.alpha = 0.8
-        case let titleLabel as UILabel:
-            titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            titleLabel.textAlignment = .center
-            titleLabel.numberOfLines = 0
-            titleLabel.text = alertTitle
-        default:
-            break
-        }
         contentView.addSubview(anyTitleView)
 
         titleMessageSeparator.translatesAutoresizingMaskIntoConstraints = false
@@ -319,7 +324,6 @@ private extension APMAlertController {
             self.messageLabel = messageLabel
         }
     }
-
 
     func configureView() {
         alertView.translatesAutoresizingMaskIntoConstraints = false
