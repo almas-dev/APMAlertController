@@ -83,7 +83,7 @@ open class APMAlertController: UIViewController {
         fatalError("NSCoding not supported")
     }
 
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
 
         modalPresentationStyle = UIModalPresentationStyle.custom
@@ -379,9 +379,13 @@ private final class LineView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         switch axis {
         case .horizontal:
-            heightAnchor.constraint(equalToConstant: 1).isActive = true
+            let constraint = heightAnchor.constraint(equalToConstant: 1)
+            constraint.priority = 999
+            constraint.isActive = true
         case .vertical:
-            widthAnchor.constraint(equalToConstant: 1).isActive = true
+            let constraint = widthAnchor.constraint(equalToConstant: 1)
+            constraint.priority = 999
+            constraint.isActive = true
         }
     }
 
