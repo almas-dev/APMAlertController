@@ -4,12 +4,13 @@
 
 import UIKit
 
-public enum APMAlertControllerStyle {
-    case alert
-    case actionSheet
-}
-
 open class APMAlertController: UIViewController {
+
+    public enum Style {
+        case alert
+        case actionSheet
+    }
+
     fileprivate let verticalAlertIndent: CGFloat = 25
 
     open var buttonTitleColor: UIColor?
@@ -89,25 +90,25 @@ open class APMAlertController: UIViewController {
         transitioningDelegate = self
     }
 
-    public convenience init(title: String?, message: String?, preferredStyle _: APMAlertControllerStyle) {
+    public convenience init(title: String?, message: String?, preferredStyle _: Style) {
         self.init()
         alertTitle = title
         alertMessage = message
     }
 
-    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle _: APMAlertControllerStyle) {
+    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle _: Style) {
         self.init()
         alertTitle = title
         alertAttributedMessage = attributedMessage
     }
 
-    public convenience init(titleImage: UIImage?, message: String?, preferredStyle _: APMAlertControllerStyle) {
+    public convenience init(titleImage: UIImage?, message: String?, preferredStyle _: Style) {
         self.init()
         alertTitleImage = titleImage
         alertMessage = message
     }
 
-    public convenience init(title: String?, preferredStyle _: APMAlertControllerStyle) {
+    public convenience init(title: String?, preferredStyle _: Style) {
         self.init()
         alertTitle = title
     }
@@ -181,7 +182,7 @@ open class APMAlertController: UIViewController {
 
     // MARK: - Content sections
 
-    public private(set) lazy var titleView: UIView = {
+    public private(set) lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -288,7 +289,7 @@ private extension APMAlertController {
             contentStackView.widthAnchor.constraint(equalTo: topScrollView.widthAnchor)
         ])
 
-        contentStackView.addArrangedSubview(titleView)
+        contentStackView.addArrangedSubview(titleStackView)
         contentStackView.addArrangedSubview(titleMessageSeparator)
         contentStackView.addArrangedSubview(messageContentView)
 
