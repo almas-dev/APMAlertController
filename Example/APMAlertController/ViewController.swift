@@ -59,17 +59,6 @@ class ViewController: UIViewController {
             NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
         ])
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(self.performTransitionToObjectiveCViewController)
-        )
-    }
-
-    func performTransitionToObjectiveCViewController() {
-        let viewController = ObjectiveCViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     // MARK: - System Alert
