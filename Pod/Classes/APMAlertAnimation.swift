@@ -2,7 +2,7 @@
 // Created by Xander on 04.03.16.
 //
 
-import Foundation
+import UIKit
 
 class APMAlertAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     let presenting: Bool
