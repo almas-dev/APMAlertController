@@ -3,8 +3,8 @@
 //  Copyright (c) 2015 Alexander Maslennikov. All rights reserved.
 //
 
-import UIKit
 import APMAlertController
+import UIKit
 
 class ViewController: UIViewController {
     let tableView = UITableView()
