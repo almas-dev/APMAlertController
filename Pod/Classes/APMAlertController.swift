@@ -4,14 +4,13 @@
 
 import UIKit
 
-@objc
-public enum APMAlertControllerStyle: Int {
-    case alert
-    case actionSheet
-}
-
-@objc
 open class APMAlertController: UIViewController {
+
+    public enum Style {
+        case alert
+        case actionSheet
+    }
+
     fileprivate let verticalAlertIndent: CGFloat = 25
 
     open var buttonTitleColor: UIColor?
@@ -31,20 +30,33 @@ open class APMAlertController: UIViewController {
                 .forEach { $0.backgroundColor = buttonBackgroundColor ?? .white }
         }
     }
+
     open var customDescriptionFont: UIFont?
     open var disableImageIconTemplate: Bool = false
     open var separatorColor = UIColor(white: 0.75, alpha: 0.6)
     open var showTitleMessageSeparator: Bool = false
     open var tintColor: UIColor = UIColor.black
-    open let messageContentView: UIView = UIView()
+    open private(set) lazy var messageContentView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 30, bottom: 15, right: 30)
+        stackView.alignment = .fill
+        return stackView
+    }()
 
     let alertView = UIView()
     fileprivate let topScrollView = UIScrollView()
     fileprivate var topScrollViewHeightConstraint: NSLayoutConstraint?
     fileprivate let contentView = UIView()
-    fileprivate var anyTitleObject: AnyObject
     fileprivate var titleMessageSeparatorConstraint: NSLayoutConstraint?
-    fileprivate let titleMessageSeparator = UIView()
+
+    private(set) lazy var titleMessageSeparator: UIView = {
+        let view = LineView(axis: .horizontal)
+        view.backgroundColor = self.separatorColor
+        view.isHidden = true
+        return view
+    }()
+
     fileprivate var messageLabel: UILabel?
     fileprivate lazy var buttonsContainerView: UIStackView = {
         let stackView = UIStackView()
@@ -52,52 +64,56 @@ open class APMAlertController: UIViewController {
         stackView.alignment = .fill
         return stackView
     }()
-    fileprivate let button = UIButton()
+
     fileprivate var alertTitle: String?
     fileprivate var alertTitleImage: UIImage?
     fileprivate var alertMessage: String?
     fileprivate var alertAttributedMessage: NSAttributedString?
     fileprivate var actions = [APMAlertActionProtocol]()
+    fileprivate var centerYConstraint: NSLayoutConstraint?
+
+    // MARK: - Constructors
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardDidHide, object: nil)
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init(coder _: NSCoder) {
         fatalError("NSCoding not supported")
     }
 
-    public init(titleObject: AnyObject) {
-        self.anyTitleObject = titleObject
+    public init() {
         super.init(nibName: nil, bundle: nil)
 
-        self.modalPresentationStyle = UIModalPresentationStyle.custom
-        self.transitioningDelegate = self
+        modalPresentationStyle = UIModalPresentationStyle.custom
+        transitioningDelegate = self
     }
 
-    public convenience init(title: String?, message: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UILabel())
-        self.alertTitle = title
-        self.alertMessage = message
+    public convenience init(title: String?, message: String?, preferredStyle _: Style) {
+        self.init()
+        alertTitle = title
+        alertMessage = message
     }
 
-    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UILabel())
-        self.alertTitle = title
-        self.alertAttributedMessage = attributedMessage
+    public convenience init(title: String?, attributedMessage: NSAttributedString?, preferredStyle _: Style) {
+        self.init()
+        alertTitle = title
+        alertAttributedMessage = attributedMessage
     }
 
-    public convenience init(titleImage: UIImage?, message: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UIImageView())
-        self.alertTitleImage = titleImage
-        self.alertMessage = message
+    public convenience init(titleImage: UIImage?, message: String?, preferredStyle _: Style) {
+        self.init()
+        alertTitleImage = titleImage
+        alertMessage = message
     }
 
-    public convenience init(title: String?, preferredStyle: APMAlertControllerStyle) {
-        self.init(titleObject: UILabel())
-        self.alertTitle = title
+    public convenience init(title: String?, preferredStyle _: Style) {
+        self.init()
+        alertTitle = title
     }
+
+    // MARK: - View Controller lifecycle
 
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,156 +135,25 @@ open class APMAlertController: UIViewController {
         )
     }
 
-    func configureView() {
-        alertView.translatesAutoresizingMaskIntoConstraints = false
-        alertView.backgroundColor = UIColor(white: 1, alpha: 0.95)
-        alertView.layer.cornerRadius = 12
-        alertView.clipsToBounds = true
-        view.addSubview(alertView)
-
-        topScrollView.translatesAutoresizingMaskIntoConstraints = false
-        alertView.addSubview(topScrollView)
-
-        configureTopScrollView()
-
-        buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false
-        alertView.addSubview(buttonsContainerView)
-        let lineView = LineView(axis: .horizontal)
-        lineView.backgroundColor = separatorColor
-        lineView.placeAboveView(buttonsContainerView)
-    }
-
-    func configureTopScrollView() {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        topScrollView.addSubview(contentView)
-
-        switch anyTitleObject {
-        case let titleImageView as UIImageView:
-            titleImageView.translatesAutoresizingMaskIntoConstraints = false
-            titleImageView.contentMode = .scaleAspectFit
-            titleImageView.image = disableImageIconTemplate ? alertTitleImage : alertTitleImage?.withRenderingMode(.alwaysTemplate)
-            titleImageView.alpha = 0.8
-            contentView.addSubview(titleImageView)
-        case let titleLabel as UILabel:
-            titleLabel.translatesAutoresizingMaskIntoConstraints = false
-            titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            titleLabel.textAlignment = .center
-            titleLabel.numberOfLines = 0
-            titleLabel.text = alertTitle
-            contentView.addSubview(titleLabel)
-        default:
-            break
-        }
-
-        titleMessageSeparator.translatesAutoresizingMaskIntoConstraints = false
-        titleMessageSeparator.backgroundColor = separatorColor
-        titleMessageSeparator.isHidden = true
-        contentView.addSubview(titleMessageSeparator)
-
-        messageContentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(messageContentView)
-
-        if alertMessage != nil || alertAttributedMessage != nil {
-            let messageLabel = UILabel()
-            messageLabel.translatesAutoresizingMaskIntoConstraints = false
-            messageLabel.font = self.customDescriptionFont ?? UIFont.systemFont(ofSize: 16)
-            messageLabel.textAlignment = .center
-            if let alertMessage = self.alertMessage {
-                messageLabel.text = alertMessage
-            } else if let alertAttributedMessage = self.alertAttributedMessage {
-                messageLabel.attributedText = alertAttributedMessage
-            }
-            messageLabel.numberOfLines = 0
-            messageContentView.addSubview(messageLabel)
-
-            self.messageLabel = messageLabel
-        }
-    }
-
-    private var centerYConstraint: NSLayoutConstraint?
-
-    func configureLayout() {
-        centerYConstraint = alertView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        centerYConstraint?.isActive = true
-        alertView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        alertView.widthAnchor.constraint(equalToConstant: 270).isActive = true
-        alertView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, constant: -(verticalAlertIndent * 2)).isActive = true
-
-        topScrollView.topAnchor.constraint(equalTo: alertView.topAnchor).isActive = true
-        topScrollView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor).isActive = true
-        topScrollView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor).isActive = true
-        topScrollViewHeightConstraint = topScrollView.heightAnchor.constraint(equalToConstant: 0)
-        topScrollViewHeightConstraint?.isActive = true
-
-        configureTopScrollViewLayout()
-
-        buttonsContainerView.topAnchor.constraint(equalTo: topScrollView.bottomAnchor).isActive = true
-        buttonsContainerView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor).isActive = true
-        buttonsContainerView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor).isActive = true
-        buttonsContainerView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor).isActive = true
-        buttonsContainerView.heightAnchor.constraint(equalToConstant: 45).isActive = true
-    }
-
-    func configureTopScrollViewLayout() {
-        guard let titleObject = anyTitleObject as? UIView else {
-            fatalError("anyTitleObject not UIView")
-        }
-
-        contentView.topAnchor.constraint(equalTo: topScrollView.topAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: topScrollView.leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: topScrollView.trailingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: topScrollView.bottomAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: topScrollView.widthAnchor).isActive = true
-
-        titleObject.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        titleObject.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
-        titleObject.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30).isActive = true
-
-        titleMessageSeparatorConstraint = titleMessageSeparator.topAnchor.constraint(equalTo: titleObject.bottomAnchor)
-        titleMessageSeparatorConstraint?.isActive = true
-        titleMessageSeparator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        titleMessageSeparator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        titleMessageSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
-        messageContentView.topAnchor.constraint(equalTo: titleMessageSeparator.bottomAnchor).isActive = true
-        messageContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        messageContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        messageContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
-        if let messageLabel = self.messageLabel {
-            messageLabel.topAnchor.constraint(equalTo: messageContentView.topAnchor, constant: 12).isActive = true
-            messageLabel.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 30).isActive = true
-            messageLabel.rightAnchor.constraint(equalTo: messageContentView.rightAnchor, constant: -30).isActive = true
-            messageLabel.bottomAnchor.constraint(equalTo: messageContentView.bottomAnchor, constant: -16).isActive = true
-        }
-    }
-
     open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
         topScrollView.updateConstraintsIfNeeded()
-        topScrollView.contentSize = contentView.frame.size
-        if view.frame.size.height - verticalAlertIndent * 2 - 45 >= contentView.frame.size.height {
-            topScrollViewHeightConstraint?.constant = contentView.frame.size.height
+        topScrollView.contentSize = contentStackView.frame.size
+        if view.frame.size.height - verticalAlertIndent * 2 - 45 >= contentStackView.frame.size.height {
+            topScrollViewHeightConstraint?.constant = contentStackView.frame.size.height
         } else {
             topScrollViewHeightConstraint?.constant = view.frame.size.height - verticalAlertIndent * 2 - 45
         }
 
         titleMessageSeparator.isHidden = !showTitleMessageSeparator
-        titleMessageSeparatorConstraint?.constant = showTitleMessageSeparator || (alertMessage == nil && alertAttributedMessage == nil) ? 14 : 0
 
-        switch anyTitleObject {
-        case let titleImageView as UIImageView:
-            titleImageView.tintColor = tintColor
-        case let titleLabel as UILabel:
-            titleLabel.textColor = tintColor
-        default:
-            break
-        }
         if let messageLabel = self.messageLabel, alertAttributedMessage == nil {
             messageLabel.textColor = tintColor
         }
     }
+
+    // MARK: - Public methods
 
     open func addAction(_ action: APMAlertActionProtocol) {
         actions.append(action)
@@ -278,7 +163,6 @@ open class APMAlertController: UIViewController {
             button.titleLabel?.font = buttonFont
         }
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.black, for: .normal)
         button.setTitle(action.title, for: .normal)
         button.setTitleColor(buttonTitleColor ?? tintColor, for: .normal)
         button.setTitleColor(buttonTitleColor ?? tintColor.withAlphaComponent(0.33), for: .highlighted)
@@ -296,14 +180,53 @@ open class APMAlertController: UIViewController {
         }
     }
 
-    func btnPressed(_ button: UIButton) {
-        button.isSelected = true
-        self.dismiss(animated: true, completion: {
-            let action = self.actions[button.tag - 1]
-            action.handler?(action)
-        })
-    }
+    // MARK: - Content sections
 
+    public private(set) lazy var titleStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.alignment = .fill
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 15, left: 30, bottom: 0, right: 30)
+        if self.alertTitleImage != nil {
+            stackView.addArrangedSubview(self.titleImageView)
+        } else if self.alertTitle != nil {
+            stackView.addArrangedSubview(self.titleLabel)
+        }
+        return stackView
+    }()
+
+    private lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.textColor = self.tintColor
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0
+        titleLabel.text = self.alertTitle
+        return titleLabel
+    }()
+
+    private lazy var titleImageView: UIImageView = {
+        let titleImageView = UIImageView()
+        titleImageView.tintColor = self.tintColor
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.image = self.disableImageIconTemplate ? self.alertTitleImage : self.alertTitleImage?.withRenderingMode(.alwaysTemplate)
+        titleImageView.alpha = 0.8
+        return titleImageView
+    }()
+
+    fileprivate lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 15
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        return stackView
+    }()
+}
+
+// MARK: - Keyboard handlers
+
+extension APMAlertController {
     func keyboardWillShow(with notification: Notification) {
         guard let centerYConstraint = self.centerYConstraint,
               let userInfo = notification.userInfo,
@@ -335,17 +258,105 @@ open class APMAlertController: UIViewController {
     }
 }
 
+// MARK: - Private methods
+
+private extension APMAlertController {
+
+    @objc
+    func btnPressed(_ button: UIButton) {
+        button.isSelected = true
+        dismiss(animated: true, completion: {
+            let action = self.actions[button.tag - 1]
+            action.handler?(action)
+        })
+    }
+
+    func configureLayout() {
+        centerYConstraint = alertView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        centerYConstraint?.isActive = true
+        alertView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        alertView.widthAnchor.constraint(equalToConstant: 270).isActive = true
+        alertView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, constant: -(verticalAlertIndent * 2)).isActive = true
+    }
+
+    func configureTopScrollView() {
+        topScrollView.addSubview(contentStackView)
+        NSLayoutConstraint.activate([
+            contentStackView.topAnchor.constraint(equalTo: topScrollView.topAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: topScrollView.bottomAnchor),
+            contentStackView.leftAnchor.constraint(equalTo: topScrollView.leftAnchor),
+            contentStackView.rightAnchor.constraint(equalTo: topScrollView.rightAnchor),
+            contentStackView.widthAnchor.constraint(equalTo: topScrollView.widthAnchor)
+        ])
+
+        contentStackView.addArrangedSubview(titleStackView)
+        contentStackView.addArrangedSubview(titleMessageSeparator)
+        contentStackView.addArrangedSubview(messageContentView)
+
+        if alertMessage != nil || alertAttributedMessage != nil {
+            let messageLabel = UILabel()
+            messageLabel.translatesAutoresizingMaskIntoConstraints = false
+            messageLabel.font = customDescriptionFont ?? UIFont.systemFont(ofSize: 16)
+            messageLabel.textAlignment = .center
+            if let alertMessage = self.alertMessage {
+                messageLabel.text = alertMessage
+            } else if let alertAttributedMessage = self.alertAttributedMessage {
+                messageLabel.attributedText = alertAttributedMessage
+            }
+            messageLabel.numberOfLines = 0
+            messageContentView.addArrangedSubview(messageLabel)
+
+            self.messageLabel = messageLabel
+        }
+    }
+
+    func configureView() {
+        alertView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.backgroundColor = UIColor(white: 1, alpha: 0.95)
+        alertView.layer.cornerRadius = 12
+        alertView.clipsToBounds = true
+        view.addSubview(alertView)
+
+        topScrollView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.addSubview(topScrollView)
+        let topScrollViewHeightConstraint = topScrollView.heightAnchor.constraint(equalToConstant: 0)
+        NSLayoutConstraint.activate([
+            topScrollView.topAnchor.constraint(equalTo: alertView.topAnchor),
+            topScrollView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor),
+            topScrollView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor),
+            topScrollViewHeightConstraint
+        ])
+        self.topScrollViewHeightConstraint = topScrollViewHeightConstraint
+
+        buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.addSubview(buttonsContainerView)
+        NSLayoutConstraint.activate([
+            buttonsContainerView.topAnchor.constraint(equalTo: topScrollView.bottomAnchor),
+            buttonsContainerView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor),
+            buttonsContainerView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor),
+            buttonsContainerView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor),
+            buttonsContainerView.heightAnchor.constraint(equalToConstant: 45)
+        ])
+
+        let lineView = LineView(axis: .horizontal)
+        lineView.backgroundColor = separatorColor
+        lineView.placeAboveView(buttonsContainerView)
+
+        configureTopScrollView()
+    }
+}
+
 extension APMAlertController: UIViewControllerTransitioningDelegate {
     public func animationController(
-        forPresented presented: UIViewController,
-        presenting: UIViewController,
-        source: UIViewController
+        forPresented _: UIViewController,
+        presenting _: UIViewController,
+        source _: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: true)
     }
 
     public func animationController(
-        forDismissed dismissed: UIViewController
+        forDismissed _: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         return APMAlertAnimation(presenting: false)
     }
@@ -368,9 +379,13 @@ private final class LineView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         switch axis {
         case .horizontal:
-            heightAnchor.constraint(equalToConstant: 1).isActive = true
+            let constraint = heightAnchor.constraint(equalToConstant: 1)
+            constraint.priority = 999
+            constraint.isActive = true
         case .vertical:
-            widthAnchor.constraint(equalToConstant: 1).isActive = true
+            let constraint = widthAnchor.constraint(equalToConstant: 1)
+            constraint.priority = 999
+            constraint.isActive = true
         }
     }
 

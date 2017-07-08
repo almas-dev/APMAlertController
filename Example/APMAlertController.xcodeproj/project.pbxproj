@@ -19,7 +19,6 @@
 		85C3FF591BFC77CCE62F49F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62EE0D235C38228DA50B966F /* QuartzCore.framework */; };
 		92CCF65557743EC4920DC2AC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184B82C3297BD89368BD0E79 /* CoreTelephony.framework */; };
 		958F0B4C3AE4436FCC921358 /* Pods_APMAlertController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D1BCC9640A2945C948CAA8 /* Pods_APMAlertController_Example.framework */; };
-		D4961FB61CE8B8B50066DC06 /* ObjectiveCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4961FB51CE8B8B50066DC06 /* ObjectiveCViewController.m */; };
 		DE4EF254B1626256AE376448 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F6A3D4B36E8F117F08A0BE /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +55,6 @@
 		A8AEB074721904383729FE97 /* Pods-APMAlertController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMAlertController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMAlertController_Example/Pods-APMAlertController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B22A015382D31F0A5955A317 /* Pods-APMAlertController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APMAlertController_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-APMAlertController_Tests/Pods-APMAlertController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B4F6A3D4B36E8F117F08A0BE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		D4961FB41CE8B8B50066DC06 /* ObjectiveCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCViewController.h; sourceTree = "<group>"; };
-		D4961FB51CE8B8B50066DC06 /* ObjectiveCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCViewController.m; sourceTree = "<group>"; };
 		D6E4B2B9AD633B20ABB033FB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		E10E5A32491CB6A226B55881 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		F673CDF013052C8496A2B6CF /* APMAlertController.podspec */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = text; name = APMAlertController.podspec; path = ../APMAlertController.podspec; sourceTree = "<group>"; };
@@ -134,8 +131,6 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				D4961FB41CE8B8B50066DC06 /* ObjectiveCViewController.h */,
-				D4961FB51CE8B8B50066DC06 /* ObjectiveCViewController.m */,
 			);
 			name = "Example for APMAlertController";
 			path = APMAlertController;
@@ -407,7 +402,6 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				D4961FB61CE8B8B50066DC06 /* ObjectiveCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

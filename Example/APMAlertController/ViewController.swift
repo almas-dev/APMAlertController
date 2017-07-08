@@ -59,17 +59,6 @@ class ViewController: UIViewController {
             NSLayoutConstraint(item: tableView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
         ])
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(self.performTransitionToObjectiveCViewController)
-        )
-    }
-
-    func performTransitionToObjectiveCViewController() {
-        let viewController = ObjectiveCViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     // MARK: - System Alert
@@ -249,21 +238,15 @@ class ViewController: UIViewController {
         alertController.addAction(cancelAction)
 
         let contentView = alertController.messageContentView
+        contentView.layoutMargins = UIEdgeInsets(top: -15, left: 15, bottom: 0, right: 15)
 
         let textField = UITextField()
         textField.placeholder = "Text field"
         textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
-        contentView.addSubview(textField)
-        contentView.addConstraints([
-            NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: textField, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 15),
-            NSLayoutConstraint(item: textField, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: -15),
-            NSLayoutConstraint(item: textField, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: textField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
-        ])
-
+        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        contentView.addArrangedSubview(textField)
         present(alertController, animated: true, completion: nil)
     }
 
@@ -278,18 +261,13 @@ class ViewController: UIViewController {
         alertController.addAction(cancelAction)
 
         let contentView = alertController.messageContentView
+        contentView.layoutMargins = UIEdgeInsets(top: -15, left: 0, bottom: 0, right: 0)
 
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
-        contentView.addSubview(view)
-        contentView.addConstraints([
-            NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
-        ])
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        contentView.addArrangedSubview(view)
 
         let view1 = UIView()
         view1.translatesAutoresizingMaskIntoConstraints = false
@@ -337,7 +315,6 @@ class ViewController: UIViewController {
         alertController.addAction(testAction)
         present(alertController, animated: true, completion: nil)
     }
-
 }
 
 extension ViewController: UITableViewDelegate {
