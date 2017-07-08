@@ -1,3 +1,5 @@
+# swiftlint 0.20.1
+
 included:
   - ../Pod/Classes
   - APMAlertController
@@ -13,18 +15,29 @@ opt_in_rules:
   - conditional_returns_on_newline
   - empty_count
   - explicit_init
+#  - explicit_top_level_acl
+#  - explicit_type_interface
+  - extension_access_modifier
+  - fatal_error_message
 #  - file_header
   - first_where
   - force_unwrapping
+  - implicit_return
+  - implicitly_unwrapped_optional
+  - multiline_parameters
   - missing_docs
   - nimble_operator
+#  - no_extension_access_modifier
   - number_separator
+#  - object_literal
   - operator_usage_whitespace
   - overridden_super_call
   - private_outlet
   - prohibited_super_call
-  - redundant_nil_coalesing
+  - redundant_nil_coalescing
+  - sorted_imports
   - switch_case_on_newline
+  - vertical_parameter_alignment_on_call
 
 line_length: 150
 identifier_name:
@@ -32,9 +45,5 @@ identifier_name:
     warning: 2
     error: 1
   max_length:
-    warning: 24
-    error: 32
-  excluded:
-    - initialViewControllersTypes
-cyclomatic_complexity:
-  error: 30
+    warning: 32
+    error: 36

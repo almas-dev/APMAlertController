@@ -20,6 +20,7 @@
 		92CCF65557743EC4920DC2AC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184B82C3297BD89368BD0E79 /* CoreTelephony.framework */; };
 		958F0B4C3AE4436FCC921358 /* Pods_APMAlertController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D1BCC9640A2945C948CAA8 /* Pods_APMAlertController_Example.framework */; };
 		DE4EF254B1626256AE376448 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F6A3D4B36E8F117F08A0BE /* CoreText.framework */; };
+		FA6FFB531F1139640039C3D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA6FFB551F1139640039C3D6 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		D6E4B2B9AD633B20ABB033FB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		E10E5A32491CB6A226B55881 /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		F673CDF013052C8496A2B6CF /* APMAlertController.podspec */ = {isa = PBXFileReference; fileEncoding = 4; includeInIndex = 1; lastKnownFileType = text; name = APMAlertController.podspec; path = ../APMAlertController.podspec; sourceTree = "<group>"; };
+		FA6FFB541F1139640039C3D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				FA6FFB551F1139640039C3D6 /* Localizable.strings */,
 			);
 			name = "Example for APMAlertController";
 			path = APMAlertController;
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				FA6FFB531F1139640039C3D6 /* Localizable.strings in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +434,14 @@
 				607FACDF1AFB9204008FA782 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		FA6FFB551F1139640039C3D6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA6FFB541F1139640039C3D6 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

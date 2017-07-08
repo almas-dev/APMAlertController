@@ -1,6 +1,6 @@
+import APMAlertController
 import UIKit
 import XCTest
-import APMAlertController
 
 class Tests: XCTestCase {
 

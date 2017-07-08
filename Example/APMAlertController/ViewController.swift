@@ -3,8 +3,8 @@
 //  Copyright (c) 2015 Alexander Maslennikov. All rights reserved.
 //
 
-import UIKit
 import APMAlertController
+import UIKit
 
 class ViewController: UIViewController {
     let tableView = UITableView()
@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         ["System Alert", "System ActionSheet"],
         [
             "Alert Text Title",
-            "Alert Text Title Long",
+            "Alert Text Title Message Long",
             "Alert Image Title With Tint",
             "Alert Text Title Separator With Tint",
             "Alert Text Title Attributed Message",
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             [systemAlert, systemActionSheet],
             [
                 alertTextTitle,
-                alertTextTitleColoredButtons,
+                alertTextTitleMessageLong,
                 alertImageTitleWithTint,
                 alertTextTitleSeparatorWithTint,
                 alertTextTitleAttributedMessage,
@@ -64,8 +64,8 @@ class ViewController: UIViewController {
     // MARK: - System Alert
 
     func systemAlert(_ indexPath: IndexPath) {
-        let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
-        let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
+        let title = NSLocalizedString("title-long", comment: "Long title")
+        let message = NSLocalizedString("message-long", comment: "Long message")
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -121,9 +121,9 @@ class ViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func alertTextTitleColoredButtons(_ indexPath: IndexPath) {
-        let title = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title." /*titlesArray[indexPath.section][indexPath.row]*/
-        let message = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message." /*"This is message. One, Two. Message."*/
+    func alertTextTitleMessageLong(_ indexPath: IndexPath) {
+        let title = NSLocalizedString("title-long", comment: "Long title")
+        let message = NSLocalizedString("message-long", comment: "Long message")
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = APMAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -159,7 +159,7 @@ class ViewController: UIViewController {
 
     func alertTextTitleSeparatorWithTint(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
-        let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
+        let message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
         let alertController = APMAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.showTitleMessageSeparator = true
@@ -173,45 +173,31 @@ class ViewController: UIViewController {
 
     func alertTextTitleAttributedMessage(_ indexPath: IndexPath) {
         let title = "ABC123-45678-90"
-        let attributedMessage = NSMutableAttributedString(string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.")
-        attributedMessage.addAttribute(
-            NSFontAttributeName,
-            value: UIFont.systemFont(ofSize: 16),
+        let attributedMessage = NSMutableAttributedString(
+            string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua."
+        )
+        attributedMessage.addAttributes([
+            NSFontAttributeName: UIFont.systemFont(ofSize: 16),
+            NSForegroundColorAttributeName: UIColor(red: 0.581, green: 0.129, blue: 0.575, alpha: 1.0)
+        ],
             range: NSRange(location: 0, length: 28)
         )
-        attributedMessage.addAttribute(
-            NSFontAttributeName,
-            value: UIFont.boldSystemFont(ofSize: 14),
+        attributedMessage.addAttributes([
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14),
+            NSForegroundColorAttributeName: UIColor(red: 0.276, green: 0.32, blue: 0.6, alpha: 1.0)
+        ],
             range: NSRange(location: 28, length: 29)
         )
-        attributedMessage.addAttribute(
-            NSFontAttributeName,
-            value: UIFont.italicSystemFont(ofSize: 16),
+        attributedMessage.addAttributes([
+            NSFontAttributeName: UIFont.italicSystemFont(ofSize: 16),
+            NSForegroundColorAttributeName: UIColor(red: 0.488, green: 0.593, blue: 0.424, alpha: 1.0)
+        ],
             range: NSRange(location: 57, length: 22)
         )
-        attributedMessage.addAttribute(
-            NSFontAttributeName,
-            value: UIFont.boldSystemFont(ofSize: 10),
-            range: NSRange(location: 79, length: 44)
-        )
-        attributedMessage.addAttribute(
-            NSForegroundColorAttributeName,
-            value: UIColor(red: 0.581, green: 0.129, blue: 0.575, alpha: 1.0),
-            range: NSRange(location: 0, length: 28)
-        )
-        attributedMessage.addAttribute(
-            NSForegroundColorAttributeName,
-            value: UIColor(red: 0.276, green: 0.32, blue: 0.6, alpha: 1.0),
-            range: NSRange(location: 28, length: 29)
-        )
-        attributedMessage.addAttribute(
-            NSForegroundColorAttributeName,
-            value: UIColor(red: 0.488, green: 0.593, blue: 0.424, alpha: 1.0),
-            range: NSRange(location: 57, length: 22)
-        )
-        attributedMessage.addAttribute(
-            NSForegroundColorAttributeName,
-            value: UIColor(red: 0.0, green: 0.656, blue: 0.571, alpha: 1.0),
+        attributedMessage.addAttributes([
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10),
+            NSForegroundColorAttributeName: UIColor(red: 0.0, green: 0.656, blue: 0.571, alpha: 1.0)
+        ],
             range: NSRange(location: 79, length: 44)
         )
 
@@ -280,17 +266,6 @@ class ViewController: UIViewController {
             NSLayoutConstraint(item: view1, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -10)
         ])
 
-        let view2 = UIView()
-        view2.translatesAutoresizingMaskIntoConstraints = false
-        view2.backgroundColor = alertController.separatorColor
-        view.addSubview(view2)
-        view.addConstraints([
-            NSLayoutConstraint(item: view2, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: view2, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: view2, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: view2, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 2)
-        ])
-
         present(alertController, animated: true, completion: nil)
     }
 
@@ -318,6 +293,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let showAlert = actions[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         showAlert(indexPath)
@@ -327,6 +303,7 @@ extension ViewController: UITableViewDelegate {
 }
 
 extension ViewController: UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return actions.count
     }
