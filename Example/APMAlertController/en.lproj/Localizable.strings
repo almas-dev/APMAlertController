@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  APMAlertController
+
+  Created by Xander on 08.07.17.
+  Copyright (c) 2017 Alexander Maslennikov. All rights reserved.
+*/
+
+"title-long" = "Title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title";
+"message-long" = "Message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message";
