@@ -227,6 +227,7 @@ open class APMAlertController: UIViewController {
 // MARK: - Keyboard handlers
 
 extension APMAlertController {
+    @objc
     func keyboardWillShow(with notification: Notification) {
         guard let centerYConstraint = self.centerYConstraint,
               let userInfo = notification.userInfo,
@@ -243,6 +244,7 @@ extension APMAlertController {
         }
     }
 
+    @objc
     func keyboardDidHide(with notification: Notification) {
         guard let centerYConstraint = self.centerYConstraint,
               let userInfo = notification.userInfo,
@@ -380,11 +382,11 @@ private final class LineView: UIView {
         switch axis {
         case .horizontal:
             let constraint = heightAnchor.constraint(equalToConstant: 1)
-            constraint.priority = 999
+            constraint.priority = UILayoutPriority(rawValue: 999)
             constraint.isActive = true
         case .vertical:
             let constraint = widthAnchor.constraint(equalToConstant: 1)
-            constraint.priority = 999
+            constraint.priority = UILayoutPriority(rawValue: 999)
             constraint.isActive = true
         }
     }

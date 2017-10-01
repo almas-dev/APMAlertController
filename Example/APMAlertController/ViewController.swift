@@ -177,26 +177,26 @@ class ViewController: UIViewController {
             string: "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua."
         )
         attributedMessage.addAttributes([
-            NSFontAttributeName: UIFont.systemFont(ofSize: 16),
-            NSForegroundColorAttributeName: UIColor(red: 0.581, green: 0.129, blue: 0.575, alpha: 1.0)
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),
+            NSAttributedStringKey.foregroundColor: UIColor(red: 0.581, green: 0.129, blue: 0.575, alpha: 1.0)
         ],
             range: NSRange(location: 0, length: 28)
         )
         attributedMessage.addAttributes([
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14),
-            NSForegroundColorAttributeName: UIColor(red: 0.276, green: 0.32, blue: 0.6, alpha: 1.0)
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
+            NSAttributedStringKey.foregroundColor: UIColor(red: 0.276, green: 0.32, blue: 0.6, alpha: 1.0)
         ],
             range: NSRange(location: 28, length: 29)
         )
         attributedMessage.addAttributes([
-            NSFontAttributeName: UIFont.italicSystemFont(ofSize: 16),
-            NSForegroundColorAttributeName: UIColor(red: 0.488, green: 0.593, blue: 0.424, alpha: 1.0)
+            NSAttributedStringKey.font: UIFont.italicSystemFont(ofSize: 16),
+            NSAttributedStringKey.foregroundColor: UIColor(red: 0.488, green: 0.593, blue: 0.424, alpha: 1.0)
         ],
             range: NSRange(location: 57, length: 22)
         )
         attributedMessage.addAttributes([
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10),
-            NSForegroundColorAttributeName: UIColor(red: 0.0, green: 0.656, blue: 0.571, alpha: 1.0)
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 10),
+            NSAttributedStringKey.foregroundColor: UIColor(red: 0.0, green: 0.656, blue: 0.571, alpha: 1.0)
         ],
             range: NSRange(location: 79, length: 44)
         )
