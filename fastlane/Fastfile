@@ -11,9 +11,6 @@ platform :ios do
 
     desc "Run tests"
     lane :test do
-        cocoapods(
-            podfile: "Example/Podfile"
-        )
         scan(
             workspace: "Example/APMAlertController.xcworkspace",
             scheme: "APMAlertController-Example",
