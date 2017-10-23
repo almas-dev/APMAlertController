@@ -16,7 +16,6 @@ platform :ios do
       scheme: 'APMAlertController',
       clean: true,
       code_coverage: true,
-      formatter: 'xcpretty-json-formatter'
     )
   end
 end
