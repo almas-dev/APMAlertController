@@ -6,4 +6,4 @@ script:
     - bundle install
     - bundle exec fastlane test
 after_success:
-    - bash <(curl -s https://codecov.io/bash)
+    - bash <(curl -s https://codecov.io/bash) -J 'APMAlertController'
