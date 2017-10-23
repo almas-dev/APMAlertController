@@ -27,9 +27,29 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D44D321A1F9DE6DC00822763"
+               BuildableName = "APMAlertControllerTests.xctest"
+               BlueprintName = "APMAlertControllerTests"
+               ReferencedContainer = "container:APMAlertController.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D4B7FCD11EA0E525005852CF"
+            BuildableName = "APMAlertController.framework"
+            BlueprintName = "APMAlertController"
+            ReferencedContainer = "container:APMAlertController.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

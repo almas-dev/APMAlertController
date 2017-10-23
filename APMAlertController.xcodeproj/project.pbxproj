@@ -7,13 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8DCAA7181BFE6B8DF9426DB /* AlertController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCA4BB85D4FBE6A12E3623 /* AlertController+Keyboard.swift */; };
+		D44D32201F9DE6DC00822763 /* APMAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B7FCD21EA0E525005852CF /* APMAlertController.framework */; };
 		D4FD85531EA4F3B500128075 /* APMAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = D4FD85521EA4F3B500128075 /* APMAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4FD85571EA4F67800128075 /* APMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85541EA4F67800128075 /* APMAlertAction.swift */; };
 		D4FD85581EA4F67800128075 /* APMAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85551EA4F67800128075 /* APMAlertAnimation.swift */; };
 		D4FD85591EA4F67800128075 /* APMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD85561EA4F67800128075 /* APMAlertController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D44D32211F9DE6DC00822763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4B7FCC91EA0E525005852CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4B7FCD11EA0E525005852CF;
+			remoteInfo = APMAlertController;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		B8DCA4BB85D4FBE6A12E3623 /* AlertController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlertController+Keyboard.swift"; sourceTree = "<group>"; };
+		D44D321B1F9DE6DC00822763 /* APMAlertControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APMAlertControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44D321F1F9DE6DC00822763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4B7FCD21EA0E525005852CF /* APMAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APMAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FD85521EA4F3B500128075 /* APMAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APMAlertController.h; sourceTree = SOURCE_ROOT; };
 		D4FD85541EA4F67800128075 /* APMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APMAlertAction.swift; path = Pod/Classes/APMAlertAction.swift; sourceTree = SOURCE_ROOT; };
@@ -23,6 +38,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D44D32181F9DE6DC00822763 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44D32201F9DE6DC00822763 /* APMAlertController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4B7FCCE1EA0E525005852CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,10 +56,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D44D321C1F9DE6DC00822763 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D44D321F1F9DE6DC00822763 /* Info.plist */,
+				B8DCA4BB85D4FBE6A12E3623 /* AlertController+Keyboard.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		D4B7FCC81EA0E525005852CF = {
 			isa = PBXGroup;
 			children = (
-				D4B7FCD41EA0E525005852CF /* APMAlertController */,
+				D4B7FCD41EA0E525005852CF /* Pod */,
+				D44D321C1F9DE6DC00822763 /* Tests */,
 				D4B7FCD31EA0E525005852CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,18 +78,19 @@
 			isa = PBXGroup;
 			children = (
 				D4B7FCD21EA0E525005852CF /* APMAlertController.framework */,
+				D44D321B1F9DE6DC00822763 /* APMAlertControllerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D4B7FCD41EA0E525005852CF /* APMAlertController */ = {
+		D4B7FCD41EA0E525005852CF /* Pod */ = {
 			isa = PBXGroup;
 			children = (
 				D4FD85521EA4F3B500128075 /* APMAlertController.h */,
 				D4FD85611EA4F8A600128075 /* Info.plist */,
 				D4FD855A1EA4F68B00128075 /* Classes */,
 			);
-			path = APMAlertController;
+			path = Pod;
 			sourceTree = "<group>";
 		};
 		D4FD855A1EA4F68B00128075 /* Classes */ = {
@@ -66,7 +100,7 @@
 				D4FD85551EA4F67800128075 /* APMAlertAnimation.swift */,
 				D4FD85561EA4F67800128075 /* APMAlertController.swift */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +117,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D44D321A1F9DE6DC00822763 /* APMAlertControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D44D32251F9DE6DC00822763 /* Build configuration list for PBXNativeTarget "APMAlertControllerTests" */;
+			buildPhases = (
+				D44D32171F9DE6DC00822763 /* Sources */,
+				D44D32181F9DE6DC00822763 /* Frameworks */,
+				D44D32191F9DE6DC00822763 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D44D32221F9DE6DC00822763 /* PBXTargetDependency */,
+			);
+			name = APMAlertControllerTests;
+			productName = APMAlertControllerTests;
+			productReference = D44D321B1F9DE6DC00822763 /* APMAlertControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D4B7FCD11EA0E525005852CF /* APMAlertController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4B7FCDA1EA0E525005852CF /* Build configuration list for PBXNativeTarget "APMAlertController" */;
@@ -107,8 +159,13 @@
 		D4B7FCC91EA0E525005852CF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				TargetAttributes = {
+					D44D321A1F9DE6DC00822763 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
 					D4B7FCD11EA0E525005852CF = {
 						CreatedOnToolsVersion = 8.3.1;
 						LastSwiftMigration = 0900;
@@ -129,11 +186,19 @@
 			projectRoot = "";
 			targets = (
 				D4B7FCD11EA0E525005852CF /* APMAlertController */,
+				D44D321A1F9DE6DC00822763 /* APMAlertControllerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D44D32191F9DE6DC00822763 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4B7FCD01EA0E525005852CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,6 +209,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D44D32171F9DE6DC00822763 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8DCAA7181BFE6B8DF9426DB /* AlertController+Keyboard.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4B7FCCD1EA0E525005852CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,7 +229,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D44D32221F9DE6DC00822763 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4B7FCD11EA0E525005852CF /* APMAlertController */;
+			targetProxy = D44D32211F9DE6DC00822763 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		D44D32231F9DE6DC00822763 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.almas-dev.APMAlertController.APMAlertControllerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D44D32241F9DE6DC00822763 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.almas-dev.APMAlertController.APMAlertControllerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D4B7FCD81EA0E525005852CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -314,6 +431,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D44D32251F9DE6DC00822763 /* Build configuration list for PBXNativeTarget "APMAlertControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44D32231F9DE6DC00822763 /* Debug */,
+				D44D32241F9DE6DC00822763 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D4B7FCCC1EA0E525005852CF /* Build configuration list for PBXProject "APMAlertController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

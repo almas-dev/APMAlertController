@@ -1,22 +1,21 @@
 #!usr/bin/ruby
 
-fastlane_version "2.0"
+fastlane_version '2.0'
 
 default_platform :ios
 
 platform :ios do
-    before_all do
-        ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "120"
-    end
+  before_all do
+    ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '120'
+  end
 
-    desc "Run tests"
-    lane :test do
-        scan(
-            workspace: "Example/APMAlertController.xcworkspace",
-            scheme: "APMAlertController-Example",
-            sdk: "iphonesimulator",
-            device: "iPhone 5s (10.2)",
-            clean: true
-        )
-    end
+  desc 'Run tests'
+  lane :test do
+    scan(
+      project: 'APMAlertController.xcodeproj',
+      scheme: 'APMAlertController',
+      clean: true,
+      code_coverage: true,
+    )
+  end
 end
