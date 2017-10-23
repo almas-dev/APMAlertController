@@ -72,11 +72,13 @@ open class APMAlertController: UIViewController {
     fileprivate var actions = [APMAlertActionProtocol]()
     fileprivate var centerYConstraint: NSLayoutConstraint?
 
+    var notificationCenter = NotificationCenter.default
+
     // MARK: - Constructors
 
     deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardDidHide, object: nil)
+        notificationCenter.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.removeObserver(self, name: Notification.Name.UIKeyboardDidHide, object: nil)
     }
 
     public required init(coder _: NSCoder) {
@@ -121,13 +123,13 @@ open class APMAlertController: UIViewController {
         configureView()
         configureLayout()
 
-        NotificationCenter.default.addObserver(
+        notificationCenter.addObserver(
             self,
             selector: #selector(keyboardWillShow(with:)),
             name: Notification.Name.UIKeyboardWillShow,
             object: nil
         )
-        NotificationCenter.default.addObserver(
+        notificationCenter.addObserver(
             self,
             selector: #selector(keyboardDidHide(with:)),
             name: Notification.Name.UIKeyboardDidHide,
