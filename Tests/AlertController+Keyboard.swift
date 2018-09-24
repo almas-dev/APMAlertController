@@ -50,17 +50,17 @@ class NotificationCenterMock: NotificationCenter {
     var isUnsubscribedForDidHide: Bool = false
 
     override func addObserver(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?) {
-        if case Notification.Name.UIKeyboardWillShow = aName! {
+        if case UIResponder.keyboardWillShowNotification = aName! {
             isSubscribedForWillShow = true
-        } else if case Notification.Name.UIKeyboardDidHide = aName! {
+        } else if case UIResponder.keyboardDidHideNotification = aName! {
             isSubscribedForDidHide = true
         }
     }
 
     override func removeObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?) {
-        if case Notification.Name.UIKeyboardWillShow = aName! {
+        if case UIResponder.keyboardWillShowNotification = aName! {
             isUnsubscribedForWillShow = true
-        } else if case Notification.Name.UIKeyboardDidHide = aName! {
+        } else if case UIResponder.keyboardDidHideNotification = aName! {
             isUnsubscribedForDidHide = true
         }
     }
