@@ -18,7 +18,7 @@ open class APMAlertController: UIViewController {
     open var customButtonFont: UIFont? {
         didSet {
             buttonsContainerView.arrangedSubviews
-                .flatMap { $0 as? UIButton }
+                .compactMap { $0 as? UIButton }
                 .forEach { $0.titleLabel?.font = customButtonFont }
         }
     }
@@ -26,7 +26,7 @@ open class APMAlertController: UIViewController {
     open var buttonBackgroundColor: UIColor? {
         didSet {
             buttonsContainerView.arrangedSubviews
-                .flatMap { $0 as? UIButton }
+                .compactMap { $0 as? UIButton }
                 .forEach { $0.backgroundColor = buttonBackgroundColor ?? .white }
         }
     }
@@ -77,8 +77,8 @@ open class APMAlertController: UIViewController {
     // MARK: - Constructors
 
     deinit {
-        notificationCenter.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.removeObserver(self, name: Notification.Name.UIKeyboardDidHide, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
     }
 
     public required init(coder _: NSCoder) {
@@ -126,13 +126,13 @@ open class APMAlertController: UIViewController {
         notificationCenter.addObserver(
             self,
             selector: #selector(keyboardWillShow(with:)),
-            name: Notification.Name.UIKeyboardWillShow,
+            name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
         notificationCenter.addObserver(
             self,
             selector: #selector(keyboardDidHide(with:)),
-            name: Notification.Name.UIKeyboardDidHide,
+            name: UIResponder.keyboardDidHideNotification,
             object: nil
         )
     }
@@ -233,8 +233,8 @@ extension APMAlertController {
     func keyboardWillShow(with notification: Notification) {
         guard let centerYConstraint = self.centerYConstraint,
               let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
-              let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber else {
             return
         }
 
@@ -250,7 +250,7 @@ extension APMAlertController {
     func keyboardDidHide(with notification: Notification) {
         guard let centerYConstraint = self.centerYConstraint,
               let userInfo = notification.userInfo,
-              let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber else {
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber else {
             return
         }
 
